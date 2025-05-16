@@ -39,14 +39,25 @@ export default function Navbar() {
 
   return (
     <MaxWidthWrapper className="fixed z-10 left-1/2 -translate-x-1/2 mt-4">
-      <nav className="bg-white flex justify-between items-center px-6 py-6 rounded-2xl relative">
+      <nav className="bg-white flex justify-between items-center px-6 py-4 rounded-2xl relative">
         {/* logo */}
-        <div className="relative w-36 h-10">
+        <div className="relative w-36 h-12 self-start">
           <Image src={'/logo-finnaux.png'} alt="" fill />
         </div>
 
-        {/* links */}
-        <ul style={{ height: 'calc(100vh - 150px)' }} className={cn('absolute bg-white w-full left-0 top-full mt-4 space-y-4 p-6 md:px-16 md:py-10 rounded-lg', open ? 'block' : 'hidden')}>
+        {/* links - mobile */}
+        <ul style={{ height: 'calc(100vh - 150px)' }} className={cn('absolute bg-white w-full left-0 top-full mt-4 space-y-4 p-6 md:px-16 md:py-10 rounded-lg min-[840px]:hidden', open ? 'block' : 'hidden')}>
+          {
+            links.map(({ label, href }) => (
+              <li key={label}>
+                <Link href={href} className="hover:text-teal-600 active:text-teal-600 text-md">{label}</Link>
+              </li>
+            ))
+          }
+        </ul>
+
+        {/* links - PC */}
+        <ul className="hidden gap-4 text-lg min-[840px]:flex">
           {
             links.map(({ label, href }) => (
               <li key={label}>

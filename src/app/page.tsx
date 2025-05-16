@@ -10,6 +10,8 @@ import AboutUs from "@/components/composed/aboutUs";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import HeroSection from "@/components/composed/Header";
+import MarqueeSection from "@/components/composed/Marquee";
 
 const whyChooseUs = [
   {
@@ -77,9 +79,10 @@ export default function Home() {
   return (
     <>
       {/* HeroSection */}
-      {/* <HeroSection /> */}
+      <HeroSection />
 
       {/* Client logo marquee */}
+      <MarqueeSection />
 
       {/* About Us */}
       <AboutUs />
@@ -120,7 +123,6 @@ export default function Home() {
 
       {/* Features */}
       <Features />
-
 
       {/* Why Choose Us? */}
       <Section>

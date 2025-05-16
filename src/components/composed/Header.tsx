@@ -1,9 +1,6 @@
-import Image from "next/image";
-import s from "../../uploads/grad2.jpeg";
-import AlphaWave from "./images/AlphaWave.svg";
-import Marquee from "react-fast-marquee";
 import Section from "./section";
-export default function Header() {
+
+export default function HeroSection() {
   return (
     <>
       <Section
@@ -54,7 +51,6 @@ export default function Header() {
 
         <div className="absolute bottom-0 left-0 w-full h-32 pointer-events-none bg-gradient-to-b from-transparent to-background" />
 
-        {/* <div className="absolute bg-red-500  left-0 w-full h-40" /> */}
       </Section>
     </>
   );
