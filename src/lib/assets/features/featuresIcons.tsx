@@ -395,52 +395,95 @@ export const Tools = (props: SVGProps<SVGSVGElement>) => (
 
 export const features = [
   {
-    title:
-      "Seamless API connections with KYC, credit bureaus, and payment gateways.",
+    title: 'Seamless API Integration',
+    description: "Connect effortlessly with third-party services like KYC verification, credit bureaus, and payment gateways.",
     icon: ApiIcon,
-    desktop: true,
-    mobile: true,
   },
   {
-    title: "Real-time financial tracking with GL accounting integration.",
+    title: 'Integrated General Ledger (GL) Accounting',
+    description: "Maintain accurate, real-time financial records with built-in accounting functionality.",
     icon: AccountingIcon,
-    desktop: true,
-    mobile: true,
   },
   {
-    title: "Custom loan policies, NPA calculations, and rescheduling",
+    title: 'Customizable Loan Policies',
+    description: "Configure rules and workflows specific to loan products, including NPA calculation and loan re-scheduling.",
     icon: Policy,
-    desktop: true,
-    mobile: true,
   },
   {
-    title: "Manage portfolios, transactions, and recovery processes",
+    title: 'Portfolio & Transaction Management',
+    description: "Stay in control with tools for managing loan portfolios, scheduled transactions, closures, waivers, and voucher trails.",
     icon: Portfolio,
-    desktop: true,
-    mobile: true,
   },
   {
-    title: "Asset tracking, legal case management, and recovery tools",
+    title: 'Legal & Asset Recovery Tools',
+    description: "Track repossessed assets, manage legal cases, and monitor sales or recoveries.",
     icon: Tools,
-    desktop: true,
-    mobile: true,
   },
   {
-    title: "Mobile tools for KYC, FI, and PD for field teams",
+    title: 'KYC, FI, and PD On-the-Go',
+    description: "Enable field teams to perform KYC verification, pre-sales inquiries, field investigation (FI), and personal discussion (PD) via mobile.",
     icon: AuthIcon,
-    desktop: false,
-    mobile: true,
   },
   {
-    title: "Real-time collection tracking and follow-up tools",
+    title: 'Collection & Follow-up Tools',
+    description: "Streamline daily collections with real-time reporting and follow-up tracking.",
     icon: Loan,
-    desktop: false,
-    mobile: true,
   },
   {
-    title: "Monitor team performance and enable internal communication",
+    title: 'Team Performance & Monitoring',
+    description: "Track field force activity, monitor team performance, and enable internal communication with chat support.",
     icon: Team,
-    desktop: false,
-    mobile: true,
   },
-];
+]
+
+// const features = [
+//   {
+//     title:
+//       "Seamless API connections with KYC, credit bureaus, and payment gateways.",
+//     icon: ApiIcon,
+//     desktop: true,
+//     mobile: true,
+//   },
+//   {
+//     title: "Real-time financial tracking with GL accounting integration.",
+//     icon: AccountingIcon,
+//     desktop: true,
+//     mobile: true,
+//   },
+//   {
+//     title: "Custom loan policies, NPA calculations, and rescheduling",
+//     icon: Policy,
+//     desktop: true,
+//     mobile: true,
+//   },
+//   {
+//     title: "Manage portfolios, transactions, and recovery processes",
+//     icon: Portfolio,
+//     desktop: true,
+//     mobile: true,
+//   },
+//   {
+//     title: "Asset tracking, legal case management, and recovery tools",
+//     icon: Tools,
+//     desktop: true,
+//     mobile: true,
+//   },
+//   {
+//     title: "Mobile tools for KYC, FI, and PD for field teams",
+//     icon: AuthIcon,
+//     desktop: false,
+//     mobile: true,
+//   },
+//   {
+//     title: "Real-time collection tracking and follow-up tools",
+//     icon: Loan,
+//     desktop: false,
+//     mobile: true,
+//   },
+//   {
+//     title: "Monitor team performance and enable internal communication",
+//     icon: Team,
+//     desktop: false,
+//     mobile: true,
+//   },
+// ];

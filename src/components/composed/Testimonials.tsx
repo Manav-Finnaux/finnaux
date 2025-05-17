@@ -36,7 +36,7 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-10% from-teal-300 to-tranparent overflow-hidden">
+    <section className="py-20  overflow-hidden">
       <div className="container mx-auto px-0">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900">
           What Our Clients Say
@@ -77,8 +77,8 @@ export default function Testimonials() {
             </Marquee>
           </div>
 
-          <div className="absolute left-0 top-0 w-40 h-full bg-gradient-to-r from-white to-transparent z-10" />
-          <div className="absolute right-0 top-0 w-40 h-full bg-gradient-to-l from-white to-transparent z-10" />
+          <div className="absolute left-0 top-0 w-40 h-full bg-gradient-to-r from-black/10 to-transparent z-10" />
+          <div className="absolute right-0 top-0 w-40 h-full bg-gradient-to-l from-black/10 to-transparent z-10" />
         </div>
       </div>
     </section>

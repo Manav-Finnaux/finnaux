@@ -9,9 +9,9 @@ import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/ca
 import AboutUs from "@/components/composed/aboutUs";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import HeroSection from "@/components/composed/Header";
 import MarqueeSection from "@/components/composed/Marquee";
+import Testimonials from "@/components/composed/Testimonials";
 
 const whyChooseUs = [
   {
@@ -87,37 +87,18 @@ export default function Home() {
       {/* About Us */}
       <AboutUs />
 
-      {/* Services */}
-      <Section>
+      Services
+      {/* <Section>
         <MaxWidthWrapper className="flex flex-col gap-10">
           {
-            services.map(({ title, description, icon: Icon, badge }, idx) => {
-              return (
-                <div key={title} className={cn("bg-white rounded-3xl p-4 sm:p-6 md:p-10 max-w-lg flex flex-col gap-4 mx-auto md:max-w-2xl lg:w-9/12 lg:max-w-none lg:gap-24 xl:w-fit", idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse')}>
-                  <div className="flex flex-col gap-4 lg:w-1/2">
-                    <Badge variant={'outline'}>
-                      <Icon />
-                      {badge}
-                    </Badge>
-                    <div>
-                      <Heading as="h2">
-                        {title}
-                      </Heading>
-                    </div>
-                    <Text as="p">
-                      {description}
-                    </Text>
-                  </div>
-
-                  <div className="relative w-full h-80 rounded-md border-slate-200 border lg:w-1/2">
-                    <Image src={'/servicesSection.svg'} fill alt="" className="object-cover" />
-                  </div>
-                </div>
-              );
-            })
+            services.map(({ title, description, icon }) => (
+              <div key={title}>
+                {title}
+              </div>
+            ))
           }
         </MaxWidthWrapper>
-      </Section>
+      </Section> */}
 
       {/* Finnaux 1 overview */}
 
@@ -128,7 +109,7 @@ export default function Home() {
       <Section>
         <MaxWidthWrapper className="flex flex-col justify-center items-center gap-12 mx-auto">
           <Badge>
-            <AwardIcon />
+            <AwardIcon fill="teal" stroke="teal" />
             Why Us
           </Badge>
           <div className="flex flex-col gap-4 min-[560px]:text-center max-w-3xl">
@@ -207,9 +188,12 @@ export default function Home() {
         </MaxWidthWrapper>
       </Section>
 
+      {/* Testimonials */}
+      <Testimonials />
+
       {/* CTA */}
       <Section>
-        <MaxWidthWrapper className="bg-white flex flex-col items-center text-center gap-4 px-6 py-6 max-w-xl sm:max-w-4xl sm:px-8 sm:py-12 rounded-3xl min-[560px]:gap-5 md:gap-6">
+        <MaxWidthWrapper className="bg-[hsla(174,38%,95%,0.822)] flex flex-col items-center text-center gap-4 px-6 py-6 max-w-xl sm:max-w-4xl sm:px-8 sm:py-12 rounded-3xl min-[560px]:gap-5 md:gap-6">
           <h2 className="text-2xl font-medium min-[560px]:text-3xl md:text-4xl">
             <span className="block min-[445px]:inline">
               Simplify Lending.
@@ -228,3 +212,30 @@ export default function Home() {
     </>
   );
 }
+
+/**
+ * services.map(({ title, description, icon: Icon, badge }, idx) => {
+              return (
+                <div key={title} className={cn("bg-white rounded-3xl p-4 sm:p-6 md:p-10 max-w-lg flex flex-col gap-4 mx-auto md:max-w-2xl lg:w-9/12 lg:max-w-none lg:gap-24 xl:w-fit", idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse')}>
+                  <div className="flex flex-col gap-4 lg:w-1/2">
+                    <Badge variant={'outline'}>
+                      <Icon />
+                      {badge}
+                    </Badge>
+                    <div>
+                      <Heading as="h2">
+                        {title}
+                      </Heading>
+                    </div>
+                    <Text as="p">
+                      {description}
+                    </Text>
+                  </div>
+
+                  <div className="relative w-full h-80 rounded-md border-slate-200 border lg:w-1/2">
+                    <Image src={'/servicesSection.svg'} fill alt="" className="object-cover" />
+                  </div>
+                </div>
+              );
+            })
+ */
