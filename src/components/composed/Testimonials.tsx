@@ -1,5 +1,11 @@
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
+import { Badge } from "../ui/badge";
+import { MessageSquareIcon } from "lucide-react";
+import Text from "./text";
+import Heading from "./heading";
+import MaxWidthWrapper from "./maxWidthWrapper";
+import Section from "./section";
 
 export default function Testimonials() {
   const testimonials = [
@@ -36,11 +42,18 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="py-20  overflow-hidden">
-      <div className="container mx-auto px-0">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900">
+    <Section className="py-20 overflow-hidden">
+      <MaxWidthWrapper className="container mx-auto px-0 space-y-4">
+        <Badge>
+          <MessageSquareIcon size={14} fill="teal" stroke="teal" />
+          <Text className="text-sm">
+            Testimonials
+          </Text>
+        </Badge>
+
+        <Heading as="h2" className="text-center">
           What Our Clients Say
-        </h2>
+        </Heading>
 
         <div className="relative">
           <div className="overflow-hidden w-full py-10">
@@ -77,10 +90,10 @@ export default function Testimonials() {
             </Marquee>
           </div>
 
-          <div className="absolute left-0 top-0 w-40 h-full bg-gradient-to-r from-black/10 to-transparent z-10" />
-          <div className="absolute right-0 top-0 w-40 h-full bg-gradient-to-l from-black/10 to-transparent z-10" />
+          <div className="absolute left-0 top-0 w-40 h-full bg-gradient-to-r from-white/80 to-transparent z-10" />
+          <div className="absolute right-0 top-0 w-40 h-full bg-gradient-to-l from-white/80 to-transparent z-10" />
         </div>
-      </div>
-    </section>
+      </MaxWidthWrapper>
+    </Section>
   );
 }

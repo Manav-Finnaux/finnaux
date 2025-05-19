@@ -38,7 +38,7 @@ export default function Navbar() {
   }, [open]);
 
   return (
-    <MaxWidthWrapper className="fixed z-10 left-1/2 -translate-x-1/2 mt-4">
+    <MaxWidthWrapper className="fixed z-20 left-1/2 -translate-x-1/2 mt-4">
       <nav className="bg-white flex justify-between items-center px-6 py-4 rounded-2xl relative">
         {/* logo */}
         <div className="relative w-36 h-12 self-start">

@@ -1,9 +1,6 @@
-import { cn } from "@/lib/utils"
 import MaxWidthWrapper from "./maxWidthWrapper"
 import Section from "./section"
-import { Button } from "../ui/button"
 import { Badge } from "../ui/badge";
-import { MonitorCheckIcon, SmartphoneIcon } from "lucide-react";
 import { features } from "@/lib/assets/features/featuresIcons";
 import Heading from "./heading";
 import Text from "./text";
@@ -27,15 +24,16 @@ export default function Features() {
         </div>
 
         {/* Features grid */}
-        <div className="grid gap-4 max-w-[720px] md:max-w-[1080px] sm:grid-cols-2 sm:gap-0 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 md:grid-cols-3">
           {
             features.map(({ title, icon: Icon, description }) => {
               return (
-                <div key={title} className={cn("max-w-[360px] min-h-[300px] p-4 space-y-4 flex flex-col justify-evenly items-center gap-4 text-center h-auto"
-                )}>
-                  <Icon width={32} height={32} />
-                  <div className="flex flex-col gap-3 items-center h-auto">
-                    <Heading as="h3" className="text-lg font-semibold">{title}</Heading>
+                <div key={title} className={" h-auto bg-stone-50 border border-gray-200 p-[5px] rounded-3xl hover:scale-[1.03] transition ease-in-out duration-200 hover:shadow-sm"}>
+                  <div className="bg-gradient-to-br from-transparent via-transparent to-teal-100/50 border-gray-200 border rounded-2xl h-full flex flex-col justify-center items-center gap-2 px-4 py-4">
+                    <div className="flex gap-4 self-start items-center">
+                      <Icon className="size-12" />
+                      <Heading as="h3">{title}</Heading>
+                    </div>
                     <Text>
                       {description}
                     </Text>

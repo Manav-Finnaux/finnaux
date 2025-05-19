@@ -1,11 +1,12 @@
+import { CheckCheckIcon } from "lucide-react"
 import * as React from "react"
 import { SVGProps } from "react"
 
 export const AccountingIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={800}
-    height={800}
+    // width={800}
+    // height={800}
     viewBox="-57.97 0 441.067 441.067"
     {...props}
   >
@@ -186,8 +187,8 @@ export const AccountingIcon = (props: SVGProps<SVGSVGElement>) => (
 export const ApiIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={800}
-    height={800}
+    // width={800}
+    // height={800}
     className="icon"
     viewBox="0 0 1024 1024"
     {...props}
@@ -219,8 +220,8 @@ export const ApiIcon = (props: SVGProps<SVGSVGElement>) => (
 export const AuthIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={800}
-    height={800}
+    // width={800}
+    // height={800}
     viewBox="0 0 16 16"
     {...props}
   >
@@ -235,8 +236,8 @@ export const Loan = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlSpace="preserve"
-    width={800}
-    height={800}
+    // width={800}
+    // height={800}
     fill="#fff"
     viewBox="0 0 300.16 300.16"
     {...props}
@@ -278,8 +279,8 @@ export const Policy = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     id="Layer_1"
-    width={800}
-    height={800}
+    // width={800}
+    // height={800}
     fill="#000"
     data-name="Layer 1"
     viewBox="0 0 50 50"
@@ -327,8 +328,8 @@ export const Policy = (props: SVGProps<SVGSVGElement>) => (
 export const Portfolio = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={800}
-    height={800}
+    // width={800}
+    // height={800}
     className="icon flat-color"
     data-name="Flat Color"
     viewBox="0 0 24 24"
@@ -361,8 +362,8 @@ export const Team = (props: SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     xmlSpace="preserve"
     id="_x32_"
-    width={800}
-    height={800}
+    // width={800}
+    // height={800}
     fill="#000"
     viewBox="0 0 512 512"
     {...props}
@@ -381,8 +382,8 @@ export const Tools = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlSpace="preserve"
-    width={800}
-    height={800}
+    // width={800}
+    // height={800}
     fill="#146267"
     viewBox="0 0 476.968 476.968"
     {...props}
@@ -434,6 +435,11 @@ export const features = [
     description: "Track field force activity, monitor team performance, and enable internal communication with chat support.",
     icon: Team,
   },
+  {
+    title: 'Closure/Waiver Approval',
+    description: 'Closure/Waiver ApprovalClosure/Waiver ApprovalClosure/Waiver ApprovalClosure/Waiver ApprovalClosure/Waiver ApprovalClosure/Waiver Approval',
+    icon: CheckCheckIcon
+  }
 ]
 
 // const features = [

@@ -10,7 +10,9 @@
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
+    /* color: #20a9a1; */
+    /* --primary: 240 5.9% 10%; */
+    --primary: 176 68.2% 39.4%;
     --primary-foreground: 0 0% 98%;
     /* --secondary: 240 4.8% 95.9%; */
     --secondary: 240 4.8% 90%;

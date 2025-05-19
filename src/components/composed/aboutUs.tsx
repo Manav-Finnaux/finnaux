@@ -11,13 +11,13 @@ import Image from "next/image";
 export default function AboutUs() {
   return (
     <Section>
-      <MaxWidthWrapper className="flex flex-col gap-8 sm:w-3/4 max-w-[640px] md:max-w-[720px] md:gap-14 lg:flex-row lg:max-w-none lg:h-fit lg:gap-16">
+      <MaxWidthWrapper className="bg-teal-50 border-teal-200 border p-10 rounded-3xl flex flex-col gap-8 md:gap-14 lg:flex-row lg:max-w-none lg:h-fit lg:gap-16">
         {/* Heading + Paras */}
         <div className="flex flex-col justify-center items-center text-center gap-6 w-fit lg:items-start lg:text-left">
 
           <Badge variant={'outline'}>
-            <UsersRoundIcon color="teal" fill="teal" />
-            <Text>About Us</Text>
+            <UsersRoundIcon color="teal" fill="teal" size={14} />
+            <Text className="text-sm">About Us</Text>
           </Badge>
 
           <Text as="p" variant="xl">
@@ -36,7 +36,7 @@ export default function AboutUs() {
           </div>
         </div>
         {/* Img */}
-        <div className="relative w-full h-56 md:h-96 lg:h-auto rounded-xl">
+        <div className="relative w-full h-56 md:h-96 lg:h-auto rounded-xl shadow-[0px_0px_69px_0px_rgba(46,_44,_44,_0.2)]">
           <Image src={'/about-us.png'} alt="" fill className="object-cover rounded-xl lg:h-auto" />
         </div>
       </MaxWidthWrapper>

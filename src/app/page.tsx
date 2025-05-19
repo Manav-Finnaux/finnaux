@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import HeroSection from "@/components/composed/Header";
 import MarqueeSection from "@/components/composed/Marquee";
 import Testimonials from "@/components/composed/Testimonials";
+import FAQs from "@/components/composed/faqs";
 
 const whyChooseUs = [
   {
@@ -88,25 +89,13 @@ export default function Home() {
       <AboutUs />
 
       Services
-      {/* <Section>
-        <MaxWidthWrapper className="flex flex-col gap-10">
-          {
-            services.map(({ title, description, icon }) => (
-              <div key={title}>
-                {title}
-              </div>
-            ))
-          }
-        </MaxWidthWrapper>
-      </Section> */}
-
-      {/* Finnaux 1 overview */}
 
       {/* Features */}
       <Features />
 
       {/* Why Choose Us? */}
-      <Section>
+      Why Choose Us?
+      {/* <Section>
         <MaxWidthWrapper className="flex flex-col justify-center items-center gap-12 mx-auto">
           <Badge>
             <AwardIcon fill="teal" stroke="teal" />
@@ -120,10 +109,8 @@ export default function Home() {
           </div>
 
           <div className="grid gap-4 max-w-[440px] grid-rows-4 min-[560px]:grid-cols-2 min-[560px]:max-w-none lg:grid-cols-3 lg:grid-rows-2">
-            {/* img? */}
             <div className="h-auto bg-slate-400 rounded-lg min-w-24 row-span-2 min-[560px]:col-span-2 min-[560px]:min-w-[250px] min-[560px]:max-w-[480px] min-[560px]:mx-auto lg:col-span-1 lg:col-start-2 lg:col-end-3 lg:order-3">Hello</div>
 
-            {/* cards */}
             {
               whyChooseUs.map(({ icon, title, description }, idx) => {
                 let colStart, colEnd, rowStart, rowEnd, order;
@@ -186,29 +173,13 @@ export default function Home() {
             }
           </div>
         </MaxWidthWrapper>
-      </Section>
+      </Section> */}
 
       {/* Testimonials */}
       <Testimonials />
 
-      {/* CTA */}
-      <Section>
-        <MaxWidthWrapper className="bg-[hsla(174,38%,95%,0.822)] flex flex-col items-center text-center gap-4 px-6 py-6 max-w-xl sm:max-w-4xl sm:px-8 sm:py-12 rounded-3xl min-[560px]:gap-5 md:gap-6">
-          <h2 className="text-2xl font-medium min-[560px]:text-3xl md:text-4xl">
-            <span className="block min-[445px]:inline">
-              Simplify Lending.
-            </span>
-            {' '}
-            <span className="block min-[445px]:inline">
-              Maximize Growth.
-            </span>
-          </h2>
-          <p className="text-md min-[560px]:text-lg md:text-xl">Join the NBFCs modernizing their loan management with our powerful, easy-to-use platform.</p>
-          <Button className="max-w-44">
-            Schedule a Free Demo
-          </Button>
-        </MaxWidthWrapper>
-      </Section>
+      {/* FAQs */}
+      <FAQs />
     </>
   );
 }

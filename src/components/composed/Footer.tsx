@@ -1,69 +1,148 @@
-import { FacebookIcon, Linkedin, MailIcon } from "lucide-react";
 import Image from "next/image";
+import { Button } from "../ui/button";
+import Heading from "./heading";
+import Text from "./text";
+import Link from "next/link";
+import MaxWidthWrapper from "./maxWidthWrapper";
+
+const LINKS = [
+  {
+    colHeading: 'Column 1',
+    links: [
+      {
+        label: 'Link2',
+        href: '',
+      },
+      {
+        label: 'Link3',
+        href: '',
+      },
+      {
+        label: 'Link1',
+        href: '',
+      },
+    ],
+  },
+  {
+    colHeading: 'Column 2',
+    links: [
+      {
+        label: 'Link2',
+        href: '',
+      },
+      {
+        label: 'Link3',
+        href: '',
+      },
+      {
+        label: 'Link1',
+        href: '',
+      },
+    ],
+  },
+  {
+    colHeading: 'Column 3',
+    links: [
+      {
+        label: 'Link2',
+        href: '',
+      },
+      {
+        label: 'Link3',
+        href: '',
+      },
+      {
+        label: 'Link1',
+        href: '',
+      },
+    ],
+  },
+  // {
+  //   colHeading: 'Column 1',
+  //   links: [
+  //     {
+  //       label: 'Link2',
+  //       href: '',
+  //     },
+  //     {
+  //       label: 'Link3',
+  //       href: '',
+  //     },
+  //     {
+  //       label: 'Link1',
+  //       href: '',
+  //     },
+  //   ],
+  // },
+];
 
 export default function Footer() {
   return (
-    
-    <footer className="relative text-[#98a8a6] py-12 px-8 border-t border-[#eff3f3] flex ">
-            <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-20 text-center md:text-left">
-              <div className="text-center col-span-full md:col-span-1 lg:text-left mb-8 lg:mb-0">
-                <div className="flex items-center gap-2 mb-4  justify-center lg:justify-start w-full">
-                  <Image src="https://ext.same-assets.com/2035067714/3993095137.png" alt="Finnaux Logo" width={32} height={32} />
-                  <span className="text-xl font-bold text-[#146267]">Finnaux</span>
-                </div> 
-                <p className="text-sm">Make your complicated finance system simpler & easier.</p>
-                <div className="flex gap-4 mt-4 flex-1 justify-center lg:justify-start">
-                  <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
-                  <FacebookIcon /></a>
-                  <a href="https://github.com" target="_blank" rel="noopener" aria-label="Github">
-                  <Linkedin/>
-                  </a>
-                  <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter">
-                  <MailIcon/></a>
-                  <a href="https://whatsapp.com" target="_blank" rel="noopener" aria-label="whatsapp">
-                  wp</a>
-                </div>
-              </div>
-              {/* Footer navigation columns */}
-              <div className="flex-1 flex-col mb-8 mx-auto lg:mb-0">
-                <h4 className="text-[#146267] font-bold mb-3 text-base">Company</h4>
-                <ul className="space-y-2 text-sm">
-                  <li><a href="#" className="hover:text-[#146267]">About Us</a></li>
-                  <li><a href="#" className="hover:text-[#146267]">Careers</a></li>
-                  <li><a href="#" className="hover:text-[#146267]">Team</a></li>
-                  <li><a href="#" className="hover:text-[#146267]">Newsroom</a></li>
-                </ul>
-              </div>
-              <div className="flex-1  mb-8 mx-auto lg:mb-0">
-                <h4 className="text-[#146267] font-bold mb-3 text-base">Product</h4>
-                <ul className="space-y-2 text-sm">
-                  <li><a href="#" className="hover:text-[#146267]">Feature</a></li>
-                  <li><a href="#" className="hover:text-[#146267]">Integartions</a></li>
-                  <li><a href="#" className="hover:text-[#146267]">Pricing</a></li>
-                  <li><a href="#" className="hover:text-[#146267]">Demo</a></li>
-                </ul>
-              </div>
-              <div className="mb-8 mx-auto lg:mb-0">
-                <h4 className="text-[#146267] font-bold mb-3 text-base">Resources</h4>
-                <ul className="space-y-2 text-sm">
-                  <li><a href="#" className="hover:text-[#146267]">Blog</a></li>
-                  <li><a href="#" className="hover:text-[#146267]">Case studies</a></li>
-                  <li><a href="#" className="hover:text-[#146267]">Webinar</a></li>
-                  <li><a href="#" className="hover:text-[#146267]">Documentation</a></li>
-                  <li><a href="#" className="hover:text-[#146267]">FAQs</a></li>
-                </ul>
-              </div>
-              <div className="">
-                <h4 className="text-[#146267] font-bold mb-3 text-base">Support</h4>
-                <ul className="space-y-2 text-sm">
-                  <li><a href="#" className="hover:text-[#146267]">Contact Us</a></li>
+    <div className="bg-stone-900 text-white rounded-3xl p-[1px] mx-4 sm:mx-8">
+      <MaxWidthWrapper className="p-4 pt-3 sm:p-10 sm:pt-8 md:p-14 md:pt-10 lg:p-24 lg:pt-20">
+        {/* CTA */}
+        <div className="text-center pb-12 space-y-6 border-b border-b-stone-400">
+          <Heading as="h2">
+            <span className="block min-[445px]:inline">
+              Simplify Lending.
+            </span>
+            {' '}
+            <span className="block min-[445px]:inline">
+              Maximize Growth.
+            </span>
+          </Heading>
+          <Text as="p" className="text-stone-400">Join the NBFCs modernizing their loan management with our powerful, easy-to-use platform.</Text>
+          <Button className="max-w-44" style={{ background: 'none', backgroundColor: '#20a9a1' }}>
+            Schedule a Free Demo
+          </Button>
+        </div>
 
-                  <li><a href="#" className="hover:text-[#146267]">Help Center</a></li>
-
-                </ul>
-              </div>
+        {/* Footer */}
+        <footer className="pt-16 flex flex-col gap-6 sm:flex-row sm:justify-between">
+          <div className="space-y-4">
+            {/* Logo */}
+            <div className="w-32 h-14 relative">
+              <Image src={'/logo-finnaux.png'} alt="" fill />
             </div>
-          </footer>
+            <Text as="p" className="text-sm w-3/4">
+              End-to-end software for loan origination, underwriting, customer engagement, and compliance.
+            </Text>
+          </div>
 
+          <div className="sm:flex sm:gap-6 md:gap-10 lg:gap-20">
+            {/* links */}
+            {
+              LINKS.map(({ colHeading, links }) => (
+                <ul key={colHeading}>
+                  <Text as="p" className="font-medium mb-2">
+                    {colHeading}
+                  </Text>
+                  <div className="sm:flex sm:flex-col sm:gap-2">
+                    {
+                      links.map(({ label, href }) => (
+                        <Link href={href} key={label} className="text-stone-300">
+                          <li>{label}</li>
+                        </Link>
+                      ))
+                    }
+                  </div>
+                </ul>
+              ))
+            }
+          </div>
+        </footer>
+      </MaxWidthWrapper>
+
+      {/* Company Name BIGGGGG */}
+      <div className="flex justify-between text-white/5 text-5xl min-[400px]:text-[16vw] font-bold leading-none select-none -m-2 -mb-4 mt-0 sm:-m-6 sm:-mb-8 md:-mb-10 lg:-mb-14">
+        <Text as="p">F</Text>
+        <Text as="p">I</Text>
+        <Text as="p">N</Text>
+        <Text as="p">N</Text>
+        <Text as="p">A</Text>
+        <Text as="p">U</Text>
+        <Text as="p">X</Text>
+      </div>
+    </div>
   )
 }
