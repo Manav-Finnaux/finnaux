@@ -1,6 +1,6 @@
 import clsx from "clsx"
 
-type SectionProps = {
+type SectionProps = React.HTMLProps<HTMLDivElement> & {
   variant?: 'top' | 'normal'
   children: React.ReactNode
   className?: string

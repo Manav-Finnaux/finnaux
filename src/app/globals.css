@@ -10,7 +10,7 @@
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    /* color: #20a9a1; */
+    /* color: rgb(32, 169, 161); */
     /* --primary: 240 5.9% 10%; */
     --primary: 176 68.2% 39.4%;
     --primary-foreground: 0 0% 98%;
@@ -75,4 +75,40 @@
 
 body {
   /* background-color: hsla(174, 38%, 95%, 0.822); */
+}
+
+.abc-mAnAv-divOne {
+  background: radial-gradient(50% 50% at 50% 50%, var(--token-d626c3c3-2d1d-43fc-a261-41c3249f6a7c, #eaf0dd) 0%, rgba(171, 171, 171, 0) 100%);
+  background: radial-gradient(50% 50% at 50% 50%, rgb(223, 240, 235) 0%, rgba(171, 171, 171, 0) 100%);
+  flex: none;
+  height: 627px;
+  left: calc(36.50000000000002% - 717px / 2);
+  overflow: hidden;
+  position: absolute;
+  top: calc(52.94759825327513% - 627px / 2);
+  width: 717px;
+}
+
+.abc-mAnAv-divTwo {
+  background: radial-gradient(50% 50% at 50% 50%, var(--token-94539f16-8480-49c8-9a5c-337b3e6187f6, #f4ffeb) 0%, rgba(255, 255, 255, 0) 100%);
+  background: radial-gradient(50% 50% at 50% 50%, rgb(235, 249, 245) 0%, rgba(255, 255, 255, 0) 100%);
+  flex: none;
+  height: 619px;
+  left: calc(50.00000000000002% - 774px / 2);
+  overflow: hidden;
+  position: absolute;
+  top: calc(50.00000000000002% - 619px / 2);
+  width: 774px;
+}
+
+.abc-mAnAv-divThree {
+  background: radial-gradient(50% 50% at 50% 50%, var(--token-ba45ae08-0354-45a4-88d7-90a247ed9082, #f0ffd1) 0%, rgba(255, 255, 255, 0) 100%);
+  background: radial-gradient(50% 50% at 50% 50%, rgb(226, 250, 237) 0%, rgba(255, 255, 255, 0) 100%);
+  flex: none;
+  height: 487px;
+  left: calc(70.66666666666669% - 713px / 2);
+  overflow: hidden;
+  position: absolute;
+  top: calc(53.38427947598255% - 487px / 2);
+  width: 713px;
 }

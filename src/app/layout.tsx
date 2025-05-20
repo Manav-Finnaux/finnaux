@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import * as fonts from '@/lib/font';
-import Navbar from "@/components/composed/nav";
+// import Navbar from "@/components/composed/nav";
 import Footer from "@/components/composed/Footer";
 
 export const metadata: Metadata = {
@@ -16,10 +16,24 @@ export default function RootLayout({
   return (
     <html lang="en" className="">
       <body className={`${fonts.geist.className}`}>
-        <Navbar />
+        {/* <Navbar /> */}
         {children}
         <Footer />
       </body>
     </html>
   );
 }
+
+/**
+ * About Us
+ * Our Team?
+ * Our story
+ * 
+ * Modules
+ *   <All pages for each module>
+ * 
+ * Contact Us
+ * Terms & Conditions
+ * Privicy & Poilcy
+ *
+ */

@@ -38,22 +38,35 @@ export default function FAQs() {
         <Text>FAQs</Text>
       </Badge>
       <MaxWidthWrapper className="flex flex-col items-center gap-8">
-        <Heading as="h2">
+        <Heading as="h2" className="mb-10">
           Questions? Answers!
         </Heading>
 
-        {
-          FAQS.map(({ question, answer }) => (
-            <Accordion key={question} type="single" collapsible className="bg-slate-100 border border-stone-200 w-2/4 mx-auto py-4 space-y-3 rounded-lg px-12">
-              <AccordionItem value="item-1">
-                <AccordionTrigger>{question}</AccordionTrigger>
-                <AccordionContent>
+        <Accordion type="single" collapsible className="w-full text-left">
+          {
+            FAQS.map(({ question, answer }, idx) => (
+
+              <AccordionItem key={idx + ""} value={idx + ""} className="data-[state=open]:bg-primary/5 border-b last-of-type:border-none">
+                <AccordionTrigger className="text-lg sm:text-2xl font-medium py-6 data-[state=open]:pb-0 px-2">
+                  <div className="text-primary mr-4">
+                    {
+                      idx < 9 ? `0${idx + 1}.` :
+                        `${idx + 1}.`
+                    }
+                  </div>
+                  <div className="mr-auto">
+                    {question}
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="mx-12 text-muted-foreground text-justify text-base sm:text-xl pb-6">
                   {answer}
                 </AccordionContent>
               </AccordionItem>
-            </Accordion>
-          ))
-        }
+
+            ))
+          }
+
+        </Accordion>
 
       </MaxWidthWrapper>
     </Section>

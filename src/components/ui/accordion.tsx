@@ -34,8 +34,8 @@ const AccordionTrigger = React.forwardRef<
       {...props}
     >
       {children}
-      <div className="bg-black grid place-items-center rounded-full p-1">
-        <ChevronDown stroke="white" className="transition-transform duration-200" />
+      <div className="bg-black grid place-items-center rounded-full p-1 min-[280px]:ml-4">
+        <ChevronDown stroke="white" className="transition-transform duration-200 min-[280px]:size-4 sm:size-6" />
       </div>
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>

@@ -5,29 +5,8 @@ import HeroSection from "@/components/composed/Header";
 import MarqueeSection from "@/components/composed/Marquee";
 import Testimonials from "@/components/composed/Testimonials";
 import FAQs from "@/components/composed/faqs";
-
-// const whyChooseUs = [
-//   {
-//     icon: ShieldCheckIcon,
-//     title: 'Compliance Made Simple',
-//     description: 'Stay ahead of regulations with built-in compliance tools, automatic document tracking, and audit-ready reporting.'
-//   },
-//   {
-//     icon: ZapIcon,
-//     title: 'Faster Loan Decisions',
-//     description: 'Automate credit assessments, reduce manual reviews, and get approvals out 10x faster—without sacrificing accuracy.'
-//   },
-//   {
-//     icon: LayersIcon,
-//     title: 'Scalable Infrastructure',
-//     description: "Whether you're servicing hundreds or millions, our platform grows with you—secure, stable, and built for high volume."
-//   },
-//   {
-//     icon: HandshakeIcon,
-//     title: 'Dedicated Support & Onboarding',
-//     description: 'Get personalized onboarding and expert guidance every step of the way. No bots—just real people who understand lending.'
-//   },
-// ];
+import WhyChooseUs from "@/components/composed/whyChooseUs";
+import FunctionalBlocks from "@/components/composed/finnaux-modules";
 
 // const services = [
 //   {
@@ -80,11 +59,14 @@ export default function Home() {
       {/* About Us */}
       <AboutUs />
 
+      {/* Services / Functional Blocks */}
+      <FunctionalBlocks />
+
       {/* Features */}
       <Features />
 
       {/* Why Choose Us? */}
-      {/* Services */}
+      <WhyChooseUs />
 
       {/* Testimonials */}
       <Testimonials />
