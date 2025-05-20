@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Section from "./section";
 
 export default function HeroSection() {
@@ -22,9 +23,11 @@ export default function HeroSection() {
             </p>
 
             <div className="flex flex-col gap-4 sm:flex-row justify-center">
-              <button className="bg-[#c4ec5a] text-black sm:h-14 sm:rounded-lg sm:px-10 sm:text-xl">
-                Get a Demo
-              </button>
+              <Link href={'/about'}>
+                <button className="bg-[#c4ec5a] text-black sm:h-14 sm:rounded-lg sm:px-10 sm:text-xl">
+                  About Us Page
+                </button>
+              </Link>
               <button className="bg-[#f5fbe3] text-black sm:h-14 sm:rounded-lg sm:px-10 sm:text-xl">
                 See how it works
               </button>
