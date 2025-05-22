@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import Image from "next/image";
 import MaxWidthWrapper from "./maxWidthWrapper";
 import Link from "next/link";
@@ -9,24 +9,24 @@ import { cn } from "@/lib/utils";
 
 const links = [
   {
-    label: 'Features',
-    href: ''
+    label: "Features",
+    href: "",
   },
   {
-    label: 'Services',
-    href: ''
+    label: "Services",
+    href: "/modules",
   },
   {
-    label: 'Pricing',
-    href: ''
+    label: "Pricing",
+    href: "",
   },
   {
-    label: 'About',
-    href: ''
+    label: "About",
+    href: "/about",
   },
   {
-    label: 'Works',
-    href: ''
+    label: "Our team",
+    href: "/team",
   },
 ];
 
@@ -34,7 +34,7 @@ export default function Navbar() {
   const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : 'auto';
+    document.body.style.overflow = open ? "hidden" : "auto";
   }, [open]);
 
   return (
@@ -42,49 +42,54 @@ export default function Navbar() {
       <nav className="bg-white flex justify-between items-center px-6 py-4 rounded-2xl relative shadow-sm border">
         {/* logo */}
         <div className="relative w-36 h-12 self-start">
-          <Image src={'/logo-finnaux.png'} alt="" fill />
+          <Image src={"/logo-finnaux.png"} alt="" fill />
         </div>
 
         {/* links - mobile */}
-        <ul style={{ height: 'calc(100vh - 150px)' }} className={cn('absolute bg-white w-full left-0 top-full mt-4 space-y-4 p-6 md:px-16 md:py-10 rounded-lg min-[840px]:hidden', open ? 'block' : 'hidden')}>
-          {
-            links.map(({ label, href }) => (
-              <li key={label}>
-                <Link href={href} className="hover:text-teal-600 active:text-teal-600 text-md">{label}</Link>
-              </li>
-            ))
-          }
+        <ul
+          style={{ height: "calc(100vh - 150px)" }}
+          className={cn(
+            "absolute bg-white w-full left-0 top-full mt-4 space-y-4 p-6 md:px-16 md:py-10 rounded-lg min-[840px]:hidden",
+            open ? "block" : "hidden"
+          )}>
+          {links.map(({ label, href }) => (
+            <li key={label}>
+              <Link
+                href={href}
+                className="hover:text-teal-600 active:text-teal-600 text-md">
+                {label}
+              </Link>
+            </li>
+          ))}
         </ul>
 
         {/* links - PC */}
         <ul className="hidden gap-4 text-lg min-[840px]:flex">
-          {
-            links.map(({ label, href }) => (
-              <li key={label}>
-                <Link href={href} className="hover:text-teal-600 active:text-teal-600 text-md">{label}</Link>
-              </li>
-            ))
-          }
+          {links.map(({ label, href }) => (
+            <li key={label}>
+              <Link
+                href={href}
+                className="hover:text-teal-600 active:text-teal-600 text-md">
+                {label}
+              </Link>
+            </li>
+          ))}
         </ul>
 
         {/* cta */}
         <div>
-          <button onClick={() => setOpen(!open)} className="min-[840px]:hidden p-2 pr-4">
-            {
-              open ?
-                <XIcon /> :
-                <MenuIcon size={24} />
-            }
+          <button
+            onClick={() => setOpen(!open)}
+            className="min-[840px]:hidden p-2 pr-4">
+            {open ? <XIcon /> : <MenuIcon size={24} />}
           </button>
           <Button className="hidden min-[840px]:flex">
-            <Link href={''}>
-              Contact Us
-            </Link>
+            <Link href={""}>Contact Us</Link>
           </Button>
         </div>
       </nav>
     </MaxWidthWrapper>
-  )
+  );
 }
 
 //     <nav className={clsx("flex flex-col min-[1050px]:flex-row items-start justify-between gap-6 h-full p-4 min-[1050px]:items-center min-[1050px]:pt-0", open ? 'pb-4' : 'pb-0')}>
