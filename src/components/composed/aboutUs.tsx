@@ -1,43 +1,111 @@
-import { UsersRoundIcon } from "lucide-react";
+"use client";
+
+import { UsersRoundIcon, ArrowRightIcon } from "lucide-react";
 import { Badge } from "../ui/badge";
 import MaxWidthWrapper from "./maxWidthWrapper";
 import Section from "./section";
 import Text from "./text";
 import Heading from "./heading";
-import { Button } from "../ui/button";
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function AboutUs() {
-  return (
-    <Section>
-      <MaxWidthWrapper className="bg-teal-50 border-teal-200 border p-10 rounded-3xl flex flex-col gap-8 md:gap-14 lg:flex-row lg:max-w-none lg:h-fit lg:gap-16">
-        {/* Heading + Paras */}
-        <div className="flex flex-col justify-center items-center text-center gap-6 w-fit lg:items-start lg:text-left">
+  useEffect(() => {
+    AOS.init({
+      once: true,
+      duration: 700,
+      easing: "ease-out-cubic",
+    });
+  }, []);
 
-          <Badge variant={'outline'}>
-            <UsersRoundIcon color="teal" fill="teal" size={14} />
+  return (
+    <Section className="py-16 md:py-24 lg:py-28">
+      <MaxWidthWrapper className="rounded-3xl bg-gradient-to-br from-teal-50/40 to-teal-100/20 border border-teal-200/50 px-6 py-10 sm:px-10 sm:py-14 md:px-14 md:py-16 lg:px-16 lg:py-20 flex flex-col lg:flex-row gap-10 lg:gap-14 items-center">
+        
+        {/* Textual Content */}
+        <div
+          className="flex flex-col gap-6 lg:gap-8 lg:w-1/2"
+          data-aos="fade-right"
+        >
+          <Badge
+            variant="outline"
+            className="w-fit bg-white border-teal-300 text-teal-700 shadow"
+            data-aos="zoom-in"
+          >
+            <UsersRoundIcon className="w-4 h-4" />
             <Text className="text-sm">About Us</Text>
           </Badge>
 
-          <Text as="p" variant="xl">
+          <Text
+            as="p"
+            variant="xl"
+            className="text-teal-800 font-medium"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
             Discover Our Journey in Loan Management Software
           </Text>
-          <Heading as="h2">Transforming NBFC Operations with Innovation</Heading>
-          <Text>At Finnaux, we are a dedicated team of software professionals committed to revolutionizing loan management for Non-Banking Financial Companies (NBFCs). With over 20 years of expertise in the NBFC sector, our mission is to empower financial institutions with innovative, user-friendly solutions that streamline lending processes and enhance operational efficiency.</Text>
 
-          <div className="flex flex-col gap-4 md:flex-row">
-            <Button>
-              <Link href={''}>Explore Our Solutions</Link>
-            </Button>
-            <Button asChild variant={'secondary'}>
-              <Link href={''}>Connect with Us</Link>
-            </Button>
+          <Heading
+            as="h2"
+            className="text-gray-900 text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] leading-tight"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            Transforming <span className="text-teal-600">NBFC Operations</span> with Innovation
+          </Heading>
+
+          <Text
+            className="text-gray-700 text-base sm:text-lg"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            At Finnaux, we’re a dedicated team of software professionals
+            revolutionizing loan management for Non-Banking Financial Companies.
+            With over 20 years in the NBFC sector, we deliver user-friendly
+            solutions that streamline lending and boost efficiency.
+          </Text>
+
+          <div
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-2"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <Link
+              href="/solutions"
+              className="flex items-center justify-center gap-2 bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 sm:py-4 rounded-lg transition-all duration-300 shadow hover:shadow-md active:scale-95 text-base font-medium"
+            >
+              Explore Solutions
+              <ArrowRightIcon className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/contact"
+              className="flex items-center justify-center gap-2 border-2 border-teal-600 text-teal-700 hover:bg-teal-50 px-6 py-3 sm:py-4 rounded-lg transition-all duration-300 shadow hover:shadow-md active:scale-95 text-base font-medium"
+            >
+              Contact Us
+              <ArrowRightIcon className="w-4 h-4" />
+            </Link>
           </div>
         </div>
-        {/* Img */}
-        <div className="relative w-full h-56 md:h-96 lg:h-auto rounded-xl shadow-[0px_0px_69px_0px_rgba(46,_44,_44,_0.2)]">
-          <Image src={'/about-us.png'} alt="" fill className="object-cover rounded-xl lg:h-auto" />
+
+        {/* Image */}
+        <div
+          className="relative w-full h-72 sm:h-80 md:h-96 lg:h-[460px] lg:w-1/2 overflow-hidden rounded-2xl shadow-lg"
+          data-aos="fade-left"
+          data-aos-delay="200"
+        >
+          <Image
+            src="/about-us.png"
+            alt="Finnaux team working on loan management software"
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-teal-900/10 to-transparent" />
         </div>
       </MaxWidthWrapper>
     </Section>
