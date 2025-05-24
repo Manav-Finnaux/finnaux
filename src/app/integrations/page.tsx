@@ -1,10 +1,16 @@
 "use client";
 
 import { Banknote, Cpu, Fingerprint, ScanLine, ShieldCheck, Verified } from "lucide-react";
+import img from "./images/au.png";
+import img2 from "./images/axis.png";
+import img3 from "./images/crif.png";
+import img4 from "./images/Digi.jpg";
+import img5 from "./images/digio.png";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Image from "next/image";
 
 export default function TechnologyPartners() {
   useEffect(() => {
@@ -53,8 +59,8 @@ export default function TechnologyPartners() {
       icon: <ScanLine className="w-8 h-8 text-green-600" />,
       partners: [
         { name: "NU-Pay", logo: "/partners/nu.png" },
-        { name: "BBPS (AU Bank)", logo: "/partners/bbps.png" },
-        { name: "E-NACH Network", logo: "/partners/enach.png" }
+        { name: "BBPS (AU Bank)", logo: img3 },
+        { name: "E-NACH Network", logo: img4 }
       ],
       description: "Omnichannel payment collection and disbursement"
     },
@@ -62,8 +68,8 @@ export default function TechnologyPartners() {
       title: "Digital Signatures",
       icon: <ShieldCheck className="w-8 h-8 text-amber-600" />,
       partners: [
-        { name: "DSC Services", logo: "/partners/dsc.png" },
-        { name: "E-Sign Framework", logo: "/partners/esign.png" }
+        { name: "DSC Services", logo: img },
+        { name: "E-Sign Framework", logo: img2 }
       ],
       description: "Legally binding digital documentation"
     },
@@ -124,11 +130,14 @@ export default function TechnologyPartners() {
                 
                 <div className="grid grid-cols-2 gap-4">
                   {category.partners.map((partner, i) => (
-                    <div key={i} className="bg-gray-50 rounded-lg p-3 flex items-center justify-center h-16">
-                      <img 
+                    <div key={i} className="bg-gray-50 rounded-lg p-3 flex items-center justify-center relative h-16">
+                      <Image 
                         src={partner.logo} 
                         alt={partner.name} 
-                        className="max-h-10 max-w-[120px] object-contain" 
+                        className="object-contain" 
+                        fill
+                        sizes="(max-width: 120px) 100vw, 120px"
+                        style={{ width: '100%', height: '100%' }}
                       />
                     </div>
                   ))}
