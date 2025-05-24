@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import * as fonts from "@/lib/font";
+import * as fonts from '@/lib/font';
 import Navbar from "@/components/composed/nav";
 import Footer from "@/components/composed/Footer";
 
@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="">
       <body className={`${fonts.geist.className}`}>
         <Navbar />
         {children}
@@ -28,10 +28,10 @@ export default function RootLayout({
  * About Us
  * Our Team?
  * Our story
- *
+ * 
  * Modules
  *   <All pages for each module>
- *
+ * 
  * Contact Us
  * Terms & Conditions
  * Privicy & Poilcy

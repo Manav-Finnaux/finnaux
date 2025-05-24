@@ -56,7 +56,7 @@ export default function Testimonials() {
 
   return (
     <Section className="overflow-hidden space-y-6 py-16 bg-gray-50">
-      <Badge className="bg-teal-100 text-teal-600 p-2 rounded-lg flex items-center mx-auto" data-aos="fade-up" data-aos-delay="100">
+      <Badge className="font-semibold bg-teal-50 border w-fit px-4 py-2 rounded-full mb-4 text-teal-600 font-semiboldflex items-center mx-auto" data-aos="fade-up" data-aos-delay="100">
         <MessageSquareIcon size={14} fill="teal" stroke="teal" />
         <Text>Testimonials</Text>
       </Badge>
@@ -72,7 +72,7 @@ export default function Testimonials() {
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className="bg-white border border-gray-200 rounded-2xl shadow-lg w-80 mx-4 flex flex-col px-4 justify-between py-8 hover:shadow-xl transition-shadow duration-300"
+                  className="bg-white border border-gray-200 rounded-2xl shadow-lg w-80 mx-2 flex flex-col px-4 justify-between py-8 hover:shadow-xl transition-shadow duration-300"
                   data-aos="fade-up"
                   data-aos-delay={200 + (index * 100)}
                 >

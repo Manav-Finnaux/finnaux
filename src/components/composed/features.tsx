@@ -37,7 +37,7 @@ export default function Features() {
       className="bg-left md:bg-no-repeat md:bg-left-bottom md:bg-contain relative pt-[1px]">
       <MaxWidthWrapper className="flex flex-col gap-14 md:flex-row mt-20">
         <div className="flex flex-col gap-8 md:w-1/2 z-30 self-center">
-          <Badge className="mx-0 bg-teal-100 text-teal-600 p-2 rounded-lg"
+          <Badge className="mx-0 border font-semibold bg-teal-50 text-teal-600 p-2 rounded-full mb-4 px-4 py-2 w-fit"
           data-aos="fade-up"
           data-aos-delay="100">
             Features

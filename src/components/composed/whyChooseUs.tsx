@@ -55,7 +55,7 @@ export default function WhyChooseUs() {
       
       <MaxWidthWrapper>
         <div className="flex flex-col items-center text-center mb-16" data-aos="fade-up">
-          <Badge className="mb-4 bg-teal-100/50 border border-teal-200 text-teal-600 backdrop-blur-sm">
+          <Badge className="bg-teal-50 border w-fit px-4 py-2 rounded-full mb-4 text-teal-600 font-semiboldflex items-center mx-auto font-semibold">
             <CheckCircleIcon className="w-4 h-4 mr-2" />
             Why Choose Us?
           </Badge>

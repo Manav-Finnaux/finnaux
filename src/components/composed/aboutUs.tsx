@@ -22,7 +22,7 @@ export default function AboutUs() {
   }, []);
 
   return (
-    <Section className="py-16 md:py-24 lg:py-28">
+    <Section className="py-16 md:py-2">
       <MaxWidthWrapper className="rounded-3xl bg-gradient-to-br from-teal-50/40 to-teal-100/20 border border-teal-200/50 px-6 py-10 sm:px-10 sm:py-14 md:px-14 md:py-16 lg:px-16 lg:py-20 flex flex-col lg:flex-row gap-10 lg:gap-14 items-center">
         
         {/* Textual Content */}

@@ -21,20 +21,31 @@ const links = [
     ]
   },
   {
-    label: "Services",
-    href: "/services",
+    label: "Modules",
+    href: "/modules"
   },
   {
-    label: "Pricing",
-    href: "/pricing",
+    label: "Integrations",
+    href: "/integrations",
+    subLinks: [
+      { label: "Banking Partners", href: "/integrations#banking" },
+      { label: "KYC Services", href: "/integrations#kyc" },
+      { label: "Credit Bureau", href: "/integrations#credit" },
+      { label: "Collection Solutions", href: "/integrations#collection" },
+      { label: "Digital Documentation", href: "/integrations#documentation" },
+    ]
   },
   {
     label: "About",
     href: "/about",
+    subLinks: [
+      { label: "Our Story", href: "/about#story" },
+      { label: "Our Team", href: "/team" },
+    ]
   },
   {
-    label: "Our Team",
-    href: "/team",
+    label: "Contact",
+    href: "/contact",
   },
 ];
 
@@ -139,13 +150,13 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setOpen(!open)}
-          className="lg:hidden p-2 text-teal-600"
+          className="lg:hidden p-3 hover:bg-gray-100 rounded-lg transition-colors text-teal-600 -mr-2"
           aria-label="Toggle menu"
         >
           {open ? (
-            <XIcon size={24} className="text-teal-700" />
+            <XIcon size={28} className="text-teal-700" />
           ) : (
-            <MenuIcon size={24} className="text-teal-700" />
+            <MenuIcon size={28} className="text-teal-700" />
           )}
         </button>
 
@@ -167,7 +178,7 @@ export default function Navbar() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 className={cn(
-                  "fixed top-24 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] bg-white rounded-xl shadow-xl lg:hidden z-50 overflow-hidden",
+                  "fixed top-24 right-1 -translate-x-1/2 w-0 bg-white rounded-xl shadow-xl lg:hidden z-50 overflow-hidden",
                 )}
               >
                 <ul className="flex flex-col p-4 gap-1">

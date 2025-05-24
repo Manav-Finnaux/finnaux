@@ -69,7 +69,7 @@ export default function FunctionalBlocks() {
           >
             <Badge 
               variant="outline" 
-              className="w-fit bg-teal-50 border-teal-200 shadow-sm"
+              className="font-semibold bg-teal-50 border w-fit px-4 py-2 rounded-full mb-4 text-teal-600 font-semiboldflex items-center"
               data-aos="zoom-in"
               data-aos-delay="50"
             >

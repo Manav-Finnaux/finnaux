@@ -54,20 +54,17 @@ export default function HeroSection() {
             End-to-end software for loan origination, underwriting, customer engagement, and compliance.
           </p>
 
-          <div 
-            className="flex flex-col xs:flex-row gap-3 sm:gap-4 justify-center"
-            data-aos="fade-up"
-            data-aos-delay="300"
-          >
-            <Link href={'/about'} className="flex-1 xs:flex-none">
-              <button className="w-full xs:w-auto bg-teal-600 hover:bg-teal-700 text-white h-12 sm:h-14 rounded-lg px-6 sm:px-8 text-base sm:text-lg transition-all duration-300 shadow-md hover:shadow-lg active:scale-95">
-                About Us
+
+          <div className="flex flex-col gap-4 sm:flex-row justify-center">
+              <Link href={'/about'}>
+                <button className="bg-[#c4ec5a] text-black sm:h-14 sm:rounded-lg sm:px-10 sm:text-xl">
+                  About Us Page
+                </button>
+              </Link>
+              <button className="bg-[#f5fbe3] text-black sm:h-14 sm:rounded-lg sm:px-10 sm:text-xl">
+                See how it works
               </button>
-            </Link>
-            <button className="flex-1 xs:flex-none w-full xs:w-auto bg-white/90 hover:bg-white text-teal-700 border-2 border-teal-600 h-12 sm:h-14 rounded-lg px-6 sm:px-8 text-base sm:text-lg transition-all duration-300 shadow-md hover:shadow-lg active:scale-95">
-              See how it works
-            </button>
-          </div>
+            </div>
         </div>
       </div>
 
@@ -75,3 +72,49 @@ export default function HeroSection() {
     </Section>
   );
 }
+
+
+
+// import Link from "next/link";
+// import Section from "./section";
+
+// export default function HeroSection() {
+//   return (
+//     <>
+//       <Section
+//         variant="top"
+//         className="text-white min-h-vh relative"
+//         style={{
+//           backgroundImage: 'url("/grad2.jpeg")',
+//           backgroundSize: "cover",
+//         }}>
+//         {/* Hero Content */}
+//         <div className="flex flex-col justify-center items-center text-center py-8 sm:py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-8 gap-4 sm:gap-8 min-h-[calc(100vh-5rem)]">
+//           <div className="w-full md:max-w-[75%]">
+//             <h1 className="text-2xl sm:text-4xl md:text-6xl text-center font-extrabold mb-4 sm:mb-6">
+//               Software Built for Modern Loan Providers
+//             </h1>
+//             <p className="text-lg sm:text-2xl mb-6 sm:mb-8">
+//               End-to-end software for loan origination, underwriting, customer
+//               engagement, and compliance.
+//             </p>
+
+//             <div className="flex flex-col gap-4 sm:flex-row justify-center">
+//               <Link href={'/about'}>
+//                 <button className="bg-[#c4ec5a] text-black sm:h-14 sm:rounded-lg sm:px-10 sm:text-xl">
+//                   About Us Page
+//                 </button>
+//               </Link>
+//               <button className="bg-[#f5fbe3] text-black sm:h-14 sm:rounded-lg sm:px-10 sm:text-xl">
+//                 See how it works
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+
+//         <div className="absolute bottom-0 left-0 w-full h-32 pointer-events-none bg-gradient-to-b from-transparent to-background" />
+
+//       </Section>
+//     </>
+//   );
+// }
