@@ -6,7 +6,7 @@ import MarqueeSection from "@/components/composed/Marquee";
 import Testimonials from "@/components/composed/Testimonials";
 import FAQs from "@/components/composed/faqs";
 import WhyChooseUs from "@/components/composed/whyChooseUs";
-import FunctionalBlocks from "@/components/composed/finnaux-modules";
+import FunctionalBlocks from "@/components/composed/modules";
 import MeetOurTeam from "@/components/composed/OurTeamPage";
 
 // const services = [

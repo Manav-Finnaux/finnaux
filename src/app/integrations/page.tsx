@@ -90,7 +90,7 @@ export default function TechnologyPartners() {
     },
     {
       title: "Asset Verification",
-      items: [" Vehicle Registration Certificate", "Mobile Bills", "Landline Bills", "Gas Bills"]
+      items: [" Vehicle Registration Certificate", "Real Estate Verification"]
     },
     {
       title: "Business Verification",
