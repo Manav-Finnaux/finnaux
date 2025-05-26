@@ -6,6 +6,120 @@ import VisionImage from "@/lib/assets/features/leadership.png"; // Renamed for c
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Don't forget to import the AOS CSS
+import { Timeline } from "@/components/ui/timeline";
+
+const data = [
+  // {
+  //   title: '2002',
+  //   content: (
+  //     <div className="text-base text-muted-foreground leading-relaxed">
+  //       <h3 className="text-lg font-semibold mb-1">Laying the Foundation</h3>
+  //       <p>
+  //         Our founders began working in the NBFC sector, gaining hands-on experience in lending operations, compliance, and credit risk.
+  //       </p>
+  //     </div>
+  //   )
+  // },
+  // {
+  //   title: '2010',
+  //   content: (
+  //     <div className="text-base text-muted-foreground leading-relaxed">
+  //       <h3 className="text-lg font-semibold mb-1">Identifying the Gaps</h3>
+  //       <p>
+  //         Years of fieldwork revealed inefficiencies in traditional NBFC processes — manual loan tracking, inconsistent underwriting, and outdated compliance tools.
+  //       </p>
+  //     </div>
+  //   )
+  // },
+  // {
+  //   title: '2015',
+  //   content: (
+  //     <div className="text-base text-muted-foreground leading-relaxed">
+  //       <h3 className="text-lg font-semibold mb-1">Conceptualizing Finnaux</h3>
+  //       <p>
+  //         The vision for Finnaux was born: a unified, scalable platform to digitize and streamline NBFC operations end-to-end.
+  //       </p>
+  //     </div>
+  //   )
+  // },
+  {
+    title: '2018',
+    content: (
+      <div className="text-base text-muted-foreground leading-relaxed">
+        <h3 className="text-lg font-semibold mb-1">Development Begins</h3>
+        <p>
+          We assembled a team of developers and financial experts to build a robust SaaS solution, tailored for Indian NBFCs.
+        </p>
+      </div>
+    )
+  },
+  {
+    title: '2020',
+    content: (
+      <div className="text-base text-muted-foreground leading-relaxed">
+        <h3 className="text-lg font-semibold mb-1">Pilot with Key Partners</h3>
+        <p>
+          Rolled out beta versions with select NBFC partners. Gathered real-world feedback and iterated to enhance usability, performance, and compliance tools.
+        </p>
+      </div>
+    )
+  },
+  {
+    title: '2021',
+    content: (
+      <div className="text-base text-muted-foreground leading-relaxed">
+        <h3 className="text-lg font-semibold mb-1">Official Launch of Finnaux</h3>
+        <p>
+          Finnaux goes live! An all-in-one cloud-based platform for loan origination, management, collections, and compliance.
+        </p>
+      </div>
+    )
+  },
+  {
+    title: '2022',
+    content: (
+      <div className="text-base text-muted-foreground leading-relaxed">
+        <h3 className="text-lg font-semibold mb-1">Rapid Adoption</h3>
+        <p>
+          50+ NBFCs onboarded. Platform handled ₹500+ crores in loan disbursements within the first year. Added advanced analytics and credit scoring modules.
+        </p>
+      </div>
+    )
+  },
+  {
+    title: '2023',
+    content: (
+      <div className="text-base text-muted-foreground leading-relaxed">
+        <h3 className="text-lg font-semibold mb-1">AI-Powered Enhancements</h3>
+        <p>
+          Launched AI-based risk profiling and automation tools to help NBFCs make smarter, faster lending decisions.
+        </p>
+      </div>
+    )
+  },
+  {
+    title: '2024',
+    content: (
+      <div className="text-base text-muted-foreground leading-relaxed">
+        <h3 className="text-lg font-semibold mb-1">Compliance-First Upgrades</h3>
+        <p>
+          Introduced real-time regulatory reporting, integrated KYC/AML tools, and built-in audit trails to support RBI compliance.
+        </p>
+      </div>
+    )
+  },
+  {
+    title: '2025',
+    content: (
+      <div className="text-base text-muted-foreground leading-relaxed">
+        <h3 className="text-lg font-semibold mb-1">Looking Ahead</h3>
+        <p>
+          Now serving 100+ NBFCs. Continuing to evolve with cutting-edge features to empower the next generation of digital lenders.
+        </p>
+      </div>
+    )
+  }
+];
 
 export default function AboutUs() {
   useEffect(() => {
@@ -158,97 +272,23 @@ export default function AboutUs() {
 
       {/* Our Story Section */}
       <section className="w-full bg-[#f8f8f7] py-16 md:py-24 my-0">
-        {" "}
-        {/* Adjusted padding */}
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
-          {" "}
-          {/* Adjusted gap */}
-          {/* Left: Text Content */}
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col gap-8 mb-10">
+          {/* Heading & Tagline */}
           <div
-            className="lg:w-1/2 w-full p-4 md:p-8 lg:pr-12 flex flex-col justify-center" // Adjusted padding
+            className="lg:w-1/2 w-full p-4 md:p-8 lg:pr-12 pb-0 flex flex-col justify-center"
             data-aos="fade-right"
             data-aos-delay="100">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">
-              {" "}
-              {/* Adjusted font size */}
               Our Story
             </h2>
-            <p className="text-base sm:text-lg text-gray-700 mb-8 sm:mb-10">
-              {" "}
-              {/* Adjusted font size and margin */}
+            <p className="text-base sm:text-lg text-gray-700">
               With our card, you gain access to a range of exclusive benefits,
               convenient features, and unparalleled rewards that will enhance
               your everyday life.
             </p>
-            <div className="relative pl-6 sm:pl-8">
-              {" "}
-              {/* Adjusted padding */}
-              <div className="absolute left-0 top-0 h-full w-px bg-gray-300"></div>
-              <div className="space-y-6 sm:space-y-8">
-                {" "}
-                {/* Adjusted spacing */}
-                {[
-                  {
-                    num: "01.",
-                    title: "Convenience",
-                    desc: "Our services offer unmatched convenience, allowing you to effortlessly manage your finances from anywhere, at any time.",
-                  },
-                  {
-                    num: "02.",
-                    title: "Time-Saving",
-                    desc: "Our revolutionary solution is here to liberate you from the shackles of administrative burdens.",
-                  },
-                  {
-                    num: "03.",
-                    title: "Enhanced Security",
-                    desc: "We prioritize the security of your financial information. Our robust security measures, including encryption.",
-                  },
-                  {
-                    num: "04.",
-                    title: "Access to Innovative Tools",
-                    desc: "Gain access to a wide range of innovative tools and features designed to enhance your financial management.",
-                  },
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    data-aos="fade-up"
-                    data-aos-delay={200 + index * 100}>
-                    <div className="flex items-baseline gap-2 sm:gap-3">
-                      {" "}
-                      {/* Adjusted gap */}
-                      <span className="text-gray-400 font-mono text-base sm:text-lg">
-                        {" "}
-                        {/* Adjusted font size */}
-                        {item.num}
-                      </span>
-                      <span className="font-semibold text-lg sm:text-xl text-gray-900">
-                        {" "}
-                        {/* Adjusted font size */}
-                        {item.title}
-                      </span>
-                    </div>
-                    <p className="text-sm sm:text-base text-gray-600 ml-8 sm:ml-10 mt-1">
-                      {item.desc}
-                    </p>{" "}
-                    {/* Adjusted font size and margin */}
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
-          {/* Right: Image */}
-          <div
-            className="lg:w-1/2 w-full flex items-center justify-center mt-8 lg:mt-0 p-4" // Adjusted margin-top for mobile
-            data-aos="fade-left"
-            data-aos-delay="200">
-            <img
-              src="https://framerusercontent.com/images/zUDHecteYnTB4LOHVycktRWCYY.jpg"
-              alt="Card Payment"
-              // For Next.js Image component, it's better to explicitly set width/height or use fill
-              // For img tag, max-w-md and w-full handle responsiveness well.
-              className="rounded-2xl shadow-lg w-full max-w-sm sm:max-w-md object-cover" // Adjusted max-width for small screens
-            />
-          </div>
+          {/* Timeline */}
+          <Timeline data={data} />
         </div>
       </section>
     </>
