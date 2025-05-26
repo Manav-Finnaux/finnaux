@@ -1,13 +1,11 @@
 "use client";
 
-import Image from "next/image";
-import MissionImage from "@/lib/assets/features/mission.png";
-import VisionImage from "@/lib/assets/features/leadership.png";
-import { useEffect, useState } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { Timeline } from "@/components/ui/timeline";
-import fetchAPI  from "@/lib/api";
+import fetchAPI from "@/lib/api";
+import VisionImage from "@/lib/assets/features/leadership.png";
+import MissionImage from "@/lib/assets/features/mission.png";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 interface TimelineItem {
   id: number;
@@ -52,12 +50,6 @@ export default function AboutUs() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-      easing: "ease-out-cubic",
-      offset: 100,
-    });
 
     const fetchData = async () => {
       try {

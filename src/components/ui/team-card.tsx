@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface TeamMember {
   name: string;
@@ -39,7 +39,7 @@ export function TeamMemberCard({ member }: { member: TeamMember }) {
           {member.role}
         </p>
         <p className="text-gray-600 text-sm">{member.description}</p>
-        
+
         {/* Social Links (optional) */}
         <div className="flex justify-center space-x-4 mt-4">
           <a href="#" className="text-gray-400 hover:text-gray-600 transition-colors">

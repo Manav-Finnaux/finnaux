@@ -1,10 +1,10 @@
+import { Badge } from "../ui/badge";
+import { Button } from "../ui/button";
+import Heading from "./heading";
+import { Marquee } from "./magic-ui-marquee";
 import MaxWidthWrapper from "./maxWidthWrapper";
 import Section from "./section";
-import { Badge } from "../ui/badge";
-import Heading from "./heading";
 import Text from "./text";
-import { Marquee } from "./magic-ui-marquee";
-import { Button } from "../ui/button";
 
 const features = [
   "Integrated APIs*",

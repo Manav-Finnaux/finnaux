@@ -1,14 +1,12 @@
 "use client";
 
+import 'aos/dist/aos.css';
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "../ui/button";
 import Heading from "./heading";
-import Text from "./text";
-import Link from "next/link";
 import MaxWidthWrapper from "./maxWidthWrapper";
-import { useEffect } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import Text from "./text";
 
 const LINKS = [
   {
@@ -43,14 +41,7 @@ const LINKS = [
 const LETTERS = ['F', 'I', 'N', 'N', 'A', 'U', 'X'];
 
 export default function Footer() {
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      once: true,
-      easing: 'ease-out-cubic',
-      offset: 20
-    });
-  }, []);
+
 
   return (
 

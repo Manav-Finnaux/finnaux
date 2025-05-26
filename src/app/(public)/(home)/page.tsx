@@ -1,13 +1,12 @@
 import Features from "@/components/composed/features";
 // import { BarChart2Icon, ClipboardListIcon, FileTextIcon, FolderOpenIcon, PieChartIcon, SettingsIcon } from "lucide-react";
 import AboutUs from "@/components/composed/aboutUs";
+import FAQs from "@/components/composed/faqs";
 import HeroSection from "@/components/composed/Header";
 import MarqueeSection from "@/components/composed/Marquee";
-import Testimonials from "@/components/composed/Testimonials";
-import FAQs from "@/components/composed/faqs";
-import WhyChooseUs from "@/components/composed/whyChooseUs";
 import FunctionalBlocks from "@/components/composed/modules";
-import MeetOurTeam from "@/components/composed/OurTeamPage";
+import Testimonials from "@/components/composed/Testimonials";
+import WhyChooseUs from "@/components/composed/whyChooseUs";
 
 // const services = [
 //   {
@@ -51,28 +50,13 @@ import MeetOurTeam from "@/components/composed/OurTeamPage";
 export default function Home() {
   return (
     <>
-      {/* HeroSection */}
       <HeroSection />
-
-      {/* Client logo marquee */}
       <MarqueeSection />
-
-      {/* About Us */}
       <AboutUs />
-
-      {/* Services / Functional Blocks */}
       <FunctionalBlocks />
-
-      {/* Features */}
       <Features />
-
-      {/* Why Choose Us? */}
       <WhyChooseUs />
-
-      {/* Testimonials */}
       <Testimonials />
-
-      {/* FAQs */}
       <FAQs />
     </>
   );

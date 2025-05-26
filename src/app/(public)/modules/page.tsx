@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import "aos/dist/aos.css";
+import { useEffect, useState } from "react";
+
 import { NumberTicker } from "@/components/composed/number-ticker";
 
 export default function Page() {

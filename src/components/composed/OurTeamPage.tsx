@@ -1,5 +1,5 @@
-import Section from "./section";
 import Image from "next/image";
+import Section from "./section";
 
 interface TeamMemberProps {
   name: string;

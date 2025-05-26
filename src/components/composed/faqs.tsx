@@ -1,18 +1,18 @@
 "use client";
 import { CircleHelpIcon } from "lucide-react";
-import { Badge } from "../ui/badge";
-import MaxWidthWrapper from "./maxWidthWrapper";
-import Section from "./section";
-import Text from "./text";
-import Heading from "./heading";
+import { useEffect } from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "../ui/accordion";
-import { useEffect } from "react";
-import "aos/dist/aos.css";
+import { Badge } from "../ui/badge";
+import Heading from "./heading";
+import MaxWidthWrapper from "./maxWidthWrapper";
+import Section from "./section";
+import Text from "./text";
+
 
 const FAQS = [
   {

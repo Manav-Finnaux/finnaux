@@ -1,13 +1,13 @@
 "use client";
+import 'aos/dist/aos.css';
 import { LayoutGridIcon, MoveRightIcon } from "lucide-react";
+import Link from "next/link";
+import { useEffect } from "react";
 import { Badge } from "../ui/badge";
+import Heading from "./heading";
 import MaxWidthWrapper from "./maxWidthWrapper";
 import Section from "./section";
-import Heading from "./heading";
-import Link from "next/link";
 import Text from "./text";
-import { useEffect } from "react";
-import 'aos/dist/aos.css';
 
 const MODULES = [
   {

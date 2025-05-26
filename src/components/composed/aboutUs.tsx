@@ -1,30 +1,22 @@
 "use client";
 
-import { UsersRoundIcon, ArrowRightIcon } from "lucide-react";
+import { ArrowRightIcon, UsersRoundIcon } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import { Badge } from "../ui/badge";
+import Heading from "./heading";
 import MaxWidthWrapper from "./maxWidthWrapper";
 import Section from "./section";
 import Text from "./text";
-import Heading from "./heading";
-import Link from "next/link";
-import Image from "next/image";
-import { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+
 
 export default function AboutUs() {
-  useEffect(() => {
-    AOS.init({
-      once: true,
-      duration: 700,
-      easing: "ease-out-cubic",
-    });
-  }, []);
+
 
   return (
     <Section className="py-16 md:py-2">
       <MaxWidthWrapper className="rounded-3xl bg-gradient-to-br from-teal-50/40 to-teal-100/20 border border-teal-200/50 px-6 py-10 sm:px-10 sm:py-14 md:px-14 md:py-16 lg:px-16 lg:py-20 flex flex-col lg:flex-row gap-10 lg:gap-14 items-center">
-        
+
         {/* Textual Content */}
         <div
           className="flex flex-col gap-6 lg:gap-8 lg:w-1/2"

@@ -1,9 +1,9 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import Section from "@/components/composed/section";
+import fetchAPI from "@/lib/api";
 import { motion } from "framer-motion";
 import { Linkedin, Twitter } from "lucide-react";
-import Section from "@/components/composed/section";
-import fetchAPI  from "@/lib/api";
+import React, { useEffect, useState } from "react";
 
 interface PhoneNumber {
   id: number;
@@ -257,9 +257,8 @@ export default function ContactPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full bg-teal-600 hover:bg-teal-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300 shadow-lg ${
-                  isSubmitting ? "opacity-70 cursor-not-allowed" : ""
-                }`}>
+                className={`w-full bg-teal-600 hover:bg-teal-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300 shadow-lg ${isSubmitting ? "opacity-70 cursor-not-allowed" : ""
+                  }`}>
                 {isSubmitting ? "Sending..." : "Send Message"}
               </button>
             </form>

@@ -1,7 +1,7 @@
 import Image from "next/image";
 // import Marquee from "react-fast-marquee";
-import Section from "./section";
 import { Marquee } from "./magic-ui-marquee";
+import Section from "./section";
 
 export default function MarqueeSection() {
   return (

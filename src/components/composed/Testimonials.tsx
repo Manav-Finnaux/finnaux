@@ -1,13 +1,13 @@
 "use client"
-import Image from "next/image";
-import { Badge } from "../ui/badge";
 import { MessageSquareIcon } from "lucide-react";
-import Text from "./text";
-import Heading from "./heading";
-import Section from "./section";
-import { Marquee } from "./magic-ui-marquee";
+import Image from "next/image";
 import { useEffect } from "react";
-import "aos/dist/aos.css";
+import { Badge } from "../ui/badge";
+import Heading from "./heading";
+import { Marquee } from "./magic-ui-marquee";
+import Section from "./section";
+import Text from "./text";
+
 
 export default function Testimonials() {
   const testimonials = [

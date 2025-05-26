@@ -63,9 +63,9 @@ export function AnimatedGridPattern({
       currentSquares.map((sq) =>
         sq.id === id
           ? {
-              ...sq,
-              pos: getPos(),
-            }
+            ...sq,
+            pos: getPos(),
+          }
           : sq
       )
     );

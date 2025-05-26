@@ -1,12 +1,12 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { createContext, useContext, useRef, useState } from "react";
 
 const MouseEnterContext = createContext<{
   mouseEnter: boolean;
   setMouseEnter: (value: boolean) => void;
-}>({ mouseEnter: false, setMouseEnter: () => {} });
+}>({ mouseEnter: false, setMouseEnter: () => { } });
 
 export const CardContainer = ({
   children,

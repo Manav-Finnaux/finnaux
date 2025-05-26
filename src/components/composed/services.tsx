@@ -1,8 +1,8 @@
-import MaxWidthWrapper from "./maxWidthWrapper"
-import Section from "./section"
-import { Badge } from "../ui/badge";
 import { features } from "@/lib/assets/features/featuresIcons";
+import { Badge } from "../ui/badge";
 import Heading from "./heading";
+import MaxWidthWrapper from "./maxWidthWrapper";
+import Section from "./section";
 import Text from "./text";
 
 

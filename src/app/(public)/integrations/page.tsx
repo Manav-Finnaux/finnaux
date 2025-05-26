@@ -1,5 +1,6 @@
 "use client";
 
+import { CardBody, CardContainer } from "@/components/ui/3d-card";
 import {
   Banknote,
   Cpu,
@@ -9,39 +10,30 @@ import {
   ShieldCheck,
   Verified,
 } from "lucide-react";
+import accagg from "./images/accagg.png";
 import au from "./images/au.png";
 import axis from "./images/axis.png";
 import crif from "./images/crif.png";
+import daddy from "./images/daddy.png";
 import digi from "./images/Digi.jpg";
 import digio from "./images/digio.png";
+import dsc from "./images/dsc.jpg";
 import equifax from "./images/equifax.png";
+import esign from "./images/esign.png";
 import hdfc from "./images/hdfc.png";
 import icici from "./images/icici.png";
 import nu from "./images/nu.png";
 import park from "./images/park.png";
-import dsc from "./images/dsc.jpg";
-import video from "./images/video.png";
-import esign from "./images/esign.png";
-import accagg from "./images/accagg.png";
-import sure from "./images/sure.png";
 import state from "./images/state.png";
+import sure from "./images/sure.png";
 import trans from "./images/trans.jpg";
-import daddy from "./images/daddy.png";
-import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
-import { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import Image from "next/image";
+import video from "./images/video.png";
+
 import Section from "@/components/composed/section";
+import Image from "next/image";
 
 export default function TechnologyPartners() {
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      easing: "ease-out-cubic",
-      once: true,
-    });
-  }, []);
+
 
   const integrationCategories = [
     {
@@ -50,7 +42,7 @@ export default function TechnologyPartners() {
       partners: [
         { name: "ICICI Bank", logo: icici },
         { name: "AU Bank", logo: au },
-        { name: "HDFC Bank", logo: hdfc},
+        { name: "HDFC Bank", logo: hdfc },
         { name: "Axis Bank", logo: axis },
         { name: "Nu pay", logo: nu },
       ],

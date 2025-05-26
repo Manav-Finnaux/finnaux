@@ -1,19 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import Image from "next/image";
 
 export default function TeamPage() {
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      easing: "ease-out-cubic",
-      once: true,
-    });
-  }, []);
 
   // Assuming `teamData` is the API response you're fetching, you can replace this with the actual fetched data
   const teamData = {
