@@ -4,14 +4,7 @@ import Footer from "@/components/composed/Footer";
 import Navbar from "@/components/composed/nav";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import type { Metadata } from "next";
-import { useEffect } from "react";
-import "./globals.css";
-
-
-export const metadata: Metadata = {
-  title: "Finnaux",
-};
+import { useEffect } from "react";̀
 
 export default function RootLayout({
   children,
