@@ -1,135 +1,115 @@
-"use client"; // Important for using client-side hooks like useEffect
+"use client";
 
 import Image from "next/image";
 import MissionImage from "@/lib/assets/features/mission.png";
-import VisionImage from "@/lib/assets/features/leadership.png"; // Renamed for clarity, assuming it's the same image for vision
-import { useEffect } from "react";
+import VisionImage from "@/lib/assets/features/leadership.png";
+import { useEffect, useState } from "react";
 import AOS from "aos";
-import "aos/dist/aos.css"; // Don't forget to import the AOS CSS
+import "aos/dist/aos.css";
 import { Timeline } from "@/components/ui/timeline";
+import fetchAPI  from "@/lib/api";
 
-const data = [
-  // {
-  //   title: '2002',
-  //   content: (
-  //     <div className="text-base text-muted-foreground leading-relaxed">
-  //       <h3 className="text-lg font-semibold mb-1">Laying the Foundation</h3>
-  //       <p>
-  //         Our founders began working in the NBFC sector, gaining hands-on experience in lending operations, compliance, and credit risk.
-  //       </p>
-  //     </div>
-  //   )
-  // },
-  // {
-  //   title: '2010',
-  //   content: (
-  //     <div className="text-base text-muted-foreground leading-relaxed">
-  //       <h3 className="text-lg font-semibold mb-1">Identifying the Gaps</h3>
-  //       <p>
-  //         Years of fieldwork revealed inefficiencies in traditional NBFC processes — manual loan tracking, inconsistent underwriting, and outdated compliance tools.
-  //       </p>
-  //     </div>
-  //   )
-  // },
-  // {
-  //   title: '2015',
-  //   content: (
-  //     <div className="text-base text-muted-foreground leading-relaxed">
-  //       <h3 className="text-lg font-semibold mb-1">Conceptualizing Finnaux</h3>
-  //       <p>
-  //         The vision for Finnaux was born: a unified, scalable platform to digitize and streamline NBFC operations end-to-end.
-  //       </p>
-  //     </div>
-  //   )
-  // },
-  {
-    title: '2018',
-    content: (
-      <div className="text-base text-muted-foreground leading-relaxed">
-        <h3 className="text-lg font-semibold mb-1">Development Begins</h3>
-        <p>
-          We assembled a team of developers and financial experts to build a robust SaaS solution, tailored for Indian NBFCs.
-        </p>
-      </div>
-    )
-  },
-  {
-    title: '2020',
-    content: (
-      <div className="text-base text-muted-foreground leading-relaxed">
-        <h3 className="text-lg font-semibold mb-1">Pilot with Key Partners</h3>
-        <p>
-          Rolled out beta versions with select NBFC partners. Gathered real-world feedback and iterated to enhance usability, performance, and compliance tools.
-        </p>
-      </div>
-    )
-  },
-  {
-    title: '2021',
-    content: (
-      <div className="text-base text-muted-foreground leading-relaxed">
-        <h3 className="text-lg font-semibold mb-1">Official Launch of Finnaux</h3>
-        <p>
-          Finnaux goes live! An all-in-one cloud-based platform for loan origination, management, collections, and compliance.
-        </p>
-      </div>
-    )
-  },
-  {
-    title: '2022',
-    content: (
-      <div className="text-base text-muted-foreground leading-relaxed">
-        <h3 className="text-lg font-semibold mb-1">Rapid Adoption</h3>
-        <p>
-          50+ NBFCs onboarded. Platform handled ₹500+ crores in loan disbursements within the first year. Added advanced analytics and credit scoring modules.
-        </p>
-      </div>
-    )
-  },
-  {
-    title: '2023',
-    content: (
-      <div className="text-base text-muted-foreground leading-relaxed">
-        <h3 className="text-lg font-semibold mb-1">AI-Powered Enhancements</h3>
-        <p>
-          Launched AI-based risk profiling and automation tools to help NBFCs make smarter, faster lending decisions.
-        </p>
-      </div>
-    )
-  },
-  {
-    title: '2024',
-    content: (
-      <div className="text-base text-muted-foreground leading-relaxed">
-        <h3 className="text-lg font-semibold mb-1">Compliance-First Upgrades</h3>
-        <p>
-          Introduced real-time regulatory reporting, integrated KYC/AML tools, and built-in audit trails to support RBI compliance.
-        </p>
-      </div>
-    )
-  },
-  {
-    title: '2025',
-    content: (
-      <div className="text-base text-muted-foreground leading-relaxed">
-        <h3 className="text-lg font-semibold mb-1">Looking Ahead</h3>
-        <p>
-          Now serving 100+ NBFCs. Continuing to evolve with cutting-edge features to empower the next generation of digital lenders.
-        </p>
-      </div>
-    )
-  }
-];
+interface TimelineItem {
+  id: number;
+  title: string;
+  contentHeading: string;
+  contentBody: string;
+}
+
+interface AboutUsData {
+  id: number;
+  heading: string;
+  tagline: string;
+  experienceCard: {
+    yearsOfExperience: number;
+    followUpText: string;
+  };
+  missionAndVisionSection: {
+    heading: string;
+    ourMission: {
+      heading: string;
+      para1: string;
+      para2: string;
+    };
+    ourVision: {
+      heading: string;
+      para1: string;
+      para2: string;
+    };
+  };
+  ourStorySection: {
+    heading: string;
+    tagline: string;
+    ourStoryTimeline: {
+      timelineItem: TimelineItem[];
+    };
+  };
+}
 
 export default function AboutUs() {
+  const [data, setData] = useState<AboutUsData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Smooth, longer duration for animations
-      once: true, // Animations play only once as elements enter viewport
-      easing: "ease-out-cubic", // A very smooth easing function
-      offset: 100, // Start animation when element is 100px from viewport bottom
+      duration: 1000,
+      once: true,
+      easing: "ease-out-cubic",
+      offset: 100,
     });
+
+    const fetchData = async () => {
+      try {
+        const api = "/api/about-us?populate[experienceCard][populate]=*&populate[missionAndVisionSection][populate]=ourMission&populate[missionAndVisionSection][populate]=ourVision&populate[ourStorySection][populate][ourStoryTimeline][populate]=timelineItem";
+        const response = await fetchAPI<{ data: AboutUsData }>(api);
+        setData(response.data);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "An unknown error occurred");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        Loading...
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-screen text-red-500">
+        Error: {error}
+      </div>
+    );
+  }
+
+  if (!data) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        No data available
+      </div>
+    );
+  }
+
+  // Transform timeline data for the Timeline component
+  const timelineData = data.ourStorySection.ourStoryTimeline.timelineItem.map(
+    (item) => ({
+      title: item.title,
+      content: (
+        <div className="text-base text-muted-foreground leading-relaxed">
+          <h3 className="text-lg font-semibold mb-1">{item.contentHeading}</h3>
+          <p>{item.contentBody}</p>
+        </div>
+      ),
+    })
+  );
 
   return (
     <>
@@ -138,17 +118,16 @@ export default function AboutUs() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-start justify-center flex-col space-y-6 py-12">
             <h1
-              className="font-medium text-4xl sm:text-5xl lg:text-6xl text-center sm:text-left" // Added text alignment for responsiveness
+              className="font-medium text-4xl sm:text-5xl lg:text-6xl text-center sm:text-left"
               data-aos="fade-up"
               data-aos-delay="100">
-              Empowering Your Financial Future
+              {data.heading}
             </h1>
             <h3
-              className="font-medium text-lg sm:text-xl w-full md:w-3/4 lg:w-1/2 text-center sm:text-left mx-auto sm:mx-0" // Adjusted width and added text alignment
+              className="font-medium text-lg sm:text-xl w-full md:w-3/4 lg:w-1/2 text-center sm:text-left mx-auto sm:mx-0"
               data-aos="fade-up"
               data-aos-delay="200">
-              At Finnaux, our journey is rooted in one purpose — your
-              prosperity. With unwavering commitment and expert insight
+              {data.tagline}
             </h3>
           </div>
         </div>
@@ -156,112 +135,78 @@ export default function AboutUs() {
 
       {/* Main Content Card & Experience Card Container */}
       <div className="relative my-12 md:my-24 lg:my-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        {" "}
-        {/* Added horizontal padding and max-width for better control */}
         {/* Experience Card */}
-        {/* Adjusted top position for better overlap on larger screens, increased max-width */}
         <div
-          className="hidden md:flex bg-gradient-to-b from-teal-100/80 to-teal-50 border-teal-300/60 border rounded-xl h-72 lg:h-80 w-full max-w-[20rem] lg:max-w-[28rem] absolute shadow-xl shadow-teal-100/60 right-4 lg:right-20 -top-40 lg:-top-60 flex-col justify-evenly p-4 lg:p-6 z-10" // Reduced h-80 to h-72 for md, kept lg:h-80, adjusted padding
+          className="hidden md:flex bg-gradient-to-b from-teal-100/80 to-teal-50 border-teal-300/60 border rounded-xl h-72 lg:h-80 w-full max-w-[20rem] lg:max-w-[28rem] absolute shadow-xl shadow-teal-100/60 right-4 lg:right-20 -top-40 lg:-top-60 flex-col justify-evenly p-4 lg:p-6 z-10"
           data-aos="fade-left"
           data-aos-delay="300">
           <h1 className="bg-gradient-to-b from-cyan-400 to-teal-300 px-4 text-8xl lg:text-9xl text-transparent bg-clip-text text-left">
-            {" "}
-            {/* Adjusted font size */}
-            18
+            {data.experienceCard.yearsOfExperience}
           </h1>
           <div className="flex flex-row justify-between items-start gap-2">
-            <div className="rounded-full h-12 w-20 lg:h-14 lg:w-24 bg-white border-2 border-black mx-4 lg:mx-8"></div>{" "}
-            {/* Adjusted size and margin */}
+            <div className="rounded-full h-12 w-20 lg:h-14 lg:w-24 bg-white border-2 border-black mx-4 lg:mx-8"></div>
             <div className="text-left pr-2 text-sm lg:text-base flex-1">
-              {" "}
-              {/* Adjusted font size */}
-              Years experience with a deep understanding of the challenges and
-              opportunities
+              {data.experienceCard.followUpText}
             </div>
           </div>
         </div>
+
         {/* Main Card Content */}
-        {/* Added dynamic padding for mobile, adjusted pt for desktop */}
         <div
-          className="bg-gradient-to-r from-white/60 to-white/50 border-cyan-300 border rounded-2xl p-6 pt-40 md:pt-10 lg:pt-4" // Adjusted overall padding, and pt for md/lg screens
+          className="bg-gradient-to-r from-white/60 to-white/50 border-cyan-300 border rounded-2xl p-6 pt-40 md:pt-10 lg:pt-4"
           data-aos="fade-up"
           data-aos-delay="400">
           {/* Mission Statement */}
-          {/* Adjusted margin for mobile and desktop */}
           <div
-            className="ml-0 md:ml-24 mt-0 md:mt-20 mb-8 md:mb-16 w-full max-w-3xl" // Adjusted mt and mb, added max-width
+            className="ml-0 md:ml-24 mt-0 md:mt-20 mb-8 md:mb-16 w-full max-w-3xl"
             data-aos="fade-right"
             data-aos-delay="500">
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-medium leading-snug">
-              {" "}
-              {/* Adjusted font size */}
-              Our mission is to make a positive impact by transforming the way
-              people interact with their finances.
+              {data.missionAndVisionSection.heading}
             </h1>
           </div>
 
           {/* Mission and Vision Sections */}
-          {/* Adjusted gap and padding for better mobile stacking */}
           <div className="flex flex-col lg:flex-row gap-8 xl:gap-24 px-2 md:px-6 pb-6">
-            {" "}
-            {/* Removed px-4 and md:px-8 from original, using responsive px from parent */}
             <div
-              className="flex-1 text-base sm:text-lg font-medium space-y-4 md:space-y-6 px-2 md:px-8 py-4 md:py-8" // Adjusted font size and spacing
+              className="flex-1 text-base sm:text-lg font-medium space-y-4 md:space-y-6 px-2 md:px-8 py-4 md:py-8"
               data-aos="fade-up"
               data-aos-delay="600">
-              <p>
-                Your success is our mission. As business advisors, we offer
-                expert guidance, unlocking your potential for growth and
-                profitability.
-              </p>
+              <p>{data.missionAndVisionSection.ourMission.para2}</p>
               <p className="font-light">
-                Our vision is to create a financially secure future for all,
-                offering innovative solutions & expert guidance to navigate
-                prosperity.
+                {data.missionAndVisionSection.ourVision.para1}
               </p>
             </div>
             <div className="flex-1 px-2 md:px-6 py-4 md:py-8">
               <div className="space-y-6 md:space-y-10">
-                {" "}
-                {/* Adjusted spacing */}
                 <div data-aos="fade-up" data-aos-delay="700">
                   <div className="flex items-center gap-3 mb-2">
                     <Image
                       src={MissionImage}
                       alt="Mission Icon"
-                      className="size-10 sm:size-11" // Adjusted icon size for mobile
+                      className="size-10 sm:size-11"
                     />
                     <h3 className="font-medium text-xl sm:text-2xl">
-                      Our Mission
-                    </h3>{" "}
-                    {/* Adjusted font size */}
+                      {data.missionAndVisionSection.ourMission.heading}
+                    </h3>
                   </div>
                   <p className="text-base sm:text-lg pl-12 sm:pl-14">
-                    {" "}
-                    {/* Adjusted font size and padding */}
-                    Our mission is to reshape lives by offering financial
-                    expertise, faster growth, & securing futures through trusted
-                    partnerships & innovation.
+                    {data.missionAndVisionSection.ourMission.para1}
                   </p>
                 </div>
                 <div data-aos="fade-up" data-aos-delay="800">
                   <div className="flex items-center gap-3 mb-2">
                     <Image
-                      src={VisionImage} // Using VisionImage
+                      src={VisionImage}
                       alt="Vision Icon"
-                      className="size-10 sm:size-11" // Adjusted icon size for mobile
+                      className="size-10 sm:size-11"
                     />
                     <h3 className="font-medium text-xl sm:text-2xl">
-                      Our Vision
-                    </h3>{" "}
-                    {/* Adjusted font size */}
+                      {data.missionAndVisionSection.ourVision.heading}
+                    </h3>
                   </div>
                   <p className="text-base sm:text-lg pl-12 sm:pl-14">
-                    {" "}
-                    {/* Adjusted font size and padding */}
-                    Our vision is to create a financially secure future for all,
-                    offering innovative solutions & expert guidance to navigate
-                    prosperity.
+                    {data.missionAndVisionSection.ourVision.para1}
                   </p>
                 </div>
               </div>
@@ -279,16 +224,14 @@ export default function AboutUs() {
             data-aos="fade-right"
             data-aos-delay="100">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">
-              Our Story
+              {data.ourStorySection.heading}
             </h2>
             <p className="text-base sm:text-lg text-gray-700">
-              With our card, you gain access to a range of exclusive benefits,
-              convenient features, and unparalleled rewards that will enhance
-              your everyday life.
+              {data.ourStorySection.tagline}
             </p>
           </div>
           {/* Timeline */}
-          <Timeline data={data} />
+          <Timeline data={timelineData} />
         </div>
       </section>
     </>
