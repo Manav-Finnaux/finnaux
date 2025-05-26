@@ -1,18 +1,19 @@
-"use client";
-// import img from "./images/au.png";
-// import MissionImage from "@/lib/assets/features/mission.png";
-// import VisionImage from "@/lib/assets/feature//leadership.png";
+"use client"; // Important for using client-side hooks like useEffect
+
+import Image from "next/image";
+import MissionImage from "@/lib/assets/features/mission.png";
+import VisionImage from "@/lib/assets/features/leadership.png"; // Renamed for clarity, assuming it's the same image for vision
 import { useEffect } from "react";
 import AOS from "aos";
-import "aos/dist/aos.css";
+import "aos/dist/aos.css"; // Don't forget to import the AOS CSS
 
 export default function AboutUs() {
   useEffect(() => {
     AOS.init({
-      duration: 1000,
-      once: true,
-      easing: "ease-out-cubic",
-      offset: 100,
+      duration: 1000, // Smooth, longer duration for animations
+      once: true, // Animations play only once as elements enter viewport
+      easing: "ease-out-cubic", // A very smooth easing function
+      offset: 100, // Start animation when element is 100px from viewport bottom
     });
   }, []);
 
@@ -55,14 +56,8 @@ export default function AboutUs() {
             18
           </h1>
           <div className="flex flex-row justify-between items-start gap-2">
-            {/* on click goes to our story section (timeline----on the same page) */}
-            <button
-              className="aspect-square rounded-full h-12 w-12 lg:h-14 lg:w-14 bg-white border-2 border-black mx-4 lg:mx-8 hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
-              onClick={() => {
-                const storySection = document.querySelector("#our-story");
-                storySection?.scrollIntoView({ behavior: "smooth" });
-              }}></button>{" "}
-            {/* Converted to interactive button with hover and focus states */}
+            <div className="rounded-full h-12 w-20 lg:h-14 lg:w-24 bg-white border-2 border-black mx-4 lg:mx-8"></div>{" "}
+            {/* Adjusted size and margin */}
             <div className="text-left pr-2 text-sm lg:text-base flex-1">
               {" "}
               {/* Adjusted font size */}
@@ -118,7 +113,7 @@ export default function AboutUs() {
                 <div data-aos="fade-up" data-aos-delay="700">
                   <div className="flex items-center gap-3 mb-2">
                     <Image
-                      src={'/3Portals.svg'}
+                      src={MissionImage}
                       alt="Mission Icon"
                       className="size-10 sm:size-11" // Adjusted icon size for mobile
                     />

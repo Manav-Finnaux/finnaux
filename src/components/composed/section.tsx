@@ -8,7 +8,7 @@ type SectionProps = React.HTMLProps<HTMLDivElement> & {
 
 export default function Section({ variant = 'normal', className, children, ...delegated }: SectionProps) {
   return (
-    <section className={clsx(variant === 'top' && 'pt-24', 'pb-36', className)} {...delegated}>
+    <section className={clsx(variant === 'top' && 'pt-36', 'pb-36', className)} {...delegated}>
       {/* <section className={clsx('bg-red-700', variant === 'top' && 'pt-36', className)} {...delegated}> */}
       {children}
     </section>
