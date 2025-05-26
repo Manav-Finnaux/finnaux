@@ -19,7 +19,12 @@ import hdfc from "./images/hdfc.png";
 import icici from "./images/icici.png";
 import nu from "./images/nu.png";
 import park from "./images/park.png";
+import dsc from "./images/dsc.jpg";
+import video from "./images/video.png";
+import esign from "./images/esign.png";
+import accagg from "./images/accagg.png";
 import sure from "./images/sure.png";
+import state from "./images/state.png";
 import trans from "./images/trans.jpg";
 import daddy from "./images/daddy.png";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
@@ -47,6 +52,7 @@ export default function TechnologyPartners() {
         { name: "AU Bank", logo: au },
         { name: "HDFC Bank", logo: hdfc},
         { name: "Axis Bank", logo: axis },
+        { name: "Nu pay", logo: nu },
       ],
       description:
         "Seamless banking integrations for faster disbursals and settlements",
@@ -89,8 +95,8 @@ export default function TechnologyPartners() {
       title: "Digital Signatures",
       icon: <ShieldCheck className="w-8 h-8 text-amber-600" />,
       partners: [
-        { name: "DSC Services", logo: "" },
-        { name: "E-Sign Framework", logo: "" },
+        { name: "DSC Services", logo: dsc },
+        { name: "E-Sign Framework", logo: esign },
       ],
       description: "Legally binding digital documentation",
     },
@@ -98,9 +104,9 @@ export default function TechnologyPartners() {
       title: "Credit Analysis",
       icon: <Cpu className="w-8 h-8 text-cyan-600" />,
       partners: [
-        { name: "Video KYC", logo: "/partners/vkyc.png" },
-        { name: "Account Aggregator", logo: "/partners/aa.png" },
-        { name: "Bank Statement Analysis", logo: "/partners/analysis.png" },
+        { name: "Video KYC", logo: video },
+        { name: "Account Aggregator", logo: accagg },
+        { name: "Bank Statement Analysis", logo: state },
       ],
       description: "AI-powered financial health assessment tools",
     },

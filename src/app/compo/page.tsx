@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, ArrowRight, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowLeft, ArrowRight, Link, Mail, MapPin, Phone } from "lucide-react";
 import Features from "@/lib/assets/features/demo.avif";
 import Image from "next/image";
 import { useEffect } from "react";
@@ -24,8 +24,8 @@ export default function Page() {
       <div className="mx-4 sm:mx-8 md:mx-16 lg:mx-28 px-2 sm:px-4">
         <div className="flex flex-col items-center space-y-6 mb-8">
           {/* Back button */}
-          <button
-            type="button"
+          <button 
+            onClick={() => window.location.href = '/modules'}
             className="flex items-center gap-2 px-5 py-1 text-sm sm:text-base select-none"
             data-aos="fade-right"
             data-aos-delay="100">

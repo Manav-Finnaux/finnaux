@@ -11,14 +11,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 
 const links = [
+  // {
+  //   label: "Features",
+  //   href: "/features",
+  //   subLinks: [
+  //     { label: "Loan Origination", href: "/features/origination" },
+  //     { label: "Portfolio Management", href: "/features/portfolio" },
+  //     { label: "Reporting", href: "/features/reports" },
+  //   ]
+  // },
   {
-    label: "Features",
-    href: "/features",
-    subLinks: [
-      { label: "Loan Origination", href: "/features/origination" },
-      { label: "Portfolio Management", href: "/features/portfolio" },
-      { label: "Reporting", href: "/features/reports" },
-    ]
+    label: "Home",
+    href: "/"
   },
   {
     label: "Modules",
@@ -27,26 +31,25 @@ const links = [
   {
     label: "Integrations",
     href: "/integrations",
-    subLinks: [
-      { label: "Banking Partners", href: "/integrations#banking" },
-      { label: "KYC Services", href: "/integrations#kyc" },
-      { label: "Credit Bureau", href: "/integrations#credit" },
-      { label: "Collection Solutions", href: "/integrations#collection" },
-      { label: "Digital Documentation", href: "/integrations#documentation" },
-    ]
+    // subLinks: [
+    //   { label: "Banking Partners", href: "/integrations#banking" },
+    //   { label: "KYC Services", href: "/integrations#kyc" },
+    //   { label: "Credit Bureau", href: "/integrations#credit" },
+    //   { label: "Collection Solutions", href: "/integrations#collection" },
+    //   { label: "Digital Documentation", href: "/integrations#documentation" },
+    // ]
   },
   {
-    label: "About",
-    href: "/about",
+    label: "Company",
     subLinks: [
-      { label: "Our Story", href: "/about#story" },
+      { label: "About Us", href: "/about" },
       { label: "Our Team", href: "/team" },
-    ]
+    ] 
   },
-  {
-    label: "Contact",
-    href: "/contact",
-  },
+  // {
+  //   label: "Contact",
+  //   href: "/contact",
+  // },
 ];
 
 export default function Navbar() {
@@ -96,12 +99,12 @@ export default function Navbar() {
                     onMouseEnter={() => setActiveSubmenu(label)}
                     onMouseLeave={() => setActiveSubmenu(null)}
                   >
-                    <Link
-                      href={href}
+                    <p
+                      // href={href}
                       className="text-gray-800 hover:text-teal-600 transition-colors font-medium"
                     >
                       {label}
-                    </Link>
+                    </p>
                     <ChevronDown className={`w-4 h-4 text-teal-600 transition-transform ${activeSubmenu === label ? 'rotate-180' : ''}`} />
                     
                     <AnimatePresence>
