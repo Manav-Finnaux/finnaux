@@ -20,6 +20,7 @@
     "lucide-react": "^0.510.0",
     "motion": "^12.12.1",
     "next": "15.3.2",
+    "next-mdx-remote": "^5.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-fast-marquee": "^1.6.5",

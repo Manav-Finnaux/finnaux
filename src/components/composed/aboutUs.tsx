@@ -7,9 +7,28 @@ import MaxWidthWrapper from "./maxWidthWrapper";
 import Section from "./section";
 import Text from "./text";
 import { AboutUsSectionTypes } from "@/lib/api.types";
+// import { MDXRemote } from 'next-mdx-remote/rsc';
 
 
 export default function AboutUs({ data }: { data: AboutUsSectionTypes }) {
+  // const aboutUsBody = data.content;
+  // const components = {
+  //   p: (props: React.ComponentProps<"p">) => <Text as="p" variant="xl" data-aos="fade-up" data-aos-delay="100" className="text-teal-800 font-medium" {...props} />,
+  //   h2: (props: React.ComponentProps<"h2">) => <Heading
+  //     as="h2"
+  //     className="text-gray-900 text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] leading-tight"
+  //     data-aos="fade-up"
+  //     data-aos-delay="200"
+  //     {...props}
+  //   />,
+  //   span: (props: React.ComponentProps<"span">) => <Text
+  //     className="text-gray-700 text-base sm:text-lg"
+  //     data-aos="fade-up"
+  //     data-aos-delay="300"
+  //     {...props}
+  //   />
+  // }
+
   return (
     <Section className="py-16 md:py-2">
       <MaxWidthWrapper className="rounded-3xl bg-gradient-to-br from-teal-50/40 to-teal-100/20 border border-teal-200/50 px-6 py-10 sm:px-10 sm:py-14 md:px-14 md:py-16 lg:px-16 lg:py-20 flex flex-col lg:flex-row gap-10 lg:gap-14 items-center">
@@ -27,6 +46,8 @@ export default function AboutUs({ data }: { data: AboutUsSectionTypes }) {
             <UsersRoundIcon className="w-4 h-4" />
             <Text className="text-sm">{data.badge}</Text>
           </Badge>
+
+          {/* <MDXRemote source={aboutUsBody} components={components} /> */}
 
           <Text
             as="p"
