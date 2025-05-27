@@ -1,22 +1,8 @@
-// "use client";
-
-import 'aos/dist/aos.css';
 import Link from "next/link";
-// import { useEffect } from "react";
 import Section from "./section";
+import { HeroSectionTypes } from '@/lib/api.types';
 
-export default function HeroSection() {
-  // useEffect(() => {
-  //   if (typeof window !== 'undefined') {
-  //     const AOS = require('aos');
-  //     AOS.init({
-  //       once: true,
-  //       duration: 600,
-  //       easing: 'ease-out-quad',
-  //     });
-  //   }
-  // }, []);
-
+export default function HeroSection({ data }: { data: HeroSectionTypes }) {
   return (
     <Section
       variant="top"
@@ -42,7 +28,8 @@ export default function HeroSection() {
             data-aos="fade-up"
             data-aos-delay="100"
           >
-            Software Built for <span className="text-teal-700">Modern</span> Loan Providers
+            {/* Software Built for <span className="text-teal-700">Modern</span> Loan Providers */}
+            {data.heading}
           </h1>
 
           <p
@@ -50,19 +37,27 @@ export default function HeroSection() {
             data-aos="fade-up"
             data-aos-delay="200"
           >
-            End-to-end software for loan origination, underwriting, customer engagement, and compliance.
+            {/* End-to-end software for loan origination, underwriting, customer engagement, and compliance. */}
+            {data.tagline}
           </p>
 
 
           <div className="flex flex-col gap-4 sm:flex-row justify-center">
-            <Link href={'/about'}>
-              <button className="bg-[#c4ec5a] text-black sm:h-14 sm:rounded-lg sm:px-10 sm:text-xl">
-                About Us Page
-              </button>
-            </Link>
-            <button className="bg-[#f5fbe3] text-black sm:h-14 sm:rounded-lg sm:px-10 sm:text-xl">
-              See how it works
-            </button>
+            {
+              data.cta.map(({ href, label }, idx) => {
+                const styles = idx === 0 ?
+                  `bg-[#c4ec5a] text-black sm:h-14 sm:rounded-lg sm:px-10 sm:text-xl` :
+                  `bg-[#f5fbe3] text-black sm:h-14 sm:rounded-lg sm:px-10 sm:text-xl`;
+
+                return (
+                  <Link href={href} key={idx}>
+                    <button className={styles}>
+                      {label}
+                    </button>
+                  </Link>
+                )
+              })
+            }
           </div>
         </div>
       </div>

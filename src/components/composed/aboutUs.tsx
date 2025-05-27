@@ -1,5 +1,3 @@
-"use client";
-
 import { ArrowRightIcon, UsersRoundIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,11 +6,10 @@ import Heading from "./heading";
 import MaxWidthWrapper from "./maxWidthWrapper";
 import Section from "./section";
 import Text from "./text";
+import { AboutUsSectionTypes } from "@/lib/api.types";
 
 
-export default function AboutUs() {
-
-
+export default function AboutUs({ data }: { data: AboutUsSectionTypes }) {
   return (
     <Section className="py-16 md:py-2">
       <MaxWidthWrapper className="rounded-3xl bg-gradient-to-br from-teal-50/40 to-teal-100/20 border border-teal-200/50 px-6 py-10 sm:px-10 sm:py-14 md:px-14 md:py-16 lg:px-16 lg:py-20 flex flex-col lg:flex-row gap-10 lg:gap-14 items-center">
@@ -28,7 +25,7 @@ export default function AboutUs() {
             data-aos="zoom-in"
           >
             <UsersRoundIcon className="w-4 h-4" />
-            <Text className="text-sm">About Us</Text>
+            <Text className="text-sm">{data.badge}</Text>
           </Badge>
 
           <Text

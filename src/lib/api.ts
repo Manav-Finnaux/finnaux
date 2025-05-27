@@ -1,8 +1,9 @@
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export default async function fetchAPI<T>(endpoint: string): Promise<T> {
+  console.log(BASE_URL);
   const url = new URL(endpoint, BASE_URL);
-  const response = await fetch(url.toString());
+  const response = await fetch(url);
 
   if (!response.ok) {
     throw new Error(`Failed to fetch data from ${url}`);
@@ -11,7 +12,9 @@ export default async function fetchAPI<T>(endpoint: string): Promise<T> {
   return (await response.json()).data;
 }
 
-export const HOMEPAGE_API = `/home-page?populate[heroSection][populate]=cta&populate[clientLogosMarquee][populate][clientLogo][fields][0]=url&populate[aboutUsSection][populate]=cta&populate[modulesSection][populate][moduleLinks][populate][module][fields][0]=documentId&populate[featuresSection][populate]=feature&populate[whyChooseUsSection][populate]=whyChooseUsCard&populate[testimonialsSection][populate][testimonial][populate][avatar][fields][0]=url&populate[faqsSection][populate]=qna`;
+// export const HOMEPAGE_API = `home-page?populate[heroSection][populate]=cta&populate[clientLogosMarquee][populate][clientLogo][fields][0]=url&populate[aboutUsSection][populate]=cta&populate[modulesSection][populate][moduleLinks][populate][module][fields][0]=documentId&populate[featuresSection][populate]=feature&populate[whyChooseUsSection][populate]=whyChooseUsCard&populate[testimonialsSection][populate][testimonial][populate][avatar][fields][0]=url&populate[faqsSection][populate]=qna`;
+
+export const HOMEPAGE_API = `home-page?populate[heroSection][populate]=cta&populate[clientLogosMarquee][populate][clientLogo][fields][0]=url&populate[aboutUsSection][populate][image][fields][0]=url&populate[modulesSection][populate][moduleLinks][populate][module][fields][0]=documentId&populate[featuresSection][populate]=feature&populate[whyChooseUsSection][populate]=whyChooseUsCard&populate[testimonialsSection][populate][testimonial][populate][avatar][fields][0]=url&populate[faqsSection][populate]=qna`;
 
 export const ABOUT_US_API = `/about-us?populate[experienceCard][populate]=*&populate[missionAndVisionSection][populate]=ourMission&populate[missionAndVisionSection][populate]=ourVision&populate[ourStorySection][populate][ourStoryTimeline][populate]=timelineItem`;
 
