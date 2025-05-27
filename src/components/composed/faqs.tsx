@@ -1,6 +1,6 @@
-"use client";
+// "use client";
 import { CircleHelpIcon } from "lucide-react";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -43,16 +43,16 @@ const FAQS = [
 ];
 
 export default function FAQs() {
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const AOS = require("aos");
-      AOS.init({
-        once: true,
-        duration: 600,
-        easing: "ease-out-quad",
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     const AOS = require("aos");
+  //     AOS.init({
+  //       once: true,
+  //       duration: 600,
+  //       easing: "ease-out-quad",
+  //     });
+  //   }
+  // }, []);
 
   return (
     <Section className="space-y-8 bg-gray-50 p-8 rounded-lg shadow-md">
@@ -61,7 +61,7 @@ export default function FAQs() {
         data-aos="fade-up"
         data-aos-delay="100">
         <CircleHelpIcon className="mr-2" />
-        <Text>FAQ'</Text>
+        <Text>FAQ</Text>
       </Badge>
       <MaxWidthWrapper className="flex flex-col items-center gap-8">
         <Heading

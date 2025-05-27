@@ -1,21 +1,21 @@
-"use client";
+// "use client";
 
 import 'aos/dist/aos.css';
 import Link from "next/link";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import Section from "./section";
 
 export default function HeroSection() {
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const AOS = require('aos');
-      AOS.init({
-        once: true,
-        duration: 600,
-        easing: 'ease-out-quad',
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined') {
+  //     const AOS = require('aos');
+  //     AOS.init({
+  //       once: true,
+  //       duration: 600,
+  //       easing: 'ease-out-quad',
+  //     });
+  //   }
+  // }, []);
 
   return (
     <Section

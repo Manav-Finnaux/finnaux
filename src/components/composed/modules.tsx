@@ -1,8 +1,8 @@
-"use client";
+// "use client";
 import 'aos/dist/aos.css';
 import { LayoutGridIcon, MoveRightIcon } from "lucide-react";
 import Link from "next/link";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { Badge } from "../ui/badge";
 import Heading from "./heading";
 import MaxWidthWrapper from "./maxWidthWrapper";
@@ -43,19 +43,19 @@ const MODULES = [
 ];
 
 export default function FunctionalBlocks() {
-  useEffect(() => {
-    // Initialize AOS only on client side
-    if (typeof window !== 'undefined') {
-      const AOS = require('aos');
-      AOS.init({
-        once: true, // Animations only happen once
-        duration: 600, // Faster duration for performance
-        easing: 'ease-out-quad', // Simple easing for performance
-        offset: 50, // Triggers animation a bit earlier
-        delay: 0, // Default no delay (stagger handled individually)
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   // Initialize AOS only on client side
+  //   if (typeof window !== 'undefined') {
+  //     const AOS = require('aos');
+  //     AOS.init({
+  //       once: true, // Animations only happen once
+  //       duration: 600, // Faster duration for performance
+  //       easing: 'ease-out-quad', // Simple easing for performance
+  //       offset: 50, // Triggers animation a bit earlier
+  //       delay: 0, // Default no delay (stagger handled individually)
+  //     });
+  //   }
+  // }, []);
 
   return (
     <Section className="py-16 md:py-24 bg-gradient-to-b from-white to-teal-50/30">

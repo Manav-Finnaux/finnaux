@@ -113,7 +113,7 @@ export default function TeamPage() {
 
       {/* Team Grid - Categories */}
       <div className="max-w-7xl mx-auto px-6 space-y-16">
-        {teamData.membersByDept.map((department, deptIndex) => (
+        {teamData.membersByDept.map((department) => (
           <div key={department.id} className="space-y-8" data-aos="fade-up">
             <h2 className="text-3xl font-bold text-center">
               {department.departmentName}

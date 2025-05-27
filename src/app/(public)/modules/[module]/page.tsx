@@ -61,7 +61,7 @@ export default function Page() {
               data-aos-delay="400">
               <p>
                 At Quickfix, we understand how frustrating it can be to deal
-                with a leaky faucet or pipe. That's why we offer reliable and
+                with a leaky faucet or pipe. That&apos;s why we offer reliable and
                 efficient faucet and leak repair services to help you save money
                 on your water bills and prevent further damage to your property.
               </p>
@@ -76,7 +76,7 @@ export default function Page() {
                 Our Service is always guaranteed.
               </p>
               <p>
-                If you're experiencing plumbing issues in your basement, it's
+                If you&apos;re experiencing plumbing issues in your basement, it&apos;s
                 best to call a licensed plumber to assess the situation and make
                 any necessary repairs. A professional plumber can help you
                 identify the cause of the problem and ensure that your basement
@@ -102,7 +102,7 @@ export default function Page() {
                 <li>Certified materials delivered in a timely manner.</li>
               </ol>
               <p>
-                Don't let a faucet or leak issue ruin your day. Contact Quickfix
+                Don&apos;t let a faucet or leak issue ruin your day. Contact Quickfix
                 for professional faucet and leak repair services that you can
                 count on. Call us today to schedule an appointment or request
                 emergency plumbing services.

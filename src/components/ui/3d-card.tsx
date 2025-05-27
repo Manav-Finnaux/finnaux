@@ -31,11 +31,11 @@ export const CardContainer = ({
     setPosition({ x, y });
   };
 
-  const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseEnter = () => {
     setMouseEnter(true);
   };
 
-  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseLeave = () => {
     setMouseEnter(false);
     setPosition({ x: 0, y: 0 });
   };
@@ -84,7 +84,7 @@ export const CardBody = ({
   return (
     <div
       className={cn(
-        "h-96 w-96 [transform-style:preserve-3d]",
+        "h-96 [transform-style:preserve-3d]",
         mouseEnter && "[transform:translateZ(75px)]",
         "transition-all duration-200 ease-linear",
         className

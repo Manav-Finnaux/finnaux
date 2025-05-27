@@ -23,7 +23,6 @@ import equifax from "./images/equifax.png";
 import esign from "./images/esign.png";
 import hdfc from "./images/hdfc.png";
 import icici from "./images/icici.png";
-import nu from "./images/nu.png";
 import park from "./images/park.png";
 import state from "./images/state.png";
 import sure from "./images/sure.png";
@@ -31,18 +30,12 @@ import trans from "./images/trans.jpg";
 import video from "./images/video.png";
 
 import Section from "@/components/composed/section";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 interface Partner {
   name: string;
-  logo: any;
+  logo: StaticImageData | string;
   variants?: string[];
-}
-
-interface CollectionSection {
-  title: string;
-  description: string;
-  partners: Partner[];
 }
 
 const collectionSolutions = {
@@ -269,7 +262,7 @@ export default function TechnologyPartners() {
             className="w-full h-full"
             data-aos="fade-up"
             data-aos-delay={index * 100}>
-            <CardBody className="bg-white/90 backdrop-blur-sm border border-gray-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 h-full flex flex-col w-96">
+            <CardBody className="bg-white/90 backdrop-blur-sm border border-gray-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 h-full flex flex-col">
               <div className="p-6 flex-1">
                 <div className="flex items-center gap-4 mb-5">
                   {category.icon}

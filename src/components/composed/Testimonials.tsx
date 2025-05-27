@@ -1,7 +1,7 @@
-"use client"
+// "use client"
 import { MessageSquareIcon } from "lucide-react";
 import Image from "next/image";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { Badge } from "../ui/badge";
 import Heading from "./heading";
 import { Marquee } from "./magic-ui-marquee";
@@ -43,16 +43,16 @@ export default function Testimonials() {
     },
   ];
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const AOS = require("aos");
-      AOS.init({
-        once: true,
-        duration: 600,
-        easing: "ease-out-quad",
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     const AOS = require("aos");
+  //     AOS.init({
+  //       once: true,
+  //       duration: 600,
+  //       easing: "ease-out-quad",
+  //     });
+  //   }
+  // }, []);
 
   return (
     <Section className="overflow-hidden space-y-6 py-16 bg-gray-50">

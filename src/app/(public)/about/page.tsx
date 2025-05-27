@@ -59,7 +59,7 @@ export default async function AboutUs() {
   );
 
   return (
-    <>
+    <div className="overflow-x-hidden">
       {/* Company Overview Section */}
       <div className="bg-gradient-to-r from-teal-100/70 via-green-100/70 to-cyan-100/70 min-h-screen w-full py-20 md:py-32 lg:py-40 flex items-center">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -84,7 +84,7 @@ export default async function AboutUs() {
       <div className="relative my-12 md:my-24 lg:my-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         {/* Experience Card */}
         <div
-          className="hidden md:flex bg-gradient-to-b from-teal-100/80 to-teal-50 border-teal-300/60 border rounded-xl h-72 lg:h-80 w-full max-w-[20rem] lg:max-w-[28rem] absolute shadow-xl shadow-teal-100/60 right-4 lg:right-20 -top-40 lg:-top-60 flex-col justify-evenly p-4 lg:p-6 z-10"
+          className="hidden md:flex bg-gradient-to-b from-teal-100/80 to-teal-50 border-teal-300/60 border rounded-xl h-64 lg:h-80 w-full max-w-[20rem] lg:max-w-[28rem] absolute shadow-xl shadow-teal-100/60 right-4 lg:right-20 -top-40 lg:-top-60 flex-col justify-evenly p-4 lg:p-6 z-10"
           data-aos="fade-left"
           data-aos-delay="300">
           <h1 className="bg-gradient-to-b from-cyan-400 to-teal-300 px-4 text-8xl lg:text-9xl text-transparent bg-clip-text text-left">
@@ -105,7 +105,7 @@ export default async function AboutUs() {
           data-aos-delay="400">
           {/* Mission Statement */}
           <div
-            className="ml-0 md:ml-24 mt-0 md:mt-20 mb-8 md:mb-16 w-full max-w-3xl"
+            className="ml-0 md:ml-16 lg:ml-24 mt-0 md:mt-20 mb-8 md:mb-16"
             data-aos="fade-right"
             data-aos-delay="500">
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-medium leading-snug">
@@ -181,6 +181,6 @@ export default async function AboutUs() {
           <Timeline data={timelineData} />
         </div>
       </section>
-    </>
+    </div>
   );
 }

@@ -1,7 +1,6 @@
-"use client"
-"use client";
+// "use client";
 import { CheckCircleIcon, LifeBuoy, Network, Shield } from "lucide-react";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { Badge } from "../ui/badge";
 import Heading from "./heading";
 import MaxWidthWrapper from "./maxWidthWrapper";
@@ -11,16 +10,16 @@ import Text from "./text";
 
 
 export default function WhyChooseUs() {
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const AOS = require("aos");
-      AOS.init({
-        once: true,
-        duration: 600,
-        easing: "ease-out-quad",
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     const AOS = require("aos");
+  //     AOS.init({
+  //       once: true,
+  //       duration: 600,
+  //       easing: "ease-out-quad",
+  //     });
+  //   }
+  // }, []);
 
   const features = [
     {
