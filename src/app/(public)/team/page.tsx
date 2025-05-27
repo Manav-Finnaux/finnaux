@@ -5,7 +5,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import Image from "next/image";
-import  fetchAPI from "@/lib/api";
+import fetchAPI from "@/lib/api";
 
 interface TeamMember {
   id: number;
@@ -44,11 +44,14 @@ export default function TeamPage() {
 
     const fetchTeamData = async () => {
       try {
-        const api = "/api/our-team?populate[membersByDept][populate][Member][populate][Image][fields][0]=url";
+        const api =
+          "/api/our-team?populate[membersByDept][populate][Member][populate][Image][fields][0]=url";
         const response = await fetchAPI<{ data: TeamData }>(api);
         setTeamData(response.data);
       } catch (err) {
-        setError(err instanceof Error ? err.message : "An unknown error occurred");
+        setError(
+          err instanceof Error ? err.message : "An unknown error occurred"
+        );
       } finally {
         setLoading(false);
       }
@@ -84,8 +87,10 @@ export default function TeamPage() {
   // Determine grid layout based on number of members
   const getGridClass = (memberCount: number) => {
     if (memberCount === 1) return "flex justify-center";
-    if (memberCount === 2) return "grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto justify-items-center";
-    if (memberCount === 3) return "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto justify-items-center";
+    if (memberCount === 2)
+      return "grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto justify-items-center";
+    if (memberCount === 3)
+      return "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto justify-items-center";
     return "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto justify-items-center";
   };
 
@@ -112,7 +117,6 @@ export default function TeamPage() {
           <div key={department.id} className="space-y-8" data-aos="fade-up">
             <h2 className="text-3xl font-bold text-center">
               {department.departmentName}
-              
             </h2>
             <div className={getGridClass(department.Member.length)}>
               {department.Member.map((member, memberIndex) => (
@@ -123,10 +127,10 @@ export default function TeamPage() {
                   data-aos-delay={memberIndex * 50}>
                   <CardBody className="bg-white rounded-xl shadow-md overflow-hidden aspect-[4/5] group/card">
                     <CardItem
-                      translateZ="20"
+                      // translateZ="20"
                       className="w-full h-[70%] bg-gray-100 relative">
                       <Image
-                        // src={member.Image.url}
+                        src={member.Image.url}
                         alt={member.Name}
                         fill
                         className="object-cover"
@@ -134,7 +138,7 @@ export default function TeamPage() {
                       />
                     </CardItem>
                     <CardItem
-                      translateZ="10"
+                      // translateZ="10"
                       className="p-4 flex flex-col justify-center h-[30%] text-center">
                       <h3 className="text-xl font-bold text-purple-600">
                         {member.Name}

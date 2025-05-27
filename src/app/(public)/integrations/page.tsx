@@ -60,7 +60,8 @@ const collectionSolutions = {
     },
     {
       title: "UPI Solutions",
-      description: "Instant UPI payment processing with Dyanmic QR or Static QR",
+      description:
+        "Instant UPI payment processing with Dyanmic QR or Static QR",
       partners: [
         {
           name: "E-NACH",
@@ -169,40 +170,40 @@ export default function TechnologyPartners() {
     },
   ];
 
-//   // const verificationServices = [
-//   //   {
-//   //     title: "Document Verification",
-//   //     items: [
-//   //       "Aadhar",
-//   //       "PAN",
-//   //       "Driving License",
-//   //       "Passport",
-//   //       "Electricity Bills",
-//   //     ],
-//   //   },
-//   //   {
-//   //     title: "Financial Verification",
-//   //     items: [
-//   //       "Bank Account",
-//   //       "GST",
-//   //       "Income Tax Returns",
-//   //       "Udyam Registration",
-//   //     ],
-//   //   },
-//   //   {
-//   //     title: "Asset Verification",
-//   //     items: [" Vehicle Registration Certificate", "Real Estate Verification"],
-//   //   },
-//   //   {
-//   //     title: "Business Verification",
-//   //     items: [
-//   //       "Company Incorporation",
-//   //       "MSME Registration",
-//   //       "Trade License",
-//   //       "MCA Records",
-//   //     ],
-//   //   },
-//   // ];
+  const verificationServices = [
+    {
+      title: "Document Verification",
+      items: [
+        "Aadhar",
+        "PAN",
+        "Driving License",
+        "Passport",
+        "Electricity Bills",
+      ],
+    },
+    {
+      title: "Financial Verification",
+      items: [
+        "Bank Account",
+        "GST",
+        "Income Tax Returns",
+        "Udyam Registration",
+      ],
+    },
+    {
+      title: "Asset Verification",
+      items: [" Vehicle Registration Certificate", "Real Estate Verification"],
+    },
+    {
+      title: "Business Verification",
+      items: [
+        "Company Incorporation",
+        "MSME Registration",
+        "Trade License",
+        "MCA Records",
+      ],
+    },
+  ];
 
   return (
     <Section
@@ -224,7 +225,8 @@ export default function TechnologyPartners() {
       <div className="max-w-7xl mx-auto px-6 mb-18">
         <div className="bg-white/70 rounded-xl shadow-inner p-6 mb-8 border border-gray-300">
           <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center justify-center gap-4 ">
-          <Workflow className="text-teal-400 w-8 h-8"/>Collection Types
+            <Workflow className="text-teal-400 w-8 h-8" />
+            Collection Types
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {collectionSolutions.sections.map((section, index) => (
@@ -242,7 +244,7 @@ export default function TechnologyPartners() {
                     <PartnerCard key={i} partner={partner} />
                   ))}
                 </div>
-                {section.partners[0]?.variants && (
+                {/* {section.partners[0]?.variants && (
                   <div className="mt-3 grid grid-cols-2 gap-2">
                     {section.partners[0].variants.map((variant, j) => (
                       <div
@@ -252,7 +254,7 @@ export default function TechnologyPartners() {
                       </div>
                     ))}
                   </div>
-                )}
+                )} */}
               </div>
             ))}
           </div>
@@ -299,43 +301,42 @@ export default function TechnologyPartners() {
         ))}
       </div>
 
-//       {/* Verification Services */}
-//       <div className="max-w-7xl mx-auto px-6 mb-20" data-aos="fade-up">
-//         <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
-//           {data.verificationSuite.heading}
-//           {/* Comprehensive Verification Suite */}
-//         </h2>
-//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-//           {data.verificationSuite.suiteCards.map(({ features, heading }, index) => (
-//             <div
-//               key={index}
-//               className="bg-white/90 backdrop-blur-sm border border-gray-200 rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
-//               <h3 className="text-xl font-semibold text-gray-800 mb-4">
-//                 {heading}
-//               </h3>
-//               <ul className="space-y-2">
-//                 {features.map(({ listItem }, i) => (
-//                   <li key={i} className="flex items-center">
-//                     <svg
-//                       className="w-4 h-4 text-teal-500 mr-2"
-//                       fill="none"
-//                       stroke="currentColor"
-//                       viewBox="0 0 24 24">
-//                       <path
-//                         strokeLinecap="round"
-//                         strokeLinejoin="round"
-//                         strokeWidth="2"
-//                         d="M5 13l4 4L19 7"
-//                       />
-//                     </svg>
-//                     <span className="text-gray-600">{listItem}</span>
-//                   </li>
-//                 ))}
-//               </ul>
-//             </div>
-//           ))}
-//         </div>
-//       </div>
+      {/* Verification Services */}
+      <div className="max-w-7xl mx-auto px-6 mb-20" data-aos="fade-up">
+        <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
+          Comprehensive Verification Suite
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {verificationServices.map((service, index) => (
+            <div
+              key={index}
+              className="bg-white/90 backdrop-blur-sm border border-gray-200 rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                {service.title}
+              </h3>
+              <ul className="space-y-2">
+                {service.items.map((item, i) => (
+                  <li key={i} className="flex items-center">
+                    <svg
+                      className="w-4 h-4 text-teal-500 mr-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span className="text-gray-600">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* Payment & Collection */}
       <div className="max-w-7xl mx-auto px-6" data-aos="fade-up">
@@ -444,7 +445,9 @@ export default function TechnologyPartners() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-800">Bill Payment Collection</h4>
+                    <h4 className="font-medium text-gray-800">
+                      Bill Payment Collection
+                    </h4>
                     <p className="text-gray-600 text-sm">
                       Bill payments via AU Bank
                     </p>
