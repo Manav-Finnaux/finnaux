@@ -7,7 +7,7 @@ import MaxWidthWrapper from "./maxWidthWrapper";
 import Section from "./section";
 import Text from "./text";
 import { AboutUsSectionTypes } from "@/lib/api.types";
-// import { MDXRemote } from 'next-mdx-remote/rsc';
+// import { MDXRemote } from 'next-mdx-remote/rsc';`
 
 
 export default function AboutUs({ data }: { data: AboutUsSectionTypes }) {
