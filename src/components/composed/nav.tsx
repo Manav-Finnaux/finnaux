@@ -1,7 +1,18 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, MenuIcon, XIcon } from "lucide-react";
+import {
+  ArrowRightIcon,
+  ChevronDown,
+  MenuIcon,
+  XIcon,
+  Home,
+  Boxes,
+  Link2,
+  Building2,
+  Info,
+  Users,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -9,47 +20,62 @@ import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import MaxWidthWrapper from "./maxWidthWrapper";
 
+// const links = [
+//   {
+//     label: "Home",
+//     href: "/"
+//   },
+//   {
+//     label: "Modules",
+//     href: "/modules"
+//   },
+//   {
+//     label: "Integrations",
+//     href: "/integrations",
+//   },
+//   {
+//     label: "Company",
+//     subLinks: [
+//       { label: "About Us", href: "/about" },
+//       { label: "Our Team", href: "/team" },
+//     ]
+//   },
+// ];
+
 const links = [
-  // {
-  //   label: "Features",
-  //   href: "/features",
-  //   subLinks: [
-  //     { label: "Loan Origination", href: "/features/origination" },
-  //     { label: "Portfolio Management", href: "/features/portfolio" },
-  //     { label: "Reporting", href: "/features/reports" },
-  //   ]
-  // },
   {
     label: "Home",
-    href: "/"
+    href: "/",
+    icon: Home,
   },
   {
     label: "Modules",
-    href: "/modules"
+    href: "/modules",
+    icon: Boxes,
   },
   {
     label: "Integrations",
     href: "/integrations",
-    // subLinks: [
-    //   { label: "Banking Partners", href: "/integrations#banking" },
-    //   { label: "KYC Services", href: "/integrations#kyc" },
-    //   { label: "Credit Bureau", href: "/integrations#credit" },
-    //   { label: "Collection Solutions", href: "/integrations#collection" },
-    //   { label: "Digital Documentation", href: "/integrations#documentation" },
-    // ]
+    icon: Link2,
   },
   {
     label: "Company",
+    icon: Building2,
     subLinks: [
-      { label: "About Us", href: "/about" },
-      { label: "Our Team", href: "/team" },
-    ]
+      {
+        label: "About Us",
+        href: "/about",
+        icon: Info,
+      },
+      {
+        label: "Our Team",
+        href: "/team",
+        icon: Users,
+      },
+    ],
   },
-  // {
-  //   label: "Contact",
-  //   href: "/contact",
-  // },
 ];
+
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -74,7 +100,7 @@ export default function Navbar() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.3 }}
-        className="bg-white/90 backdrop-blur-lg flex justify-between items-center px-6 py-2 rounded-2xl shadow-lg border border-teal-100/50"
+        className="bg-white/90 backdrop-blur-lg flex justify-between items-center px-6 py-2 rounded-2xl shadow-lg border border-teal-100/50 relative"
       >
 
         {/* Right - Logo */}
@@ -138,6 +164,7 @@ export default function Navbar() {
             ))}
           </ul>
         </div>
+
         {/* Left - Contact Button */}
         <div className="hidden lg:flex items-center">
           <Button
@@ -148,6 +175,69 @@ export default function Navbar() {
             <Link href="/contact">Contact Us</Link>
           </Button>
         </div>
+
+        {/* Menu for mobile view */}
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "500%" }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="absolute top-full mt-4 left-0 w-full z-40 bg-white backdrop-blur-lg shadow-lg px-8 py-10 rounded-2xl overflow-y-auto border"
+            >
+              <ul className="flex flex-col gap-6 text-lg">
+                {links.map(({ label, href, subLinks, icon }) => {
+                  const Icon = icon;
+                  if (href) {
+                    return (
+                      <li key={label}>
+                        <Link
+                          href={href}
+                          className="flex items-center justify-between gap-4 hover:text-blue-600 transition"
+                        >
+                          <div className="flex gap-4 items-center">
+                            <Icon className="w-5 h-5" />
+                            {label}
+                          </div>
+                          <ArrowRightIcon className="w-4 h-4" />
+                        </Link>
+                      </li>
+                    );
+                  } else if (subLinks) {
+                    return (
+                      <li key={label}>
+                        <p className="mb-2 flex gap-4 items-center text-gray-700">
+                          <Icon className="w-5 h-5" />
+                          {label}
+                        </p>
+                        <ul className="min-[375px]:ml-6 space-y-3">
+                          {subLinks.map(({ href, label, icon }) => {
+                            const Icon = icon;
+                            return (
+                              <li key={label}>
+                                <Link
+                                  href={href}
+                                  className="flex items-center justify-between gap-4 hover:text-blue-600 transition"
+                                >
+                                  <div className="flex gap-4 items-center">
+                                    <Icon className="w-5 h-5" />
+                                    {label}
+                                  </div>
+                                  <ArrowRightIcon className="w-4 h-4" />
+                                </Link>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </li>
+                    );
+                  }
+                })}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Mobile Menu Button */}
         <button

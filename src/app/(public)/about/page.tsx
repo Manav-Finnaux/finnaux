@@ -1,11 +1,8 @@
-"use client";
-
 import { Timeline } from "@/components/ui/timeline";
 import fetchAPI from "@/lib/api";
 import VisionImage from "@/lib/assets/features/leadership.png";
 import MissionImage from "@/lib/assets/features/mission.png";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 interface TimelineItem {
   id: number;
@@ -24,15 +21,15 @@ interface AboutUsData {
   };
   missionAndVisionSection: {
     heading: string;
+    para1: string;
+    para2: string;
     ourMission: {
       heading: string;
       para1: string;
-      para2: string;
     };
     ourVision: {
       heading: string;
       para1: string;
-      para2: string;
     };
   };
   ourStorySection: {
@@ -44,51 +41,9 @@ interface AboutUsData {
   };
 }
 
-export default function AboutUs() {
-  const [data, setData] = useState<AboutUsData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-
-    const fetchData = async () => {
-      try {
-        const api = "/api/about-us?populate[experienceCard][populate]=*&populate[missionAndVisionSection][populate]=ourMission&populate[missionAndVisionSection][populate]=ourVision&populate[ourStorySection][populate][ourStoryTimeline][populate]=timelineItem";
-        const response = await fetchAPI<{ data: AboutUsData }>(api);
-        setData(response.data);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "An unknown error occurred");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        Loading...
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="flex justify-center items-center h-screen text-red-500">
-        Error: {error}
-      </div>
-    );
-  }
-
-  if (!data) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        No data available
-      </div>
-    );
-  }
+export default async function AboutUs() {
+  const api = "/api/about-us?populate[experienceCard][populate]=*&populate[missionAndVisionSection][populate]=ourMission&populate[missionAndVisionSection][populate]=ourVision&populate[ourStorySection][populate][ourStoryTimeline][populate]=timelineItem";
+  const data = await fetchAPI<AboutUsData>(api);
 
   // Transform timeline data for the Timeline component
   const timelineData = data.ourStorySection.ourStoryTimeline.timelineItem.map(
@@ -164,9 +119,9 @@ export default function AboutUs() {
               className="flex-1 text-base sm:text-lg font-medium space-y-4 md:space-y-6 px-2 md:px-8 py-4 md:py-8"
               data-aos="fade-up"
               data-aos-delay="600">
-              <p>{data.missionAndVisionSection.ourMission.para2}</p>
+              <p>{data.missionAndVisionSection.para1}</p>
               <p className="font-light">
-                {data.missionAndVisionSection.ourVision.para1}
+                {data.missionAndVisionSection.para2}
               </p>
             </div>
             <div className="flex-1 px-2 md:px-6 py-4 md:py-8">
