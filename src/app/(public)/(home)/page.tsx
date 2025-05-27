@@ -8,13 +8,14 @@ import Testimonials from "@/components/composed/Testimonials";
 import WhyChooseUs from "@/components/composed/whyChooseUs";
 
 
-export default function Home() {
+export default async function Home() {
+
   return (
+    // AboutUs, FunctionalBlocks & Features overflow
     <div className="overflow-x-hidden">
       <HeroSection />
       <MarqueeSection />
 
-      {/* in teeno k (probably) animation k karan, horizontal overflow aa rha h */}
       <AboutUs />
       <FunctionalBlocks />
       <Features />
