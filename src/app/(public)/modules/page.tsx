@@ -57,7 +57,7 @@ export default function Page() {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          "http://192.168.1.5:1337/api/service-page?populate[Module][populate][module][fields][0]=documentId&populate[whyChooseUs][populate]=whyChooseUsCard"
+          "/service-page?populate[Module][populate][module][fields][0]=documentId&populate[whyChooseUs][populate]=whyChooseUsCard"
         );
         const json = await res.json();
         setData(json.data);

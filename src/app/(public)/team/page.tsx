@@ -45,7 +45,7 @@ export default function TeamPage() {
     const fetchTeamData = async () => {
       try {
         const api =
-          "/api/our-team?populate[membersByDept][populate][Member][populate][Image][fields][0]=url";
+          "/our-team?populate[membersByDept][populate][Member][populate][Image][fields][0]=url";
         const response = await fetchAPI<{ data: TeamData }>(api);
         setTeamData(response.data);
       } catch (err) {

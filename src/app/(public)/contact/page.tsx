@@ -40,7 +40,7 @@ export default function ContactPage() {
   useEffect(() => {
     const fetchContactData = async () => {
       try {
-        const api = "/api/contact-detail?populate=*";
+        const api = "/contact-detail?populate=*";
         const response = await fetchAPI<{ data: ContactData }>(api);
         setContactData(response.data);
       } catch (err) {

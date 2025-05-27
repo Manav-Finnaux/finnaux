@@ -42,7 +42,7 @@ interface AboutUsData {
 }
 
 export default async function AboutUs() {
-  const api = "/api/about-us?populate[experienceCard][populate]=*&populate[missionAndVisionSection][populate]=ourMission&populate[missionAndVisionSection][populate]=ourVision&populate[ourStorySection][populate][ourStoryTimeline][populate]=timelineItem";
+  const api = "/about-us?populate[experienceCard][populate]=*&populate[missionAndVisionSection][populate]=ourMission&populate[missionAndVisionSection][populate]=ourVision&populate[ourStorySection][populate][ourStoryTimeline][populate]=timelineItem";
   const data = await fetchAPI<AboutUsData>(api);
 
   // Transform timeline data for the Timeline component
