@@ -1,4 +1,4 @@
-const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+const BASE_URL = process.env.SERVER_API_BASE_URL;
 
 export default async function fetchAPI<T>(endpoint: string): Promise<T> {
   console.log(BASE_URL);
