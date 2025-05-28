@@ -3,8 +3,8 @@ import { CheckCircleIcon, LifeBuoy, Network, Shield } from "lucide-react";
 // import { useEffect } from "react";
 import { Badge } from "../ui/badge";
 import Heading from "./heading";
-import MaxWidthWrapper from "./maxWidthWrapper";
-import { NumberTicker } from "./number-ticker";
+import MaxWidthWrapper from "./max_width_wrapper";
+import { NumberTicker } from "./number_ticker";
 import Section from "./section";
 import Text from "./text";
 

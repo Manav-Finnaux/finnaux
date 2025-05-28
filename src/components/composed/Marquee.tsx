@@ -1,6 +1,6 @@
 import Image from "next/image";
 // import Marquee from "react-fast-marquee";
-import { Marquee } from "./magic-ui-marquee";
+import { Marquee } from "./magic_ui_marquee";
 import Section from "./section";
 import { ClientLogosMarqueeTypes } from "@/lib/api.types";
 

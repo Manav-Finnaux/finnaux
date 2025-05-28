@@ -1,6 +1,6 @@
 "use client";
 
-import { CardBody, CardContainer } from "@/components/ui/3d-card";
+import { CardBody, CardContainer } from "@/components/ui/3d_card";
 import {
   Banknote,
   Cpu,

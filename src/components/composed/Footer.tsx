@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import Heading from "./heading";
-import MaxWidthWrapper from "./maxWidthWrapper";
+import MaxWidthWrapper from "./max_width_wrapper";
 import Text from "./text";
 
 const LINKS = [
@@ -41,8 +41,6 @@ const LINKS = [
 const LETTERS = ['F', 'I', 'N', 'N', 'A', 'U', 'X'];
 
 export default function Footer() {
-
-
   return (
 
     <div className="bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 text-white rounded-3xl p-[1px] mx-4 sm:mx-8 shadow-2xl relative overflow-hidden group">

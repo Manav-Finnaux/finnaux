@@ -9,7 +9,7 @@ import {
 } from "../ui/accordion";
 import { Badge } from "../ui/badge";
 import Heading from "./heading";
-import MaxWidthWrapper from "./maxWidthWrapper";
+import MaxWidthWrapper from "./max_width_wrapper";
 import Section from "./section";
 import Text from "./text";
 

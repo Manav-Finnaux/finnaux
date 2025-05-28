@@ -1,8 +1,8 @@
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import Heading from "./heading";
-import { Marquee } from "./magic-ui-marquee";
-import MaxWidthWrapper from "./maxWidthWrapper";
+import { Marquee } from "./magic_ui_marquee";
+import MaxWidthWrapper from "./max_width_wrapper";
 import Section from "./section";
 import Text from "./text";
 

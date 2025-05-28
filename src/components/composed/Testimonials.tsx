@@ -4,7 +4,7 @@ import Image from "next/image";
 // import { useEffect } from "react";
 import { Badge } from "../ui/badge";
 import Heading from "./heading";
-import { Marquee } from "./magic-ui-marquee";
+import { Marquee } from "./magic_ui_marquee";
 import Section from "./section";
 import Text from "./text";
 

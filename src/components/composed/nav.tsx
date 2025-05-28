@@ -18,7 +18,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
-import MaxWidthWrapper from "./maxWidthWrapper";
+import MaxWidthWrapper from "./max_width_wrapper";
 
 // const links = [
 //   {

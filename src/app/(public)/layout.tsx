@@ -1,6 +1,6 @@
 "use client"
 
-import Footer from "@/components/composed/Footer";
+import Footer from "@/components/composed/footer";
 import Navbar from "@/components/composed/nav";
 import AOS from "aos";
 import "aos/dist/aos.css";

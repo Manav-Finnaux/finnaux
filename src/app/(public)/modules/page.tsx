@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { NumberTicker } from "@/components/composed/number-ticker";
+import { NumberTicker } from "@/components/composed/number_ticker";
 
 type ServicesResponse = {
   id: number;
