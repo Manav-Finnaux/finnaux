@@ -6,11 +6,11 @@ import Heading from "./heading";
 import MaxWidthWrapper from "./max_width_wrapper";
 import Section from "./section";
 import Text from "./text";
-import { AboutUsSectionTypes } from "@/lib/api.types";
+import { AboutUsSectionType } from "@/lib/api.types";
 // import { MDXRemote } from 'next-mdx-remote/rsc';`
 
 
-export default function AboutUs({ data }: { data: AboutUsSectionTypes }) {
+export default function AboutUs({ data }: { data: AboutUsSectionType }) {
   // const aboutUsBody = data.content;
   // const components = {
   //   p: (props: React.ComponentProps<"p">) => <Text as="p" variant="xl" data-aos="fade-up" data-aos-delay="100" className="text-teal-800 font-medium" {...props} />,

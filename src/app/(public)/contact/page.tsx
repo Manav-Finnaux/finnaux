@@ -1,26 +1,10 @@
 "use client";
 import Section from "@/components/composed/section";
-import fetchAPI from "@/lib/api";
+import fetchAPI, { CONTACT_DETAIL_API } from "@/lib/api";
+import { ContactInfoType } from "@/lib/api.types";
 import { motion } from "framer-motion";
 import { Linkedin, Twitter } from "lucide-react";
 import React, { useEffect, useState } from "react";
-
-interface PhoneNumber {
-  id: number;
-  phoneNumber: string;
-  Type: string;
-}
-
-interface AddressItem {
-  id: number;
-  listItem: string;
-}
-
-interface ContactData {
-  Email: string;
-  phoneNumber: PhoneNumber[];
-  Address: AddressItem[];
-}
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -31,7 +15,7 @@ export default function ContactPage() {
     message: "",
   });
 
-  const [contactData, setContactData] = useState<ContactData | null>(null);
+  const [contactData, setContactData] = useState<ContactInfoType | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,9 +24,8 @@ export default function ContactPage() {
   useEffect(() => {
     const fetchContactData = async () => {
       try {
-        const api = "/contact-detail?populate=*";
-        const response = await fetchAPI<{ data: ContactData }>(api);
-        setContactData(response.data);
+        const response = await fetchAPI<ContactInfoType>(CONTACT_DETAIL_API, true);
+        setContactData(response);
       } catch (err) {
         setError(err instanceof Error ? err.message : "An unknown error occurred");
       } finally {
@@ -52,6 +35,8 @@ export default function ContactPage() {
 
     fetchContactData();
   }, []);
+
+  useEffect(() => console.log({ contactData }), [contactData]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -115,10 +100,10 @@ export default function ContactPage() {
 
   // Find WhatsApp and Call numbers
   const whatsappNumber = contactData?.phoneNumber.find(
-    (phone) => phone.Type === "Whatsapp"
+    (phone) => phone.type === "Whatsapp"
   );
   const callNumber = contactData?.phoneNumber.find(
-    (phone) => phone.Type === "Call"
+    (phone) => phone.type === "Call"
   );
 
   return (
@@ -299,9 +284,9 @@ export default function ContactPage() {
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800">Email</h3>
                   <a
-                    href={`mailto:${contactData?.Email}`}
+                    href={`mailto:${contactData?.email}`}
                     className="hover:text-teal-600 transition-colors">
-                    {contactData?.Email}
+                    {contactData?.email}
                   </a>
                 </div>
               </motion.div>
@@ -371,7 +356,7 @@ export default function ContactPage() {
               )}
 
               {/* Address */}
-              {contactData?.Address && contactData.Address.length > 0 && (
+              {contactData?.address && contactData.address.length > 0 && (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -403,7 +388,7 @@ export default function ContactPage() {
                       Office
                     </h3>
                     <p className="text-gray-600 mt-1">
-                      {contactData.Address.map((item) => (
+                      {contactData.address.map((item) => (
                         <React.Fragment key={item.id}>
                           {item.listItem}
                           <br />

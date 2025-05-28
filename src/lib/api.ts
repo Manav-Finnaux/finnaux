@@ -1,7 +1,8 @@
-const BASE_URL = process.env.SERVER_API_BASE_URL;
+const SERVER_URL = process.env.SERVER_API_BASE_URL;
+const PUBLIC_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
-export default async function fetchAPI<T>(endpoint: string): Promise<T> {
-  console.log(BASE_URL);
+export default async function fetchAPI<T>(endpoint: string, isClientSide: boolean = false): Promise<T> {
+  const BASE_URL = isClientSide ? PUBLIC_URL : SERVER_URL;
   const url = BASE_URL + endpoint;
   const response = await fetch(url);
 
@@ -18,13 +19,10 @@ export const HOMEPAGE_API = `/home-page?populate[heroSection][populate]=cta&popu
 
 export const ABOUT_US_API = `/about-us?populate[experienceCard][populate]=*&populate[missionAndVisionSection][populate]=ourMission&populate[missionAndVisionSection][populate]=ourVision&populate[ourStorySection][populate][ourStoryTimeline][populate]=timelineItem`;
 
-export const OUR_TEAM_API = `
-  /our-team?populate[membersByDept][populate][member][populate][image][fields][0]=url
-`;
+export const OUR_TEAM_API = `/our-team?populate[membersByDept][populate][member][populate][image][fields][0]=url`;
 
-export const CONTACT_DETAIL_API = `
-  /contact-detail?populate=*
-`;
+// export const CONTACT_DETAIL_API = `/contact-detail?populate=*`;
+export const CONTACT_DETAIL_API = `/contact-detail?populate[address][populate]=*&populate[socials][populate]=socialLink&populate[phoneNumber][populate]=*`;
 
 export const MODULE_COLLECTION_API = `/service-page?populate[module][populate][module][fields][0]=documentId&populate[whyChooseUs][populate]=whyChooseUsCard`;
 

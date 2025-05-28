@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Section from "./section";
-import { HeroSectionTypes } from '@/lib/api.types';
+import { HeroSectionType } from '@/lib/api.types';
 
-export default function HeroSection({ data }: { data: HeroSectionTypes }) {
+export default function HeroSection({ data }: { data: HeroSectionType }) {
   return (
     <Section
       variant="top"

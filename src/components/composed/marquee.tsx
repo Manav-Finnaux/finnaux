@@ -2,9 +2,9 @@ import Image from "next/image";
 // import Marquee from "react-fast-marquee";
 import { Marquee } from "./magic_ui_marquee";
 import Section from "./section";
-import { ClientLogosMarqueeTypes } from "@/lib/api.types";
+import { ClientLogosMarqueeType } from "@/lib/api.types";
 
-export default function MarqueeSection({ data }: { data: ClientLogosMarqueeTypes[] }) {
+export default function MarqueeSection({ data }: { data: ClientLogosMarqueeType[] }) {
   const baseUrl = 'http://192.168.1.5:1337';
   const half = Math.ceil(data.length / 2);
   const marqueeOne = data.slice(0, half);

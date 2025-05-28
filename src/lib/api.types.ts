@@ -1,36 +1,36 @@
-export type CTATypes = {
+export type CTAType = {
   id: number;
   label: string;
   href: string;
 };
 
-export type HeroSectionTypes = {
+export type HeroSectionType = {
   id: number;
   heading: string;
   tagline: string;
-  cta: CTATypes[];
+  cta: CTAType[];
 };
 
-export type ClientLogoTypes = {
+export type ClientLogoType = {
   id: number;
   documentId: string;
   url: string;
 };
 
-export type ClientLogosMarqueeTypes = {
+export type ClientLogosMarqueeType = {
   id: number;
   companyName: string;
-  clientLogo: ClientLogoTypes;
+  clientLogo: ClientLogoType;
 };
 
-export type AboutUsSectionTypes = {
+export type AboutUsSectionType = {
   id: number;
   badge: string;
   content: string;
-  cta: CTATypes[];
+  cta: CTAType[];
 };
 
-export type ModuleLinkTypes = {
+export type ModuleLinkType = {
   id: number;
   label: string;
   tagline: string;
@@ -40,28 +40,28 @@ export type ModuleLinkTypes = {
   } | null;
 };
 
-export type ModulesSectionTypes = {
+export type ModulesSectionType = {
   id: number;
   badge: string;
   heading: string;
   modulesTagline: string;
-  moduleLinks: ModuleLinkTypes[];
+  moduleLinks: ModuleLinkType[];
 };
 
-export type FeatureTypes = {
+export type FeatureType = {
   id: number;
   feature: string;
 };
 
-export type FeaturesSectionTypes = {
+export type FeaturesSectionType = {
   id: number;
   badge: string;
   heading: string;
   tagline: string;
-  feature: FeatureTypes[];
+  feature: FeatureType[];
 };
 
-export type WhyChooseUsCardTypes = {
+export type WhyChooseUsCardType = {
   id: number;
   data: number;
   title: string;
@@ -69,16 +69,16 @@ export type WhyChooseUsCardTypes = {
   tagline: string;
 };
 
-export type WhyChooseUsSectionTypes = {
+export type WhyChooseUsSectionType = {
   id: number;
   badge: string;
   heading: string;
   tagline: string;
   footer: string;
-  whyChooseUsCard: WhyChooseUsCardTypes[];
+  whyChooseUsCard: WhyChooseUsCardType[];
 };
 
-export type TestimonialTypes = {
+export type TestimonialType = {
   id: number;
   testimonialDate: string;
   testimonial: string;
@@ -86,11 +86,11 @@ export type TestimonialTypes = {
   designation?: string; // Based on your message truncation
 };
 
-export type TestimonialsSectionTypes = {
+export type TestimonialsSectionType = {
   id: number;
   badge: string;
   heading: string;
-  testimonial: TestimonialTypes[];
+  testimonial: TestimonialType[];
 };
 
 export type HomePageDataType = {
@@ -99,11 +99,45 @@ export type HomePageDataType = {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  heroSection: HeroSectionTypes;
-  clientLogosMarquee: ClientLogosMarqueeTypes[];
-  aboutUsSection: AboutUsSectionTypes;
-  modulesSection: ModulesSectionTypes;
-  featuresSection: FeaturesSectionTypes;
-  whyChooseUsSection: WhyChooseUsSectionTypes;
-  testimonialsSection: TestimonialsSectionTypes;
+  heroSection: HeroSectionType;
+  clientLogosMarquee: ClientLogosMarqueeType[];
+  aboutUsSection: AboutUsSectionType;
+  modulesSection: ModulesSectionType;
+  featuresSection: FeaturesSectionType;
+  whyChooseUsSection: WhyChooseUsSectionType;
+  testimonialsSection: TestimonialsSectionType;
+};
+
+export type AddressType = {
+  id: number;
+  listItem: string;
+}
+
+export type SocialLinkType = {
+  id: number;
+  label: string;
+  href: string;
+};
+
+export type SocialType = {
+  id: number;
+  socialLink: SocialLinkType[];
+};
+
+export type PhoneNumberType = {
+  id: number;
+  phoneNumber: string;
+  type: 'Whatsapp' | 'Call' | string;
+}
+
+export type ContactInfoType = {
+  id: number;
+  documentId: string;
+  email: string;
+  createdAt: string; // ISO date string
+  updatedAt: string; // ISO date string
+  publishedAt: string; // ISO date string
+  address: AddressType[];
+  socials: SocialType;
+  phoneNumber: PhoneNumberType[];
 };
