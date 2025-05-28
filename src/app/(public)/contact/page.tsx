@@ -1,25 +1,37 @@
+// client side validation
+// send response as email
+
 "use client";
 import Section from "@/components/composed/section";
 import fetchAPI, { CONTACT_DETAIL_API } from "@/lib/api";
 import { ContactInfoType } from "@/lib/api.types";
+import handleContactData from "@/lib/contact_form";
+// import handleContactData from "@/lib/contact_form";
 import { motion } from "framer-motion";
-import { Linkedin, Twitter } from "lucide-react";
+import { Linkedin, LucideIcon, Twitter } from "lucide-react";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { useForm } from 'react-hook-form';
+
+type iconByLabel = Record<string, LucideIcon>;
+
+type submitStatusType = {
+  status: string;
+  message: string;
+}
+
+const ICON_BY_LABEL: iconByLabel = {
+  Twitter: Twitter,
+  LinkedIn: Linkedin
+};
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    city: "",
-    message: "",
-  });
-
+  const { register, handleSubmit } = useForm();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<submitStatusType | null>(null);
   const [contactData, setContactData] = useState<ContactInfoType | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   useEffect(() => {
     const fetchContactData = async () => {
@@ -35,42 +47,6 @@ export default function ContactPage() {
 
     fetchContactData();
   }, []);
-
-  useEffect(() => console.log({ contactData }), [contactData]);
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      // Replace with your actual form submission logic
-      console.log("Form submitted:", formData);
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      setSubmitSuccess(true);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        city: "",
-        message: "",
-      });
-    } catch (error) {
-      console.error("Submission error:", error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   if (loading) {
     return (
@@ -143,13 +119,24 @@ export default function ContactPage() {
               Send us a message
             </h2>
 
-            {submitSuccess ? (
+            {submitStatus !== null && (submitStatus?.status == 'success' ? (
               <div className="bg-teal-50 border border-teal-200 text-teal-700 px-4 py-3 rounded mb-6">
-                Thank you! Your message has been sent successfully.
+                {submitStatus.message}
               </div>
-            ) : null}
+            ) :
+              (
+                <div className="bg-teal-50 border border-teal-200 text-teal-700 px-4 py-3 rounded mb-6">
+                  {submitStatus.message}
+                </div>
+              ))
+            }
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit(async (data) => {
+              setIsSubmitting(true);
+              const response = await handleContactData(data);
+              setSubmitStatus(response);
+              setIsSubmitting(false);
+            })} className="space-y-6">
               <div>
                 <label
                   htmlFor="name"
@@ -159,10 +146,11 @@ export default function ContactPage() {
                 <input
                   type="text"
                   id="name"
-                  name="name"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
+                  {
+                  ...register('name', {
+                    required: 'This field is required'
+                  })
+                  }
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
                   placeholder="Your name"
                 />
@@ -177,10 +165,11 @@ export default function ContactPage() {
                 <input
                   type="email"
                   id="email"
-                  name="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
+                  {
+                  ...register('email', {
+                    required: 'This field is required'
+                  })
+                  }
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
                   placeholder="your.email@example.com"
                 />
@@ -195,10 +184,11 @@ export default function ContactPage() {
                 <input
                   type="tel"
                   id="phone"
-                  name="phone"
-                  required
-                  value={formData.phone}
-                  onChange={handleChange}
+                  {
+                  ...register('phone', {
+                    required: 'This field is required'
+                  })
+                  }
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
                   placeholder="+91 9876543210"
                 />
@@ -213,10 +203,11 @@ export default function ContactPage() {
                 <input
                   type="text"
                   id="city"
-                  name="city"
-                  required
-                  value={formData.city}
-                  onChange={handleChange}
+                  {
+                  ...register('city', {
+                    required: 'This field is required'
+                  })
+                  }
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
                   placeholder="Your city"
                 />
@@ -230,11 +221,12 @@ export default function ContactPage() {
                 </label>
                 <textarea
                   id="message"
-                  name="message"
+                  {
+                  ...register('message', {
+                    required: 'This field is required'
+                  })
+                  }
                   rows={4}
-                  required
-                  value={formData.message}
-                  onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
                   placeholder="How can we help you?"></textarea>
               </div>
@@ -242,8 +234,7 @@ export default function ContactPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full bg-teal-600 hover:bg-teal-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300 shadow-lg ${isSubmitting ? "opacity-70 cursor-not-allowed" : ""
-                  }`}>
+                className={`w-full bg-teal-600 hover:bg-teal-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300 shadow-lg`}>
                 {isSubmitting ? "Sending..." : "Send Message"}
               </button>
             </form>
@@ -400,33 +391,31 @@ export default function ContactPage() {
               )}
 
               {/* Social Media */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.8 }}
-                className="pt-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">
-                  Follow us
-                </h3>
-                <div className="flex gap-4">
-                  <a
-                    href="https://twitter.com/finnauxindia"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-white p-3 rounded-full shadow-sm hover:shadow-md transition hover:text-teal-500"
-                    aria-label="Twitter">
-                    <Twitter className="w-5 h-5" />
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/company/finnaux"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-white p-3 rounded-full shadow-sm hover:shadow-md transition hover:text-teal-700"
-                    aria-label="LinkedIn">
-                    <Linkedin className="w-5 h-5" />
-                  </a>
-                </div>
-              </motion.div>
+              {
+                contactData?.socials.socialLink.length && contactData?.socials.socialLink.length > 0 && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.8 }}
+                    className="pt-6">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4">
+                      Follow us
+                    </h3>
+                    <div className="flex gap-4">
+                      {
+                        contactData?.socials.socialLink.map(({ href, label }, idx) => {
+                          const Icon = ICON_BY_LABEL[label];
+                          return (
+                            <Link key={idx} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="bg-white p-3 rounded-full shadow-sm hover:shadow-md transition hover:text-teal-500">
+                              <Icon className="w-5 h-5" />
+                            </Link>
+                          )
+                        })
+                      }
+                    </div>
+                  </motion.div>
+                )
+              }
             </div>
           </motion.div>
         </div>

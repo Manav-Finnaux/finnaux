@@ -69,7 +69,7 @@ export type WhyChooseUsCardType = {
   tagline: string;
 };
 
-export type WhyChooseUsSectionType = {
+export type WhyChooseUsType = {
   id: number;
   badge: string;
   heading: string;
@@ -104,7 +104,7 @@ export type HomePageDataType = {
   aboutUsSection: AboutUsSectionType;
   modulesSection: ModulesSectionType;
   featuresSection: FeaturesSectionType;
-  whyChooseUsSection: WhyChooseUsSectionType;
+  whyChooseUsSection: WhyChooseUsType;
   testimonialsSection: TestimonialsSectionType;
 };
 
@@ -140,4 +140,133 @@ export type ContactInfoType = {
   address: AddressType[];
   socials: SocialType;
   phoneNumber: PhoneNumberType[];
+};
+
+type CompanyLogoType = {
+  id: number;
+  companyName: string | null;
+  clientLogo: ClientLogoType | null;
+};
+
+type ThirdPartyAPICardType = {
+  id: number;
+  heading: string;
+  tagline: string;
+  companyLogo: CompanyLogoType[];
+};
+
+type CollectionTypeCardType = {
+  id: number;
+  heading: string;
+  tagline: string;
+  companyLogo: CompanyLogoType[];
+};
+
+type CollectionTypesGroupType = {
+  id: number;
+  heading: string;
+  collectionTypeCard: CollectionTypeCardType[];
+};
+
+type ThirdPartyAPIsType = {
+  id: number;
+  thirdPartyAPICards: ThirdPartyAPICardType[];
+  collectionTypesGroup: CollectionTypesGroupType;
+};
+
+type IntegrationPageFeatureType = {
+  id: number;
+  listItem: string;
+};
+
+type SuiteCardType = {
+  id: number;
+  heading: string;
+  features: IntegrationPageFeatureType[];
+};
+
+type VerificationSuiteType = {
+  id: number;
+  heading: string;
+  suiteCards: SuiteCardType[];
+};
+
+type PaymentCollectionItemType = {
+  id: number;
+  level1: string;
+  level2: string;
+};
+
+type PaymentCollectionCardType = {
+  id: number;
+  heading: string;
+  list: PaymentCollectionItemType[];
+};
+
+type PaymentCollectionChannelsType = {
+  id: number;
+  heading: string;
+  cards: PaymentCollectionCardType[];
+};
+
+export type IntegrationPageResponseType = {
+  id: number;
+  documentId: string;
+  heading: string;
+  tagline: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  thirdPartyAPIs: ThirdPartyAPIsType;
+  verificationSuite: VerificationSuiteType;
+  paymentCollectionChannels: PaymentCollectionChannelsType;
+};
+
+type ModuleReferenceType = {
+  id: number;
+  documentId: string;
+};
+
+type ServiceModuleType = {
+  id: number;
+  heading: string;
+  excerpt: string;
+  module: ModuleReferenceType;
+};
+
+export type OurServicesResponseType = {
+  id: number;
+  documentId: string;
+  heading: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  tagline: string;
+  module: ServiceModuleType[];
+  whyChooseUs: WhyChooseUsType;
+};
+
+type TeamMemberType = {
+  id: number;
+  name: string;
+  designation: string;
+  complimentaryText: string;
+  image: ClientLogoType | null;
+};
+
+type DepartmentType = {
+  id: number;
+  departmentName: string;
+  member: TeamMemberType[];
+};
+
+export type OurTeamResponseType = {
+  id: number;
+  documentId: string;
+  heading: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  tagline: string;
+  membersByDept: DepartmentType[];
 };

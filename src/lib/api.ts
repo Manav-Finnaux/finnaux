@@ -3,7 +3,9 @@ const PUBLIC_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export default async function fetchAPI<T>(endpoint: string, isClientSide: boolean = false): Promise<T> {
   const BASE_URL = isClientSide ? PUBLIC_URL : SERVER_URL;
-  const url = BASE_URL + endpoint;
+  // const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL_LOCAL;
+
+  const url = BASE_URL + '/api' + endpoint;
   const response = await fetch(url);
 
   if (!response.ok) {
@@ -21,7 +23,6 @@ export const ABOUT_US_API = `/about-us?populate[experienceCard][populate]=*&popu
 
 export const OUR_TEAM_API = `/our-team?populate[membersByDept][populate][member][populate][image][fields][0]=url`;
 
-// export const CONTACT_DETAIL_API = `/contact-detail?populate=*`;
 export const CONTACT_DETAIL_API = `/contact-detail?populate[address][populate]=*&populate[socials][populate]=socialLink&populate[phoneNumber][populate]=*`;
 
 export const MODULE_COLLECTION_API = `/service-page?populate[module][populate][module][fields][0]=documentId&populate[whyChooseUs][populate]=whyChooseUsCard`;
