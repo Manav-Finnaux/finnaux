@@ -11,7 +11,7 @@ export type HeroSectionType = {
   cta: CTAType[];
 };
 
-export type ClientLogoType = {
+export type ImageType = {
   id: number;
   documentId: string;
   url: string;
@@ -20,7 +20,7 @@ export type ClientLogoType = {
 export type ClientLogosMarqueeType = {
   id: number;
   companyName: string;
-  clientLogo: ClientLogoType;
+  clientLogo: ImageType;
 };
 
 export type AboutUsSectionType = {
@@ -145,7 +145,7 @@ export type ContactInfoType = {
 type CompanyLogoType = {
   id: number;
   companyName: string | null;
-  clientLogo: ClientLogoType | null;
+  clientLogo: ImageType | null;
 };
 
 type ThirdPartyAPICardType = {
@@ -251,7 +251,7 @@ type TeamMemberType = {
   name: string;
   designation: string;
   complimentaryText: string;
-  image: ClientLogoType | null;
+  image: ImageType | null;
 };
 
 type DepartmentType = {
@@ -270,3 +270,16 @@ export type OurTeamResponseType = {
   tagline: string;
   membersByDept: DepartmentType[];
 };
+
+export type LoanModuleResponseType = {
+  id: number;
+  documentId: string;
+  title: string;
+  module: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  articleBody: string;
+  heroImage: ImageType | null;
+};
+

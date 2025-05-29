@@ -6,6 +6,7 @@ export default async function fetchAPI<T>(endpoint: string, isClientSide: boolea
   // const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL_LOCAL;
 
   const url = BASE_URL + '/api' + endpoint;
+  console.log(`Fetching data from: ${url}`);
   const response = await fetch(url, { cache: 'no-store' });
 
   if (!response.ok) {

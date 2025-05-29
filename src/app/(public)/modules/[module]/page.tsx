@@ -1,11 +1,10 @@
-"use client";
-
+// import fetchAPI from "@/lib/api";
 import Features from "@/lib/assets/features/demo.avif";
 import { ArrowLeft, ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 
-export default function Page() {
-
+export default async function Page() {
+  // const moduleData = await fetchAPI<>() 
   return (
     <div className="bg-white min-h-screen w-full pt-32 lg:py-36 pb-14">
       {/* Header Section */}
