@@ -55,7 +55,7 @@ export default function FAQs() {
   // }, []);
 
   return (
-    <Section className="space-y-8 bg-gray-50 p-8 rounded-lg shadow-md">
+    <Section id="faq" className="space-y-8 bg-gray-50 p-8 rounded-lg shadow-md">
       <Badge
         className="bg-teal-100 text-teal-600 p-2 rounded-lg flex items-center"
         data-aos="fade-up"

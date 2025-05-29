@@ -29,7 +29,7 @@ const features = [
 
 export default function Features() {
   return (
-    <Section
+    <Section id="features"
       style={{
         background:
           "linear-gradient(230deg, rgb(153, 221, 214) -13.07%, rgb(255, 255, 255) 55%)",
