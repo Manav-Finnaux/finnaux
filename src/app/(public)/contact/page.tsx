@@ -1,12 +1,8 @@
-// client side validation
-// send response as email
-
 "use client";
 import Section from "@/components/composed/section";
 import fetchAPI, { CONTACT_DETAIL_API } from "@/lib/api";
 import { ContactInfoType } from "@/lib/api.types";
 import handleContactData from "@/lib/contact_form";
-// import handleContactData from "@/lib/contact_form";
 import { motion } from "framer-motion";
 import { Linkedin, LucideIcon, Twitter } from "lucide-react";
 import Link from "next/link";

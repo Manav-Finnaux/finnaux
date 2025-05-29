@@ -4,7 +4,8 @@ import Section from "./section";
 import { ClientLogosMarqueeType } from "@/lib/api.types";
 
 export default function MarqueeSection({ data }: { data: ClientLogosMarqueeType[] }) {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? 'http://192.168.1.5:1337/';
+  const baseUrl = process.env.SERVER_API_BASE_URL;
+  // const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL_LOCAL ?? 'http://192.168.1.5:1337/';
   const half = Math.ceil(data.length / 2);
   const marqueeOne = data.slice(0, half);
   const marqueeTwo = data.slice(half);
