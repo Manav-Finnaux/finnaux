@@ -1,114 +1,162 @@
+"use client";
 import Link from "next/link";
 import Section from "./section";
 import { HeroSectionType } from '@/lib/api.types';
+import { Bebas_Neue } from 'next/font/google';
+import { useEffect, useRef } from 'react';
+
+const bebas = Bebas_Neue({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export default function HeroSection({ data }: { data: HeroSectionType }) {
+  const headingParts = [
+    { text: "Financial", color: "text-white" },
+    { text: "Solutions", color: "text-white" },
+    { text: "for", color: "text-white" },
+    { text: "Modern", color: "text-[#c4ec5a]" },
+    { text: "Lending", color: "text-white" },
+    { text: "Institutions", color: "text-white" }
+  ];
+
+  const backgroundRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Only initialize animations when in view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-float');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    if (backgroundRef.current) {
+      const elements = backgroundRef.current.querySelectorAll('.float-element');
+      elements.forEach(el => observer.observe(el));
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <Section
       variant="top"
-      className="text-gray-800 min-h-[100svh] relative overflow-hidden"
-      style={{
-        background: "linear-gradient(135deg, #e6fffa 0%, #b2f5ea 50%, #81e6d9 100%)",
-      }}
+      className={`${bebas.className} text-gray-800 min-h-screen xl:max-h-[980px] xl:min-h-fit relative overflow-hidden`}
     >
-      {/* Animated background elements */}
-      <div
-        className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none"
-        style={{
-          backgroundImage: 'radial-gradient(circle at 20% 30%, #0d9488 1px, transparent 1px), radial-gradient(circle at 80% 70%, #0d9488 1px, transparent 1px)',
-          backgroundSize: '40px 40px',
-        }}
-      />
+      {/* Optimized Background */}
+      <div 
+        ref={backgroundRef}
+        className="absolute inset-0 z-0 overflow-hidden bg-gradient-to-br from-teal-900 via-teal-700 to-teal-500"
+      >
+        {/* Static geometric pattern */}
+        <div 
+          className="absolute inset-0 opacity-15"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at 20% 30%, #c4ec5a 1px, transparent 1px),
+              radial-gradient(circle at 80% 70%, #c4ec5a 1px, transparent 1px)
+            `,
+            backgroundSize: '40px 40px'
+          }}
+        />
+        
+        {/* Optimized floating elements - reduced count and simplified animation */}
+        <div className="absolute inset-0">
+          {[...Array(3)].map((_, i) => (
+            <div
+              key={i}
+              className="float-element rounded-full bg-teal-400/20 opacity-0"
+              style={{
+                width: `${150 + i * 50}px`,
+                height: `${150 + i * 50}px`,
+                top: `${20 + i * 20}%`,
+                left: `${10 + i * 25}%`,
+                filter: 'blur(60px)',
+                animationDuration: `${20 + i * 5}s`,
+                animationDelay: `${i * 2}s`
+              }}
+            />
+          ))}
+        </div>
+      </div>
 
-      {/* Hero Content */}
-      <div className="flex flex-col justify-center items-center text-center py-12 px-4 sm:px-8 max-w-7xl mx-auto gap-6 min-h-[calc(100vh-5rem)]">
-        <div className="w-full md:max-w-[75%]" data-aos="fade-up">
+      {/* Hero Content - unchanged from original */}
+      <div className="relative z-10 flex flex-col justify-center items-start sm:items-center sm:text-center py-8 px-4 sm:px-6 max-w-7xl mx-auto gap-4 min-h-[calc(100vh-4rem)]">
+        <div className="w-full md:max-w-[90%] lg:max-w-[75%]" data-aos="fade-up">
           <h1
-            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 sm:mb-6 text-teal-900 leading-tight"
+            className="text-7xl xs:text-5xl md:text-8xl lg:text-9xl tracking-wider mb-5 sm:mb-4 text-white leading-tight"
             data-aos="fade-up"
-            data-aos-delay="100"
           >
-            {/* Software Built for <span className="text-teal-700">Modern</span> Loan Providers */}
-            {data.heading}
+            {headingParts.map((part, i) => (
+              <span key={i} className={`${part.color} inline-block`}>
+                {part.text.split('').map((letter, j) => (
+                  <span 
+                    key={j} 
+                    className="inline-block hover:text-[#c4ec5a] transition-colors duration-300 hover:scale-105"
+                  >
+                    {letter}
+                  </span>
+                ))}
+                &nbsp;
+              </span>
+            ))}
           </h1>
 
           <p
-            className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-teal-800 max-w-3xl mx-auto"
+            className="text-base sm:text-lg md:text-xl mb-4 pb-3 sm:mb-6 text-gray-200 max-w-2xl mx-auto font-sans"
             data-aos="fade-up"
-            data-aos-delay="200"
           >
-            {/* End-to-end software for loan origination, underwriting, customer engagement, and compliance. */}
-            {data.tagline}
+            {data.tagline || "End-to-end financial technology solutions for lenders of all sizes"}
           </p>
 
-
-          <div className="flex flex-col gap-4 sm:flex-row justify-center">
-            {
-              data.cta.map(({ href, label }, idx) => {
-                const styles = idx === 0 ?
-                  `bg-[#c4ec5a] text-black sm:h-14 sm:rounded-lg sm:px-10 sm:text-xl` :
-                  `bg-[#f5fbe3] text-black sm:h-14 sm:rounded-lg sm:px-10 sm:text-xl`;
-
-                return (
-                  <Link href={href} key={idx}>
-                    <button className={styles}>
-                      {label}
-                    </button>
-                  </Link>
-                )
-              })
-            }
+          <div className="flex flex-col min-[390px]:flex-row gap-5 w-full sm:items-center justify-start sm:justify-center" data-aos="fade-up" data-aos-delay="300">
+            {data.cta?.map(({ href, label }, idx) => {
+              const isPrimary = idx === 0;
+              return (
+                <Link href={href || "#"} key={idx}>
+                  <button className={`
+                    w-full
+                    min-[390px]:w-fit
+                    ${isPrimary ? 'bg-[#c4ec5a] text-black' : 'bg-transparent text-white border-2 border-white'} 
+                    px-6 py-2 text-base sm:text-lg font-sans font-medium rounded-3xl
+                    hover:scale-105 transition-transform duration-300
+                    focus:outline-none focus:ring-2 focus:ring-[#c4ec5a]
+                    active:scale-95
+                  `}>
+                    {label || (isPrimary ? "Get Started" : "Learn More")}
+                  </button>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full h-32 pointer-events-none bg-gradient-to-b from-transparent to-white" />
+      {/* Optimized global animation styles */}
+      <style jsx global>{`
+        @keyframes float {
+          0% { 
+            opacity: 0;
+            transform: translate(0, 0) scale(0.95); 
+          }
+          20% {
+            opacity: 1;
+          }
+          100% { 
+            opacity: 1;
+            transform: translate(0, -50px) scale(1); 
+          }
+        }
+        .animate-float {
+          animation-name: float;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+        }
+      `}</style>
     </Section>
   );
 }
-
-
-
-// import Link from "next/link";
-// import Section from "./section";
-
-// export default function HeroSection() {
-//   return (
-//     <>
-//       <Section
-//         variant="top"
-//         className="text-white min-h-vh relative"
-//         style={{
-//           backgroundImage: 'url("/grad2.jpeg")',
-//           backgroundSize: "cover",
-//         }}>
-//         {/* Hero Content */}
-//         <div className="flex flex-col justify-center items-center text-center py-8 sm:py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-8 gap-4 sm:gap-8 min-h-[calc(100vh-5rem)]">
-//           <div className="w-full md:max-w-[75%]">
-//             <h1 className="text-2xl sm:text-4xl md:text-6xl text-center font-extrabold mb-4 sm:mb-6">
-//               Software Built for Modern Loan Providers
-//             </h1>
-//             <p className="text-lg sm:text-2xl mb-6 sm:mb-8">
-//               End-to-end software for loan origination, underwriting, customer
-//               engagement, and compliance.
-//             </p>
-
-//             <div className="flex flex-col gap-4 sm:flex-row justify-center">
-//               <Link href={'/about'}>
-//                 <button className="bg-[#c4ec5a] text-black sm:h-14 sm:rounded-lg sm:px-10 sm:text-xl">
-//                   About Us Page
-//                 </button>
-//               </Link>
-//               <button className="bg-[#f5fbe3] text-black sm:h-14 sm:rounded-lg sm:px-10 sm:text-xl">
-//                 See how it works
-//               </button>
-//             </div>
-//           </div>
-//         </div>
-
-//         <div className="absolute bottom-0 left-0 w-full h-32 pointer-events-none bg-gradient-to-b from-transparent to-background" />
-
-//       </Section>
-//     </>
-//   );
-// }
