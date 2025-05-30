@@ -1,253 +1,286 @@
-import { CardBody, CardContainer } from "@/components/ui/3d_card";
 import {
-  Banknote,
-  Cpu,
-  Fingerprint,
-  MessageSquareDot,
-  ScanLine,
   ShieldCheck,
-  Verified,
-  Workflow,
+  CreditCard,
+  FileText,
+  Landmark,
+  QrCode,
+  ScanLine,
+  Banknote,
+  BadgeCheck,
+  FileDigit,
+  FileSearch2,
+  Home,
+  Briefcase,
+  ArrowRight,
 } from "lucide-react";
-import Section from "@/components/composed/section";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/components/ui/card";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 import fetchAPI, { INTEGRATIONS_API } from "@/lib/api";
 import { IntegrationPageResponseType } from "@/lib/api.types";
 
-const ICONS_BY_INDEX = [Verified, Fingerprint, ScanLine, ShieldCheck, Cpu, MessageSquareDot];
-const COLORS_BY_INDEX = [
-  'blue',
-  'purple',
-  'green',
-  'amber',
-  'cyan',
-  'pink'
-];
+const featureIcons = {
+  "Document Verification": <FileText className="w-6 h-6 text-teal-500" />,
+  "Financial Verification": <Landmark className="w-6 h-6 text-teal-500" />,
+  "Asset Verification": <Home className="w-6 h-6 text-teal-500" />,
+  "Business Verification": <Briefcase className="w-6 h-6 text-teal-500" />,
+  "Payment Solutions": <CreditCard className="w-6 h-6 text-emerald-500" />,
+  "Collection Methods": <Banknote className="w-6 h-6 text-blue-500" />,
+};
 
-export default async function TechnologyPartners() {
+export default async function IntegrationsPage() {
   const data = await fetchAPI<IntegrationPageResponseType>(INTEGRATIONS_API);
-  // const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL_LOCAL; // change this
   const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   return (
-    <Section
-      variant="top"
-      className="bg-gradient-to-br from-teal-50/70 via-green-50/70 to-cyan-50/70 w-full min-h-screen">
+    <div className="bg-gradient-to-b from-[#f5f8fb] to-[#ebf1f7] min-h-screen font-sans">
       {/* Hero Section */}
-      <div
-        className="max-w-7xl mx-auto px-6 text-center mb-16"
-        data-aos="fade-up">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent mb-4">
-          {data.heading}
-        </h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          {data.tagline}
-        </p>
-      </div>
-
-      {/* Collection Types Section */}
-      <div className="max-w-7xl mx-auto px-6 mb-18">
-        <div className="bg-white/70 rounded-xl shadow-inner p-6 mb-8 border border-gray-300">
-          <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center justify-center gap-4 ">
-            <Workflow className="text-teal-400 w-8 h-8" />
-            {data.thirdPartyAPIs.collectionTypesGroup.heading}
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {data.thirdPartyAPIs.collectionTypesGroup.collectionTypeCard.map(({ companyLogo, heading, tagline }, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl shadow-md p-4 border border-gray-100">
-                <h4 className="text-md font-semibold text-xl flex items-center justify-center text-gray-800 mb-2">
-                  {heading}
-                </h4>
-                <p className="  text-gray-800 mb-3 text-sm flex items-center justify-center">
-                  {tagline}
-                </p>
-                <div className="grid sm:grid-cols-2 gap-3 max-w-sm mx-auto">
-                  {companyLogo.map((partner, i) => (
-                    <div key={i} className="bg-gray-50 border-gray-200 border rounded-lg p-3 flex items-center justify-center relative h-16">
-                      <Image
-                        src={partner.clientLogo ? `${baseUrl}${partner.clientLogo.url}` : ''}
-                        alt={partner.companyName ? partner.companyName : ''}
-                        className="object-contain"
-                        fill
-                        sizes="(max-width: 120px) 100vw, 120px"
-                        style={{ width: "100%", height: "100%" }}
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-500/15 to-emerald-500/15 -skew-y-6"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-5 leading-tight">
+              {data.heading}
+            </h1>
+            <p className="text-lg md:text-xl text-gray-700 mb-10 max-w-3xl mx-auto">
+              {data.tagline}
+            </p>
+            <Button className="px-8 py-3 text-lg rounded-full bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 hover:to-emerald-700 text-white shadow-lg transform transition-transform duration-300 hover:scale-105">
+              Explore Integrations
+            </Button>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Integration Grid */}
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-        {data.thirdPartyAPIs.thirdPartyAPICards.map(({ companyLogo, heading, tagline }, index) => {
-          const Icon = ICONS_BY_INDEX[index];
-          return (
-            <CardContainer
-              key={index}
-              className="w-full h-full"
-              data-aos="fade-up"
-              data-aos-delay={index * 100}>
-              <CardBody className="bg-white/90 backdrop-blur-sm border border-gray-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 h-full flex flex-col">
-                <div className="p-6 flex-1 text-center">
-                  <div className="flex items-center justify-center gap-4 mb-5">
-                    <Icon className={`w-8 h-8 text-${COLORS_BY_INDEX[index]}-600`} />
-                    <h2 className="text-2xl font-bold text-gray-800">
-                      {heading}
-                    </h2>
-                  </div>
-                  <p className="text-gray-600 mb-6">{tagline}</p>
+      {/* Third Party APIs */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-14 text-gray-900">
+            Our Technology Partners
+          </h2>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-sm mx-auto">
-                    {companyLogo.map(({ clientLogo, companyName }, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {data.thirdPartyAPIs.thirdPartyAPICards.map((card) => (
+              <Card
+                key={card.id}
+                className="group flex flex-col h-full hover:shadow-xl transition-all duration-300 border border-gray-200 rounded-2xl overflow-hidden bg-white/95 backdrop-blur-sm">
+                <CardHeader className="pb-4">
+                  <CardTitle className="flex items-center gap-3 text-2xl text-gray-800">
+                    <ShieldCheck className="text-teal-600 w-7 h-7" />
+                    {card.heading}
+                  </CardTitle>
+                  <CardDescription className="text-gray-600 text-base mt-2">
+                    {card.tagline}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="flex-grow">
+                  <div
+                    className={`flex flex-wrap justify-center gap-4 pt-4 ${
+                      card.companyLogo.length === 1
+                        ? "flex"
+                        : card.companyLogo.length === 2
+                        ? "grid grid-cols-2"
+                        : "grid grid-cols-2"
+                    }`}>
+                    {card.companyLogo.map((logo) => (
                       <div
-                        key={i}
-                        className="bg-gray-50 border-gray-200 border rounded-lg p-3 flex items-center justify-center relative h-16 max-w-sm">
+                        key={logo.id}
+                        className={`relative ${
+                          card.companyLogo.length === 1
+                            ? "w-48 h-24"
+                            : "w-full h-20"
+                        } p-2 bg-white border border-gray-200 rounded-lg flex items-center justify-center shadow-sm group-hover:shadow-md transition-all duration-300 overflow-hidden group-hover:scale-105`}>
                         <Image
-                          src={clientLogo ? baseUrl + clientLogo?.url : ''}
-                          alt={companyName ? companyName : ''}
-                          className="object-contain"
+                          src={baseUrl + (logo?.clientLogo?.url ?? "")}
+                          alt={logo.companyName ?? "Company Logo"}
                           fill
-                          sizes="(max-width: 120px) 100vw, 120px"
-                          style={{ width: "100%", height: "100%" }}
+                          className="object-contain p-2"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                       </div>
                     ))}
                   </div>
-                </div>
-              </CardBody>
-            </CardContainer>
-          )
-        })}
-      </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      {/* Verification Services */}
-      <div className="max-w-7xl mx-auto px-6 mb-20" data-aos="fade-up">
-        <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
-          {data.verificationSuite.heading}
-        </h2>
-        <div className="max-w-md mx-auto sm:max-w-none grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {data.verificationSuite.suiteCards.map(({ features, heading }, index) => (
-            <div
-              key={index}
-              className="bg-white/90 backdrop-blur-sm border border-gray-200 rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                {heading}
-              </h3>
-              <ul className="space-y-2">
-                {features.map(({ listItem }, i) => (
-                  <li key={i} className="flex items-center">
-                    <svg
-                      className="w-4 h-4 text-teal-500 mr-2"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span className="text-gray-600">{listItem}</span>
-                  </li>
-                ))}
-              </ul>
+      {/* Collection Types */}
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-14 text-gray-900">
+            {data.thirdPartyAPIs.collectionTypesGroup.heading}
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {data.thirdPartyAPIs.collectionTypesGroup.collectionTypeCard.map(
+              (card) => (
+                <Card
+                  key={card.id}
+                  className="group flex flex-col h-full hover:shadow-xl transition-all duration-300 border border-gray-200 rounded-2xl overflow-hidden bg-white/95 backdrop-blur-sm">
+                  <CardHeader className="pb-4">
+                    <CardTitle className="flex items-center gap-3 text-2xl text-gray-800">
+                      {card.heading.includes("UPI") ? (
+                        <QrCode className="text-emerald-600 w-7 h-7" />
+                      ) : card.heading.includes("eNACH") ? (
+                        <FileDigit className="text-teal-600 w-7 h-7" />
+                      ) : (
+                        <ScanLine className="text-blue-600 w-7 h-7" />
+                      )}
+                      {card.heading}
+                    </CardTitle>
+                    <CardDescription className="text-gray-600 text-base mt-2">
+                      {card.tagline}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="flex-grow">
+                    <div
+                      className={`flex flex-wrap justify-center gap-4 pt-4 ${
+                        card.companyLogo.length === 1
+                          ? "flex"
+                          : card.companyLogo.length === 2
+                          ? "grid grid-cols-2"
+                          : "grid grid-cols-2"
+                      }`}>
+                      {card.companyLogo.map((logo) => (
+                        <div
+                          key={logo.id}
+                          className={`relative ${
+                            card.companyLogo.length === 1
+                              ? "w-48 h-24"
+                              : "w-full h-20"
+                          } p-2 bg-white border border-gray-200 rounded-lg flex items-center justify-center shadow-sm group-hover:shadow-md transition-all duration-300 overflow-hidden group-hover:scale-105`}>
+                          <Image
+                            src={baseUrl + (logo.clientLogo?.url ?? "")}
+                            alt={logo.companyName ?? "Company Logo"}
+                            fill
+                            className="object-contain p-2"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              )
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Verification Suite */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-14 text-gray-900">
+            {data.verificationSuite.heading}
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {data.verificationSuite.suiteCards.map((card) => (
+              <Card
+                key={card.id}
+                className="h-full hover:shadow-xl transition-all duration-300 border-0 rounded-2xl overflow-hidden bg-gradient-to-b from-gray-50 to-white/95 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-3 text-2xl text-gray-800">
+                    {featureIcons[card.heading as keyof typeof featureIcons]}
+                    {card.heading}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3">
+                    {card.features.map((feature) => (
+                      <li
+                        key={feature.id}
+                        className="flex items-start gap-2 text-gray-600 text-base">
+                        <BadgeCheck className="w-5 h-5 text-teal-500 mt-0.5 flex-shrink-0" />
+                        <span>{feature.listItem}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Payment & Collection Channels */}
+      <section className="py-16 bg-gradient-to-br from-teal-50 to-emerald-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-14 text-gray-900">
+            {data.paymentCollectionChannels.heading}
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {data.paymentCollectionChannels.cards.map((card) => (
+              <Card
+                key={card.id}
+                className="h-full hover:shadow-xl transition-all duration-300 border-0 rounded-2xl overflow-hidden bg-white/80 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-3 text-2xl text-gray-800">
+                    {featureIcons[card.heading as keyof typeof featureIcons]}
+                    {card.heading}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-4">
+                    {card.list.map((item) => (
+                      <li
+                        key={item.id}
+                        className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 flex items-start gap-3">
+                        <FileSearch2 className="w-6 h-6 text-teal-600 flex-shrink-0 mt-0.5" />
+                        <div>
+                          <h3 className="font-semibold text-lg text-gray-900">
+                            {item.level1}
+                          </h3>
+                          <p className="text-sm text-gray-600 mt-1">
+                            {item.level2}
+                          </p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-teal-600 to-emerald-700">
+        <div className="container mx-auto px-4 text-center">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Ready to integrate with our ecosystem?
+            </h2>
+            <p className="text-lg text-teal-100 mb-8">
+              Connect your systems with our platform and unlock seamless
+              financial operations.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                variant="secondary"
+                className="bg-white text-teal-700 hover:bg-gray-100 px-8 py-3 text-lg rounded-full shadow-md transform transition-transform duration-300 hover:scale-105">
+                Get Started
+              </Button>
+              <Button
+                variant="outline"
+                className="bg-transparent border-white text-white hover:bg-white/10 px-8 py-3 text-lg rounded-full transform transition-transform duration-300 hover:scale-105">
+                Contact Sales
+              </Button>
             </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Payment & Collection */}
-      <div className="max-w-7xl mx-auto px-6" data-aos="fade-up">
-        <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
-          {data.paymentCollectionChannels.heading}
-        </h2>
-        <div className="bg-white/90 backdrop-blur-sm border border-gray-200 rounded-2xl shadow-lg overflow-hidden grid grid-cols-1 sm:grid-cols-2 max-w-md mx-auto sm:max-w-none">
-          <div className="p-6 sm:p-8 md:p-10 border-b sm:border-b-0 sm:border-r border-gray-200">
-            <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
-              <Banknote className="w-6 h-6 text-green-500" />
-              {data.paymentCollectionChannels.cards[0].heading}
-            </h3>
-            <ul className="space-y-4">
-              {
-                data.paymentCollectionChannels.cards[0].list.map(({ level1, level2 }, idx) => {
-                  return (
-                    <li key={idx} className="flex items-start">
-                      <div className="bg-green-100 p-2 rounded-full mr-4 hidden min-[320px]:block">
-                        <svg
-                          className="w-4 h-4 text-green-600"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24">
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-gray-800">
-                          {level1}
-                        </h4>
-                        <p className="text-gray-600 text-sm">
-                          {level2}
-                        </p>
-                      </div>
-                    </li>
-                  )
-                })
-              }
-            </ul>
-          </div>
-
-          <div className="p-6 sm:p-8 md:p-10">
-            <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
-              <ScanLine className="w-6 h-6 text-blue-500" />
-              {data.paymentCollectionChannels.cards[1].heading}
-            </h3>
-            <ul className="space-y-4">
-              {
-                data.paymentCollectionChannels.cards[1].list.map(({ level1, level2 }, idx) => {
-                  return (
-                    <li className="flex items-start" key={idx}>
-                      <div className="bg-blue-100 p-2 rounded-full mr-4 hidden min-[320px]:block">
-                        <svg
-                          className="w-4 h-4 text-blue-600"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24">
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-gray-800">
-                          {level1}
-                        </h4>
-                        <p className="text-gray-600 text-sm">
-                          {level2}
-                        </p>
-                      </div>
-                    </li>
-                  )
-                })
-              }
-            </ul>
           </div>
         </div>
-      </div>
-    </Section>
+      </section>
+    </div>
   );
 }

@@ -6,23 +6,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "avatar.iran.liara.run",
-        pathname: "/public/**",
-      },
-<<<<<<< HEAD
-      {
-        protocol: 'http',
-        hostname: 'localhost',
-        pathname: '/uploads/**'
-      },
-      new URL('http://192.168.0.27:1337/uploads/*'),
-=======
-      new URL("http://192.168.0.27:1337/uploads/*"),
->>>>>>> b85086ec68559a4c5b0821406de1f46fb5e087ad
-      {
-        protocol: "https",
         hostname: "strapi.loancrm.xyz",
-        pathname: "/uploads/*",
       },
     ],
   },
