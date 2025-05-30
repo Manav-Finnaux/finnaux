@@ -29,17 +29,19 @@ const features = [
 
 export default function Features() {
   return (
-    <Section id="features"
+    <Section
+      id="features"
       style={{
         background:
           "linear-gradient(230deg, rgb(153, 221, 214) -13.07%, rgb(255, 255, 255) 55%)",
       }}
       className="bg-left md:bg-no-repeat md:bg-left-bottom md:bg-contain relative pt-[1px]">
-      <MaxWidthWrapper className="flex flex-col gap-14 md:flex-row mt-20">
-        <div className="flex flex-col gap-8 md:w-1/2 z-30 self-center">
-          <Badge className="mx-0 border font-semibold bg-teal-50 text-teal-600 p-2 rounded-full mb-4 px-4 py-2 w-fit"
-          data-aos="fade-up"
-          data-aos-delay="100">
+      <MaxWidthWrapper className="flex flex-col gap-14  md:flex-row mt-20">
+        <div className="flex flex-col gap-8 md:w-1/2  z-30 self-center">
+          <Badge
+            className="mx-0 border font-semibold bg-teal-50 text-teal-600 p-2 rounded-full mb-4 px-4 py-2 w-fit"
+            data-aos="fade-up"
+            data-aos-delay="100">
             Features
           </Badge>
           {/* <Badge
@@ -74,7 +76,7 @@ export default function Features() {
         </div>
 
         {/* Features marquee */}
-        <div className="h-[360px] sm:h-[480px] z-30 overflow-hidden md:w-1/2 flex flex-col mx-auto">
+        <div className="h-[360px] sm:h-[480px]  z-30 overflow-hidden w-full mx-2 md:w-1/2 flex flex-col md:mx-auto">
           <Marquee vertical className="p-0 lg:w-5/6 lg:ml-auto">
             {features.map((feature, idx) => (
               // <div key={feature} className="p-6 shadow-[inset_50px_0px_390px_9px_rgba(255,_255,_255,_1)] bg-primary/80 text-lg font-medium border-2 rounded-lg flex gap-8 justify-between items-center">
@@ -101,8 +103,6 @@ export default function Features() {
   );
 }
 
-
-
 // "use client";
 
 // import MaxWidthWrapper from "./maxWidthWrapper";
@@ -112,19 +112,19 @@ export default function Features() {
 // import Text from "./text";
 // import { Marquee } from "./magic-ui-marquee";
 // import { Button } from "../ui/button";
-// import { 
-//   Cpu, 
-//   FileSearch, 
-//   GanttChart, 
-//   Handshake, 
-//   Landmark, 
-//   LineChart, 
-//   ListChecks, 
-//   MailCheck, 
-//   ScrollText, 
-//   ShieldCheck, 
-//   Smartphone, 
-//   TimerReset, 
+// import {
+//   Cpu,
+//   FileSearch,
+//   GanttChart,
+//   Handshake,
+//   Landmark,
+//   LineChart,
+//   ListChecks,
+//   MailCheck,
+//   ScrollText,
+//   ShieldCheck,
+//   Smartphone,
+//   TimerReset,
 //   Users,
 //   WalletCards,
 //   CalendarCheck,
@@ -133,77 +133,77 @@ export default function Features() {
 // } from "lucide-react";
 
 // const features = [
-//   { 
-//     name: "Integrated APIs*", 
-//     icon: <Cpu className="w-5 h-5 text-teal-600" /> 
+//   {
+//     name: "Integrated APIs*",
+//     icon: <Cpu className="w-5 h-5 text-teal-600" />
 //   },
-//   { 
-//     name: "Integrated GL Accounting", 
-//     icon: <Landmark className="w-5 h-5 text-teal-600" /> 
+//   {
+//     name: "Integrated GL Accounting",
+//     icon: <Landmark className="w-5 h-5 text-teal-600" />
 //   },
-//   { 
-//     name: "Product wise Policy", 
-//     icon: <ShieldCheck className="w-5 h-5 text-teal-600" /> 
+//   {
+//     name: "Product wise Policy",
+//     icon: <ShieldCheck className="w-5 h-5 text-teal-600" />
 //   },
-//   { 
-//     name: "Repossessed Sizing & Sold", 
-//     icon: <GanttChart className="w-5 h-5 text-teal-600" /> 
+//   {
+//     name: "Repossessed Sizing & Sold",
+//     icon: <GanttChart className="w-5 h-5 text-teal-600" />
 //   },
-//   { 
-//     name: "Legal Management", 
-//     icon: <FileSearch className="w-5 h-5 text-teal-600" /> 
+//   {
+//     name: "Legal Management",
+//     icon: <FileSearch className="w-5 h-5 text-teal-600" />
 //   },
-//   { 
-//     name: "Voucher Trail", 
-//     icon: <ScrollText className="w-5 h-5 text-teal-600" /> 
+//   {
+//     name: "Voucher Trail",
+//     icon: <ScrollText className="w-5 h-5 text-teal-600" />
 //   },
-//   { 
-//     name: "Scheduled Transactions", 
-//     icon: <CalendarCheck className="w-5 h-5 text-teal-600" /> 
+//   {
+//     name: "Scheduled Transactions",
+//     icon: <CalendarCheck className="w-5 h-5 text-teal-600" />
 //   },
-//   { 
-//     name: "Managed Portfolio", 
-//     icon: <WalletCards className="w-5 h-5 text-teal-600" /> 
+//   {
+//     name: "Managed Portfolio",
+//     icon: <WalletCards className="w-5 h-5 text-teal-600" />
 //   },
-//   { 
-//     name: "Loan Re-Scheduling", 
-//     icon: <TimerReset className="w-5 h-5 text-teal-600" /> 
+//   {
+//     name: "Loan Re-Scheduling",
+//     icon: <TimerReset className="w-5 h-5 text-teal-600" />
 //   },
-//   { 
-//     name: "Definable NPA Calculation", 
-//     icon: <LineChart className="w-5 h-5 text-teal-600" /> 
+//   {
+//     name: "Definable NPA Calculation",
+//     icon: <LineChart className="w-5 h-5 text-teal-600" />
 //   },
-//   { 
-//     name: "User Chat", 
-//     icon: <MessageSquareText className="w-5 h-5 text-teal-600" /> 
+//   {
+//     name: "User Chat",
+//     icon: <MessageSquareText className="w-5 h-5 text-teal-600" />
 //   },
-//   { 
-//     name: "Closure/Waiver Approval", 
-//     icon: <ClipboardCheck className="w-5 h-5 text-teal-600" /> 
+//   {
+//     name: "Closure/Waiver Approval",
+//     icon: <ClipboardCheck className="w-5 h-5 text-teal-600" />
 //   },
-//   { 
-//     name: "Pre Sales/FI/PD", 
-//     icon: <Handshake className="w-5 h-5 text-teal-600" /> 
+//   {
+//     name: "Pre Sales/FI/PD",
+//     icon: <Handshake className="w-5 h-5 text-teal-600" />
 //   },
-//   { 
-//     name: "KYC Verification*", 
-//     icon: <Smartphone className="w-5 h-5 text-teal-600" /> 
+//   {
+//     name: "KYC Verification*",
+//     icon: <Smartphone className="w-5 h-5 text-teal-600" />
 //   },
-//   { 
-//     name: "Collection & Follow up", 
-//     icon: <MailCheck className="w-5 h-5 text-teal-600" /> 
+//   {
+//     name: "Collection & Follow up",
+//     icon: <MailCheck className="w-5 h-5 text-teal-600" />
 //   },
-//   { 
-//     name: "Daily Collection Report", 
-//     icon: <ListChecks className="w-5 h-5 text-teal-600" /> 
+//   {
+//     name: "Daily Collection Report",
+//     icon: <ListChecks className="w-5 h-5 text-teal-600" />
 //   },
-//   { 
-//     name: "Field Force Tracking*", 
-//     icon: <Users className="w-5 h-5 text-teal-600" /> 
+//   {
+//     name: "Field Force Tracking*",
+//     icon: <Users className="w-5 h-5 text-teal-600" />
 //   },
-//   { 
-//     name: "Team Monitoring", 
-//     icon: <Users className="w-5 h-5 text-teal-600" /> 
+//   {
+//     name: "Team Monitoring",
+//     icon: <Users className="w-5 h-5 text-teal-600" />
 //   },
 // ];
 
@@ -215,7 +215,7 @@ export default function Features() {
 //           "linear-gradient(230deg, rgba(153, 221, 214, 0.15) -13.07%, rgba(255, 255, 255, 0.15) 55%)",
 //       }}
 //       className="bg-left md:bg-no-repeat md:bg-left-bottom md:bg-contain relative pt-[1px] overflow-hidden">
-      
+
 //       {/* Floating background elements */}
 //       <div className="absolute inset-0 -z-10 overflow-hidden opacity-20">
 //         <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-teal-100 blur-[100px]" />
@@ -224,7 +224,7 @@ export default function Features() {
 
 //       <MaxWidthWrapper className="flex flex-col gap-14 md:flex-row mt-20">
 //         <div className="flex flex-col gap-8 md:w-1/2 z-30 self-center">
-//           <Badge 
+//           <Badge
 //             className="mx-0 border font-semibold bg-teal-50 text-teal-600 p-2 rounded-full mb-4 px-4 py-2 w-fit"
 //             data-aos="fade-up"
 //             data-aos-delay="100">
@@ -253,7 +253,7 @@ export default function Features() {
 //             </Text>
 //           </div>
 
-//           <Button 
+//           <Button
 //             className="w-fit bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 shadow-lg"
 //             data-aos="fade-up"
 //             data-aos-delay="250">

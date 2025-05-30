@@ -12,7 +12,7 @@ import { HomePageDataType } from "@/lib/api.types";
 export default async function Home() {
   const data: HomePageDataType = await fetchAPI(HOMEPAGE_API);
 
-  console.dir(data.clientLogosMarquee, { depth: null });
+  console.dir(data.heroSection, { depth: null });
 
   return (
     // AboutUs, FunctionalBlocks & Features overflow

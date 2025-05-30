@@ -46,7 +46,7 @@ export default function Footer() {
         <div className="animate-subtle-gradient absolute inset-0 opacity-20 bg-blue-300" />
       </div> */}
 
-      <MaxWidthWrapper className="relative p-4 sm:p-10 pt-8 md:p-14 md:pt-10 lg:p-24 lg:pt-20 backdrop-blur-sm">
+      <MaxWidthWrapper className="relative p-2 sm:p-10 pt-8 md:p-14 md:pt-10 lg:p-24 lg:pt-20 backdrop-blur-sm">
         {/* Enhanced CTA Section */}
         <div
           className="text-center pb-12 space-y-6 border-b border-b-stone-400/30"
