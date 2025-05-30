@@ -3,6 +3,9 @@ import { Marquee } from "./magic_ui_marquee";
 import Section from "./section";
 import { ClientLogosMarqueeType } from "@/lib/api.types";
 
+const DUMMY_IMAGE_URL =
+  "https://strapi.loancrm.xyz/uploads/our_clients_image_07_fea723a6_removebg_preview_1_b7b6102883.png";
+
 export default function MarqueeSection({
   data,
 }: {
@@ -26,7 +29,9 @@ export default function MarqueeSection({
               return (
                 <div key={id} className="w-44 h-16 mx-8 relative">
                   <Image
-                    src={clientLogo ? baseUrl + clientLogo.url : ""}
+                    src={
+                      clientLogo ? baseUrl + clientLogo.url : DUMMY_IMAGE_URL
+                    }
                     alt={companyName}
                     fill
                     className="object-contain"
@@ -44,7 +49,7 @@ export default function MarqueeSection({
             {marqueeTwo.map(({ clientLogo, companyName, id }) => (
               <div key={id} className="w-44 h-16 mx-8 relative">
                 <Image
-                  src={clientLogo ? baseUrl + clientLogo.url : ""}
+                  src={clientLogo ? baseUrl + clientLogo.url : DUMMY_IMAGE_URL}
                   alt={companyName}
                   fill
                   className="object-contain"
