@@ -3,8 +3,12 @@ import { Marquee } from "./magic_ui_marquee";
 import Section from "./section";
 import { ClientLogosMarqueeType } from "@/lib/api.types";
 
-export default function MarqueeSection({ data }: { data: ClientLogosMarqueeType[] }) {
-  const baseUrl = process.env.SERVER_API_BASE_URL;
+export default function MarqueeSection({
+  data,
+}: {
+  data: ClientLogosMarqueeType[];
+}) {
+  const baseUrl = process.env.SERVER_API_BASE_URL!;
   // const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL_LOCAL ?? 'http://192.168.1.5:1337/';
   const half = Math.ceil(data.length / 2);
   const marqueeOne = data.slice(0, half);
@@ -18,15 +22,18 @@ export default function MarqueeSection({ data }: { data: ClientLogosMarqueeType[
             style={{ animationDuration: "20s" }}
             repeat={40}
             className="flex whitespace-nowrap font-semibold text-md">
-            {
-              marqueeOne.map(({ clientLogo, companyName, id }) => {
-                return (
-                  <div key={id} className="w-44 h-16 mx-8 relative">
-                    <Image src={`${baseUrl}${clientLogo.url}`} alt={companyName} fill className="object-contain" />
-                  </div>
-                )
-              })
-            }
+            {marqueeOne.map(({ clientLogo, companyName, id }) => {
+              return (
+                <div key={id} className="w-44 h-16 mx-8 relative">
+                  <Image
+                    src={clientLogo ? baseUrl + clientLogo.url : ""}
+                    alt={companyName}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              );
+            })}
           </Marquee>
 
           <Marquee
@@ -34,13 +41,16 @@ export default function MarqueeSection({ data }: { data: ClientLogosMarqueeType[
             repeat={40}
             reverse
             className="flex whitespace-nowrap font-semibold text-md">
-            {
-              marqueeTwo.map(({ clientLogo, companyName, id }) => (
-                <div key={id} className="w-44 h-16 mx-8 relative">
-                  <Image src={`${baseUrl}${clientLogo.url}`} alt={companyName} fill className="object-contain" />
-                </div>
-              ))
-            }
+            {marqueeTwo.map(({ clientLogo, companyName, id }) => (
+              <div key={id} className="w-44 h-16 mx-8 relative">
+                <Image
+                  src={clientLogo ? baseUrl + clientLogo.url : ""}
+                  alt={companyName}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            ))}
           </Marquee>
         </div>
       </Section>

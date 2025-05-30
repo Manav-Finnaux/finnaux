@@ -9,9 +9,10 @@ import WhyChooseUs from "@/components/composed/why_choose_us";
 import fetchAPI, { HOMEPAGE_API } from "@/lib/api";
 import { HomePageDataType } from "@/lib/api.types";
 
-
 export default async function Home() {
   const data: HomePageDataType = await fetchAPI(HOMEPAGE_API);
+
+  console.dir(data.clientLogosMarquee, { depth: null });
 
   return (
     // AboutUs, FunctionalBlocks & Features overflow
@@ -29,4 +30,3 @@ export default async function Home() {
     </div>
   );
 }
-
