@@ -1,4 +1,4 @@
-import { Clock, Target, Eye, BookOpen } from "lucide-react";
+import { Clock, Target, Eye } from "lucide-react";
 import fetchAPI, { ABOUT_US_API } from "@/lib/api";
 import { Timeline } from "@/components/ui/timeline";
 

@@ -7,6 +7,7 @@ import { OurTeamResponseType } from "@/lib/api.types";
 
 export default async function TeamPage() {
   const data = await fetchAPI<OurTeamResponseType>(OUR_TEAM_API);
+  const baseUrl = process.env.SERVER_API_BASE_URL!;
 
   // Determine grid layout based on number of members
   const getGridClass = (memberCount: number) => {
@@ -53,7 +54,7 @@ export default async function TeamPage() {
                     <CardItem
                       className="w-full h-[70%] bg-gray-100 relative">
                       <Image
-                        src={member.image.url}
+                        src={baseUrl + member.image.url}
                         alt={member.name}
                         fill
                         className="object-cover"

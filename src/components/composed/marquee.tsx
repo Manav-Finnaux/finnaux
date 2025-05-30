@@ -20,9 +20,9 @@ export default function MarqueeSection({ data }: { data: ClientLogosMarqueeType[
             style={{ animationDuration: "20s" }}
             repeat={40}
             className="flex whitespace-nowrap font-semibold text-md">
-            {marqueeOne.map(({ clientLogo, companyName, id }) => {
+            {marqueeOne.map(({ clientLogo, companyName }, idx) => {
               return (
-                <div key={id} className="w-44 h-16 mx-8 relative">
+                <div key={idx} className="w-44 h-16 mx-8 relative">
                   <Image
                     src={
                       clientLogo ? baseUrl + clientLogo.url : DUMMY_IMAGE_URL
@@ -41,8 +41,8 @@ export default function MarqueeSection({ data }: { data: ClientLogosMarqueeType[
             repeat={40}
             reverse
             className="flex whitespace-nowrap font-semibold text-md">
-            {marqueeTwo.map(({ clientLogo, companyName, id }) => (
-              <div key={id} className="w-44 h-16 mx-8 relative">
+            {marqueeTwo.map(({ clientLogo, companyName }, idx) => (
+              <div key={idx} className="w-44 h-16 mx-8 relative">
                 <Image
                   src={clientLogo ? baseUrl + clientLogo.url : DUMMY_IMAGE_URL}
                   alt={companyName}
