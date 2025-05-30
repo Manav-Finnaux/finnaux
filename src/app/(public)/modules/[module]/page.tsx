@@ -1,116 +1,73 @@
-// import fetchAPI from "@/lib/api";
-import Features from "@/lib/assets/features/demo.avif";
+import fetchAPI, { CONTACT_DETAIL_API } from "@/lib/api";
+import { ContactInfoType, ModuleDetailsResponseType } from "@/lib/api.types";
+// import Features from "@/lib/assets/features/demo.avif";
 import { ArrowLeft, ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
+import { MDXRemote } from 'next-mdx-remote/rsc';
+import Link from "next/link";
 
-export default async function Page() {
-  // const moduleData = await fetchAPI<>() 
+export default async function Page({ params }: { params: Promise<{ module: string }> }) {
+  const { module } = await params;
+  const MODULE_DETAIL_API = `/modules/${module}?populate[0]=faqs.qna&populate[heroImage][fields][0]=url`;
+  const baseUrl = process.env.SERVER_API_BASE_URL; // for appending ahead of images
+  const moduleData = await fetchAPI<ModuleDetailsResponseType>(MODULE_DETAIL_API);
+  const contactDetailsData = await fetchAPI<ContactInfoType>(CONTACT_DETAIL_API);
+
+  const components = {
+    h2: (props: React.ComponentProps<'h2'>) => <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-teal-700" {...props} />,
+    h3: (props: React.ComponentProps<'h3'>) => <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-teal-700" {...props} />,
+    ol: (props: React.ComponentProps<'ol'>) => <ol className="list-disc pl-6 font-medium text-gray-700 space-y-2" {...props} />,
+    ul: (props: React.ComponentProps<'ul'>) => <ul className="list-disc pl-6 font-medium text-gray-700 space-y-2" {...props} />,
+  };
+
   return (
     <div className="bg-white min-h-screen w-full pt-32 lg:py-36 pb-14">
       {/* Header Section */}
       <div className="mx-4 sm:mx-8 md:mx-16 lg:mx-28 px-2 sm:px-4">
         <div className="flex flex-col items-center space-y-6 mb-8">
-          {/* Back button */}
-          <button
-            onClick={() => window.location.href = '/modules'}
+          {/* Back link */}
+          <Link
+            href={'/modules'}
             className="flex items-center gap-2 px-5 py-1 text-sm sm:text-base select-none"
             data-aos="fade-right"
             data-aos-delay="100">
             <ArrowLeft className="w-4 h-4" />
             Back To All Services
-          </button>
+          </Link>
 
           {/* Heading */}
           <h1
             className="text-3xl md:text-4xl lg:text-6xl font-bold pb-10 text-center"
             data-aos="fade-up"
             data-aos-delay="200">
-            Loan Originating System
+            {/* Loan Originating System */}
+            {moduleData.title}
           </h1>
         </div>
 
         {/* Image */}
         <div
-          className="w-full rounded-lg shadow-lg overflow-hidden"
+          className="w-full h-36 sm:h-56 md:w-4/5 md:h-72 md:mx-auto lg:max-w-[1024px] relative rounded-lg shadow-lg overflow-hidden"
           data-aos="zoom-in"
           data-aos-delay="300">
           <Image
-            src={Features}
+            src={`${baseUrl}${moduleData.heroImage?.url}`}
             alt="Loan Originating System"
-            className="w-full h-auto object-cover"
+            className="w-full h-auto object-contain"
             priority
-            placeholder="blur"
+            fill
           />
         </div>
 
         {/* Content and Contact Card */}
-        <div className="mt-14 sm:mt-20 lg:mt-28 flex flex-col lg:flex-row lg:space-x-2 relative rounded-xl p-6">
+        <div className="mt-14 sm:mt-20 lg:mt-28 flex flex-col lg:flex-row lg:gap-10 lg:space-x-2 rounded-xl max-w-md mx-auto sm:max-w-fit sm:p-6">
           {/* Main content */}
-          <div className="w-full space-y-6 max-w-3xl text-gray-800">
-            <p
-              className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-teal-700"
-              data-aos="fade-up"
-              data-aos-delay="350">
-              Why do you need this service?
-            </p>
-
-            <div
-              className="space-y-4 text-gray-700 text-base sm:text-lg leading-relaxed"
-              data-aos="fade-up"
-              data-aos-delay="400">
-              <p>
-                At Quickfix, we understand how frustrating it can be to deal
-                with a leaky faucet or pipe. That&apos;s why we offer reliable and
-                efficient faucet and leak repair services to help you save money
-                on your water bills and prevent further damage to your property.
-              </p>
-              <p>
-                Our experienced plumbers use state-of-the-art equipment and
-                techniques to diagnose and repair any type of faucet or leak
-                issue. We work quickly and efficiently to minimize disruption to
-                your daily routine, and we always leave your property clean and
-                tidy.
-              </p>
-              <p className="text-xl sm:text-2xl lg:text-3xl font-semibold text-teal-700">
-                Our Service is always guaranteed.
-              </p>
-              <p>
-                If you&apos;re experiencing plumbing issues in your basement, it&apos;s
-                best to call a licensed plumber to assess the situation and make
-                any necessary repairs. A professional plumber can help you
-                identify the cause of the problem and ensure that your basement
-                plumbing system is functioning properly and safely.
-              </p>
-              <ol className="list-disc pl-6 font-medium text-gray-700 space-y-2">
-                <li>We provide the most reasonable cost.</li>
-                <li>Finish work before deadline.</li>
-                <li>Certified materials delivered in a timely manner.</li>
-              </ol>
-              <p className="text-xl sm:text-2xl lg:text-3xl font-semibold text-teal-700 mt-6">
-                What is included?
-              </p>
-              <p>
-                Whether you have a dripping faucet, a broken pipe, or a major
-                water leak, we have the skills and expertise to fix the problem
-                promptly. We use high-quality parts and materials to ensure that
-                our repairs are long-lasting and effective.
-              </p>
-              <ol className="list-disc pl-6 font-medium text-gray-700 space-y-2">
-                <li>We provide the most reasonable cost.</li>
-                <li>Finish work before deadline.</li>
-                <li>Certified materials delivered in a timely manner.</li>
-              </ol>
-              <p>
-                Don&apos;t let a faucet or leak issue ruin your day. Contact Quickfix
-                for professional faucet and leak repair services that you can
-                count on. Call us today to schedule an appointment or request
-                emergency plumbing services.
-              </p>
-            </div>
+          <div className="w-full space-y-6 max-w-3xl text-gray-800" data-aos="fade-up" data-aos-delay="350">
+            <MDXRemote components={components} source={moduleData.articleBody} />
           </div>
 
           {/* Contact Card - Hidden on smaller screens, visible and positioned on large screens */}
-          <div className="hidden lg:flex lg:absolute lg:top-0 lg:right-0 lg:transform lg:translate-x-1/2 lg:-translate-y-1/2 bg-white rounded-xl flex-col gap-2 p-6 shadow-xl w-72 backdrop-blur-sm border border-teal-100/20" data-aos="fade-left" data-aos-delay="500">
+          <div className="hidden lg:h-fit lg:flex lg:sticky lg:top-24 lg:right-0 lg:transform lg:translate-x-1/2 lg:-translate-y-1/2 bg-white rounded-xl flex-col gap-2 p-6 shadow-xl w-72 backdrop-blur-sm border border-teal-100/20" data-aos="fade-left" data-aos-delay="500">
             <div className="relative z-10">
               <h3 className="text-lg sm:text-xl font-semibold text-center text-teal-800 mb-3">
                 Have Additional Questions?
@@ -118,18 +75,26 @@ export default async function Page() {
 
               <div className="space-y-3 flex-1">
                 <div className="flex items-center gap-3 text-teal-700 hover:text-teal-800 transition-colors text-sm sm:text-base group cursor-pointer">
-                  <MapPin className="w-5 h-5 flex-shrink-0 group-hover:scale-110 transition-transform" />
-                  <span>Vidyadhar Nagar, Jaipur</span>
+                  <MapPin className="w-5 h-5 flex-shrink-0 group-hover:scale-110 transition-transform self-start" />
+                  <div className="flex flex-col text-sm">
+                    {
+                      contactDetailsData.address.map(({ listItem, id }) => {
+                        return (
+                          <span key={id}>{listItem}</span>
+                        )
+                      })
+                    }
+                  </div>
                 </div>
 
                 <div className="flex items-center gap-3 text-teal-700 hover:text-teal-800 transition-colors text-sm sm:text-base group cursor-pointer">
                   <Phone className="w-5 h-5 flex-shrink-0 group-hover:scale-110 transition-transform" />
-                  <span>+91-9828020432</span>
+                  <span>{contactDetailsData.phoneNumber[0].phoneNumber}</span>
                 </div>
 
                 <div className="flex items-center gap-3 text-teal-700 hover:text-teal-800 transition-colors text-sm sm:text-base group cursor-pointer">
                   <Mail className="w-5 h-5 flex-shrink-0 group-hover:scale-110 transition-transform" />
-                  <span>finnauxindia@gmail.com</span>
+                  <span>{contactDetailsData.email}</span>
                 </div>
               </div>
 

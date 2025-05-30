@@ -10,6 +10,11 @@ const nextConfig: NextConfig = {
         hostname: 'avatar.iran.liara.run',
         pathname: '/public/**'
       },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        pathname: '/uploads/**'
+      },
       new URL('http://192.168.0.27:1337/uploads/*'),
       {
         protocol: 'https',

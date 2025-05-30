@@ -38,19 +38,19 @@ export default async function Page() {
 
       {/* Service Cards */}
       <div className="max-w-7xl mx-auto px-6 space-y-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {data.module.map(({ id, heading, excerpt, module }, index: number) => {
             const Icon = ICON_BY_INDEX[index];
 
             return (
-              <div key={id} className="bg-white rounded-xl shadow-md p-8 space-y-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1" data-aos="fade-up" data-aos-delay={200 + index * 50}>
-                <div className={cn(`w-16 h-16 rounded-lg flex items-center justify-center`, BG_COLORS_BY_INDEX[index])}>
+              <div key={id} className="bg-white max-w-md mx-auto sm:max-w-none rounded-xl shadow-md p-4 py-6 sm:p-8 space-y-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1" data-aos="fade-up" data-aos-delay={200 + index * 50}>
+                <div className={cn(`w-12 h-12 sm:w-16 sm:h-16 rounded-lg flex items-center justify-center`, BG_COLORS_BY_INDEX[index])}>
                   <Icon className={cn(`text-2xl`, COLORS_BY_INDEX[index])} />
                 </div>
-                <h3 className="text-xl font-bold text-gray-800">{heading}</h3>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-800">{heading}</h3>
                 <p className="text-gray-600">{excerpt}</p>
                 <Link
-                  href={`/${module.documentId}`}
+                  href={`/modules/${module.documentId}`}
                   className="block"
                 >
                   <button
@@ -70,7 +70,7 @@ export default async function Page() {
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">{data.whyChooseUs?.tagline}</p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="max-w-md mx-auto grid grid-cols-1 sm:max-w-none sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {data.whyChooseUs?.whyChooseUsCard?.map(({ data, id, title, suffix, tagline }, index: number) => (
               <div key={id} className="space-y-2 bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300" data-aos="fade-up" data-aos-delay={150 + index * 50}>
                 <div className="text-4xl font-bold text-blue-600">

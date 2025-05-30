@@ -271,7 +271,7 @@ export type OurTeamResponseType = {
   membersByDept: DepartmentType[];
 };
 
-export type LoanModuleResponseType = {
+export type ModuleDetailsResponseType = {
   id: number;
   documentId: string;
   title: string;
