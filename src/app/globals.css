@@ -86,7 +86,7 @@ body {
   overflow: hidden;
   position: absolute;
   top: calc(52.94759825327513% - 627px / 2);
-  width: 717px;
+  /* width: 717px; */
 }
 
 .abc-mAnAv-divTwo {
@@ -98,7 +98,7 @@ body {
   overflow: hidden;
   position: absolute;
   top: calc(50.00000000000002% - 619px / 2);
-  width: 774px;
+  /* width: 774px; */
 }
 
 .abc-mAnAv-divThree {
@@ -110,5 +110,5 @@ body {
   overflow: hidden;
   position: absolute;
   top: calc(53.38427947598255% - 487px / 2);
-  width: 713px;
+  /* width: 713px; */
 }

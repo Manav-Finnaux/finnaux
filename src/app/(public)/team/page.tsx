@@ -25,7 +25,6 @@ export default async function TeamPage() {
         className="flex flex-col space-y-4 items-center justify-center mb-12 mt-24"
         data-aos="fade-up">
         <span className="text-4xl md:text-5xl lg:text-7xl font-bold text-center px-4">
-          {/* {teamData.Heading} */}
           {data.heading}
         </span>
         <span
@@ -52,10 +51,9 @@ export default async function TeamPage() {
                   data-aos-delay={memberIndex * 50}>
                   <CardBody className="bg-white rounded-xl shadow-md overflow-hidden aspect-[4/5] group/card">
                     <CardItem
-                      // translateZ="20"
                       className="w-full h-[70%] bg-gray-100 relative">
                       <Image
-                        src={member.image ? member.image.url : ''}
+                        src={member.image.url}
                         alt={member.name}
                         fill
                         className="object-cover"

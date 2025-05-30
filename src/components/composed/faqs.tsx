@@ -1,6 +1,4 @@
-// "use client";
 import { CircleHelpIcon } from "lucide-react";
-// import { useEffect } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -12,6 +10,7 @@ import Heading from "./heading";
 import MaxWidthWrapper from "./max_width_wrapper";
 import Section from "./section";
 import Text from "./text";
+import { FaqsSectionType } from "@/lib/api.types";
 
 const FAQS = [
   {
@@ -41,17 +40,8 @@ const FAQS = [
   },
 ];
 
-export default function FAQs() {
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     const AOS = require("aos");
-  //     AOS.init({
-  //       once: true,
-  //       duration: 600,
-  //       easing: "ease-out-quad",
-  //     });
-  //   }
-  // }, []);
+export default function FAQs({ data }: { data: FaqsSectionType }) {
+  console.log(data)
 
   return (
     <Section id="faq" className="space-y-8 bg-gray-50  rounded-lg shadow-md">
@@ -68,11 +58,11 @@ export default function FAQs() {
           className="mb-10 text-3xl font-bold text-gray-800"
           data-aos="fade-up"
           data-aos-delay="150">
-          Questions? Answers!
+          {data.heading}
         </Heading>
 
         <Accordion type="single" collapsible className="w-full text-left">
-          {FAQS.map(({ question, answer }, idx) => (
+          {data.qna.map(({ question, answer }, idx) => (
             <AccordionItem
               key={idx}
               value={idx.toString()}

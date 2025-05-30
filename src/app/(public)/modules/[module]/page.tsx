@@ -1,6 +1,5 @@
 import fetchAPI, { CONTACT_DETAIL_API } from "@/lib/api";
 import { ContactInfoType, ModuleDetailsResponseType } from "@/lib/api.types";
-// import Features from "@/lib/assets/features/demo.avif";
 import { ArrowLeft, ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import { MDXRemote } from 'next-mdx-remote/rsc';
@@ -51,7 +50,7 @@ export default async function Page({ params }: { params: Promise<{ module: strin
           data-aos="zoom-in"
           data-aos-delay="300">
           <Image
-            src={`${baseUrl}${moduleData.heroImage?.url}`}
+            src={`${baseUrl}${moduleData.heroImage.url}`}
             alt="Loan Originating System"
             className="w-full h-auto object-contain"
             priority

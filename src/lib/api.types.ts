@@ -1,68 +1,51 @@
 export type CTAType = {
-  id: number;
   label: string;
   href: string;
 };
 
 export type HeroSectionType = {
-  id: number;
-  heading: string;
-  tagline: string;
   cta: CTAType[];
 };
 
 export type ImageType = {
-  id: number;
-  documentId: string;
   url: string;
 };
 
 export type ClientLogosMarqueeType = {
-  id: number;
   companyName: string;
   clientLogo: ImageType;
 };
 
 export type AboutUsSectionType = {
-  id: number;
-  badge: string;
   content: string;
+  image: ImageType;
   cta: CTAType[];
 };
 
 export type ModuleLinkType = {
-  id: number;
   label: string;
   tagline: string;
   module: {
-    id: number;
     documentId: string;
-  } | null;
+  }
 };
 
 export type ModulesSectionType = {
-  id: number;
-  badge: string;
-  heading: string;
   modulesTagline: string;
   moduleLinks: ModuleLinkType[];
 };
 
 export type FeatureType = {
-  id: number;
   feature: string;
 };
 
 export type FeaturesSectionType = {
-  id: number;
-  badge: string;
-  heading: string;
   tagline: string;
   feature: FeatureType[];
+  cta: CTAType;
 };
 
 export type WhyChooseUsCardType = {
-  id: number;
   data: number;
   title: string;
   suffix: string;
@@ -70,28 +53,33 @@ export type WhyChooseUsCardType = {
 };
 
 export type WhyChooseUsType = {
-  id: number;
-  badge: string;
-  heading: string;
   tagline: string;
   footer: string;
   whyChooseUsCard: WhyChooseUsCardType[];
 };
 
 export type TestimonialType = {
-  id: number;
   testimonialDate: string;
   testimonial: string;
   name: string;
-  designation?: string; // Based on your message truncation
+  designation: string;
+  avatar: ImageType;
 };
 
 export type TestimonialsSectionType = {
-  id: number;
-  badge: string;
   heading: string;
   testimonial: TestimonialType[];
 };
+
+export type QnA = {
+  question: string;
+  answer: string;
+}
+
+export type FaqsSectionType = {
+  heading: string;
+  qna: QnA[];
+}
 
 export type HomePageDataType = {
   id: number;
@@ -106,6 +94,7 @@ export type HomePageDataType = {
   featuresSection: FeaturesSectionType;
   whyChooseUsSection: WhyChooseUsType;
   testimonialsSection: TestimonialsSectionType;
+  faqsSection: FaqsSectionType;
 };
 
 export type AddressType = {
@@ -251,7 +240,7 @@ type TeamMemberType = {
   name: string;
   designation: string;
   complimentaryText: string;
-  image: ImageType | null;
+  image: ImageType;
 };
 
 type DepartmentType = {
@@ -280,6 +269,6 @@ export type ModuleDetailsResponseType = {
   updatedAt: string;
   publishedAt: string;
   articleBody: string;
-  heroImage: ImageType | null;
+  heroImage: ImageType;
 };
 

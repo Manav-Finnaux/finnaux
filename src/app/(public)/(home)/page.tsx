@@ -12,21 +12,19 @@ import { HomePageDataType } from "@/lib/api.types";
 export default async function Home() {
   const data: HomePageDataType = await fetchAPI(HOMEPAGE_API);
 
-  console.dir(data.heroSection, { depth: null });
-
   return (
     // AboutUs, FunctionalBlocks & Features overflow
-    <div className="overflow-x-hidden">
+    <div className="">
       <HeroSection data={data.heroSection} />
       <MarqueeSection data={data.clientLogosMarquee} />
 
       <AboutUs data={data.aboutUsSection} />
-      <FunctionalBlocks />
-      <Features />
+      <FunctionalBlocks data={data.modulesSection} />
+      <Features data={data.featuresSection} />
 
-      <WhyChooseUs />
-      <Testimonials />
-      <FAQs />
+      <WhyChooseUs data={data.whyChooseUsSection} />
+      <Testimonials data={data.testimonialsSection} />
+      <FAQs data={data.faqsSection} />
     </div>
   );
 }

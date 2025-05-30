@@ -216,7 +216,7 @@ function ContactDetails() {
       } finally {
         setIsLoading(false);
       }
-    };
+    }
 
     fetchContactData();
   }, []);

@@ -1,32 +1,15 @@
 import { ArrowRightIcon, UsersRoundIcon } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { Badge } from "../ui/badge";
-import Heading from "./heading";
 import MaxWidthWrapper from "./max_width_wrapper";
 import Section from "./section";
 import Text from "./text";
 import { AboutUsSectionType } from "@/lib/api.types";
-// import { MDXRemote } from 'next-mdx-remote/rsc';`
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import Heading from "./heading";
 
 export default function AboutUs({ data }: { data: AboutUsSectionType }) {
-  // const aboutUsBody = data.content;
-  // const components = {
-  //   p: (props: React.ComponentProps<"p">) => <Text as="p" variant="xl" data-aos="fade-up" data-aos-delay="100" className="text-teal-800 font-medium" {...props} />,
-  //   h2: (props: React.ComponentProps<"h2">) => <Heading
-  //     as="h2"
-  //     className="text-gray-900 text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] leading-tight"
-  //     data-aos="fade-up"
-  //     data-aos-delay="200"
-  //     {...props}
-  //   />,
-  //   span: (props: React.ComponentProps<"span">) => <Text
-  //     className="text-gray-700 text-base sm:text-lg"
-  //     data-aos="fade-up"
-  //     data-aos-delay="300"
-  //     {...props}
-  //   />
-  // }
 
   return (
     <Section className="md:py-2">
@@ -34,16 +17,14 @@ export default function AboutUs({ data }: { data: AboutUsSectionType }) {
         {/* Textual Content */}
         <div
           className="flex flex-col gap-6 lg:gap-8 lg:w-1/2"
-          data-aos="fade-right">
+          data-aos="fade-up">
           <Badge
             variant="outline"
             className="w-fit bg-white border-teal-300 text-teal-700 shadow"
             data-aos="zoom-in">
             <UsersRoundIcon className="w-4 h-4" />
-            <Text className="text-sm">{data.badge}</Text>
+            <Text className="text-sm">About Us</Text>
           </Badge>
-
-          {/* <MDXRemote source={aboutUsBody} components={components} /> */}
 
           <Text
             as="p"
@@ -67,35 +48,35 @@ export default function AboutUs({ data }: { data: AboutUsSectionType }) {
             className="text-gray-700 text-base sm:text-lg"
             data-aos="fade-up"
             data-aos-delay="300">
-            At Finnaux, we’re a dedicated team of software professionals
-            revolutionizing loan management for Non-Banking Financial Companies.
-            With over 20 years in the NBFC sector, we deliver user-friendly
-            solutions that streamline lending and boost efficiency.
+            {data.content}
           </Text>
 
           <div
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-2"
             data-aos="fade-up"
-            data-aos-delay="400">
-            <Link
-              href="/solutions"
-              className="flex items-center justify-center gap-2 bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 sm:py-4 rounded-lg transition-all duration-300 shadow hover:shadow-md active:scale-95 text-base font-medium">
-              Explore Solutions
-              <ArrowRightIcon className="w-4 h-4" />
-            </Link>
-            <Link
-              href="/contact"
-              className="flex items-center justify-center gap-2 border-2 border-teal-600 text-teal-700 hover:bg-teal-50 px-6 py-3 sm:py-4 rounded-lg transition-all duration-300 shadow hover:shadow-md active:scale-95 text-base font-medium">
-              Contact Us
-              <ArrowRightIcon className="w-4 h-4" />
-            </Link>
+            data-aos-delay="400"
+          >
+            {
+              data.cta.map(({ href, label }, idx) => {
+                const primary = idx === 1;
+                return (
+                  <Link
+                    key={idx}
+                    href={href}
+                    className={cn("flex items-center justify-center gap-2 px-6 py-3 sm:py-4 rounded-lg transition-all duration-300 shadow hover:shadow-md active:scale-95 text-base font-medium", primary ? 'border-2 border-teal-600 text-teal-700 hover:bg-teal-50' : 'bg-teal-600 hover:bg-teal-700 text-white')}>
+                    {label}
+                    <ArrowRightIcon className="w-4 h-4" />
+                  </Link>
+                )
+              })
+            }
           </div>
         </div>
 
         {/* Image */}
         <div
           className="relative w-full h-72 sm:h-80 md:h-96 lg:h-[460px] lg:w-1/2 overflow-hidden rounded-2xl shadow-lg"
-          data-aos="fade-left"
+          data-aos="fade-up"
           data-aos-delay="200">
           <Image
             src="/about-us.png"

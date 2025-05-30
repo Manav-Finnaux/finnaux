@@ -26,7 +26,6 @@ const COLORS_BY_INDEX = [
 
 export default async function TechnologyPartners() {
   const data = await fetchAPI<IntegrationPageResponseType>(INTEGRATIONS_API);
-  // const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL_LOCAL; // change this
   const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   return (

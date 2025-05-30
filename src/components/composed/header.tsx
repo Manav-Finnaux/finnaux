@@ -47,12 +47,12 @@ export default function HeroSection({ data }: { data: HeroSectionType }) {
       className={`${bebas.className} text-gray-800 min-h-screen xl:max-h-[980px] xl:min-h-fit relative overflow-hidden`}
     >
       {/* Optimized Background */}
-      <div 
+      <div
         ref={backgroundRef}
         className="absolute inset-0 z-0 overflow-hidden bg-gradient-to-br from-teal-900 via-teal-700 to-teal-500"
       >
         {/* Static geometric pattern */}
-        <div 
+        <div
           className="absolute inset-0 opacity-15"
           style={{
             backgroundImage: `
@@ -62,7 +62,7 @@ export default function HeroSection({ data }: { data: HeroSectionType }) {
             backgroundSize: '40px 40px'
           }}
         />
-        
+
         {/* Optimized floating elements - reduced count and simplified animation */}
         <div className="absolute inset-0">
           {[...Array(3)].map((_, i) => (
@@ -93,8 +93,8 @@ export default function HeroSection({ data }: { data: HeroSectionType }) {
             {headingParts.map((part, i) => (
               <span key={i} className={`${part.color} inline-block`}>
                 {part.text.split('').map((letter, j) => (
-                  <span 
-                    key={j} 
+                  <span
+                    key={j}
                     className="inline-block hover:text-[#c4ec5a] transition-colors duration-300 hover:scale-105"
                   >
                     {letter}
@@ -109,7 +109,7 @@ export default function HeroSection({ data }: { data: HeroSectionType }) {
             className="text-base sm:text-lg md:text-xl mb-4 pb-3 sm:mb-6 text-gray-200 max-w-2xl mx-auto font-sans"
             data-aos="fade-up"
           >
-            {data.tagline || "End-to-end financial technology solutions for lenders of all sizes"}
+            End-to-end financial technology solutions for lenders of all sizes
           </p>
 
           <div className="flex flex-col min-[390px]:flex-row gap-5 w-full sm:items-center justify-start sm:justify-center" data-aos="fade-up" data-aos-delay="300">

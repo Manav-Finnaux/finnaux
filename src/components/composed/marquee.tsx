@@ -6,13 +6,8 @@ import { ClientLogosMarqueeType } from "@/lib/api.types";
 const DUMMY_IMAGE_URL =
   "https://strapi.loancrm.xyz/uploads/our_clients_image_07_fea723a6_removebg_preview_1_b7b6102883.png";
 
-export default function MarqueeSection({
-  data,
-}: {
-  data: ClientLogosMarqueeType[];
-}) {
+export default function MarqueeSection({ data }: { data: ClientLogosMarqueeType[] }) {
   const baseUrl = process.env.SERVER_API_BASE_URL!;
-  // const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL_LOCAL ?? 'http://192.168.1.5:1337/';
   const half = Math.ceil(data.length / 2);
   const marqueeOne = data.slice(0, half);
   const marqueeTwo = data.slice(half);

@@ -1,57 +1,14 @@
-// "use client"
 import { MessageSquareIcon } from "lucide-react";
 import Image from "next/image";
-// import { useEffect } from "react";
 import { Badge } from "../ui/badge";
 import Heading from "./heading";
 import { Marquee } from "./magic_ui_marquee";
 import Section from "./section";
 import Text from "./text";
+import { TestimonialsSectionType } from "@/lib/api.types";
 
-export default function Testimonials() {
-  const testimonials = [
-    {
-      name: "John Doe",
-      role: "CEO, TechCorp",
-      image: "/testimonial1.jpg",
-      text: "The loan management system has transformed how we handle our financial operations. Highly recommended!",
-    },
-    {
-      name: "Sarah Smith",
-      role: "CFO, StartupX",
-      image: "/testimonial2.jpg",
-      text: "Incredible platform that has streamlined our entire loan process. The efficiency gains are remarkable.",
-    },
-    {
-      name: "Mike Johnson",
-      role: "Director, FinanceHub",
-      image: "/testimonial3.jpg",
-      text: "Outstanding service and support. The platform has exceeded our expectations in every way.",
-    },
-    {
-      name: "Emily Davis",
-      role: "Manager, FinTech Solutions",
-      image: "/testimonial4.jpg",
-      text: "A game changer for our business. The user experience is top-notch!",
-    },
-    {
-      name: "Chris Lee",
-      role: "CTO, Innovate Inc.",
-      image: "/testimonial5.jpg",
-      text: "The best investment we've made in our financial operations. Highly recommend!",
-    },
-  ];
-
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     const AOS = require("aos");
-  //     AOS.init({
-  //       once: true,
-  //       duration: 600,
-  //       easing: "ease-out-quad",
-  //     });
-  //   }
-  // }, []);
+export default function Testimonials({ data }: { data: TestimonialsSectionType }) {
+  const baseUrl = process.env.SERVER_API_BASE_URL;
 
   return (
     <Section className="overflow-hidden space-y-6 py-16 bg-gray-50">
@@ -75,35 +32,35 @@ export default function Testimonials() {
         <div className="overflow-hidden w-full py-10">
           <Marquee className="flex items-center">
             <div className="flex py-5">
-              {testimonials.map((testimonial, index) => (
+              {data.testimonial.map(({ name, testimonial, testimonialDate, designation, avatar }, index) => (
                 <div
                   key={index}
                   className="bg-white border border-gray-200 rounded-2xl shadow-lg w-80 mx-2 flex flex-col px-4 justify-between py-8 hover:shadow-xl transition-shadow duration-300"
                   data-aos="fade-up"
                   data-aos-delay={200 + index * 100}>
                   <div className="bg-teal-50 border w-fit mx-2 px-2 py-1 text-sm rounded-full mb-4 text-teal-600 font-semibold">
-                    01 Apr, 2025
+                    {testimonialDate}
                   </div>
 
                   <p className="text-gray-700 font-medium px-3 leading-relaxed">
-                    {testimonial.text}
+                    {testimonial}
                   </p>
 
                   <div className="flex items-center mt-6 pt-4 border-t border-gray-200 px-5">
                     <div className="relative w-12 h-12 rounded-full overflow-hidden mr-4">
                       <Image
-                        src={testimonial.image}
-                        alt={testimonial.name}
+                        src={baseUrl + avatar.url}
+                        alt={name}
                         fill
                         className="object-cover"
                       />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900">
-                        {testimonial.name}
+                        {name}
                       </h3>
                       <p className="text-sm text-gray-600">
-                        {testimonial.role}
+                        {designation}
                       </p>
                     </div>
                   </div>

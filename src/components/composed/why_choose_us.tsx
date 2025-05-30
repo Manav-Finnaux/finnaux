@@ -1,48 +1,19 @@
-// "use client";
-import { CheckCircleIcon, LifeBuoy, Network, Shield } from "lucide-react";
-// import { useEffect } from "react";
+import { CheckCircleIcon, LifeBuoyIcon, NetworkIcon, ShieldIcon } from "lucide-react";
 import { Badge } from "../ui/badge";
 import Heading from "./heading";
 import MaxWidthWrapper from "./max_width_wrapper";
 import { NumberTicker } from "./number_ticker";
 import Section from "./section";
 import Text from "./text";
+import { WhyChooseUsType } from "@/lib/api.types";
 
-export default function WhyChooseUs() {
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     const AOS = require("aos");
-  //     AOS.init({
-  //       once: true,
-  //       duration: 600,
-  //       easing: "ease-out-quad",
-  //     });
-  //   }
-  // }, []);
+const ICONS_BY_INDEX = [
+  ShieldIcon,
+  LifeBuoyIcon,
+  NetworkIcon
+]
 
-  const features = [
-    {
-      icon: <Shield className="w-6 h-6 text-teal-600" />,
-      value: 99,
-      suffix: "%",
-      title: "Reliable Solutions",
-      description: "Minimized errors and ensured data integrity",
-    },
-    {
-      icon: <LifeBuoy className="w-6 h-6 text-teal-600" />,
-      value: 24,
-      suffix: "/7",
-      title: "Unmatched Assistance",
-      description: "Round-the-clock operational support",
-    },
-    {
-      icon: <Network className="w-6 h-6 text-teal-600" />,
-      value: 500,
-      suffix: "+",
-      title: "Trusted Network",
-      description: "Growing community of successful NBFCs",
-    },
-  ];
+export default function WhyChooseUs({ data }: { data: WhyChooseUsType }) {
 
   return (
     <Section className="relative py-16 overflow-hidden">
@@ -78,39 +49,42 @@ export default function WhyChooseUs() {
         </div>
 
         <div className="grid gap-8 md:grid-cols-3">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 border border-teal-50 group"
-              data-aos="fade-up"
-              data-aos-delay={200 + index * 100}>
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-50/50 to-white opacity-0 group-hover:opacity-100 transition-opacity" />
+          {data.whyChooseUsCard.map(({ data, suffix, tagline, title }, index) => {
+            const Icon = ICONS_BY_INDEX[index];
+            return (
+              <div
+                key={index}
+                className="relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 border border-teal-50 group"
+                data-aos="fade-up"
+                data-aos-delay={200 + index * 100}>
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-50/50 to-white opacity-0 group-hover:opacity-100 transition-opacity" />
 
-              <div className="relative z-10">
-                <div className="mb-6 flex items-center gap-4">
-                  <div className="p-3 bg-teal-100/50 rounded-lg">
-                    {feature.icon}
+                <div className="relative z-10">
+                  <div className="mb-6 flex items-center gap-4">
+                    <div className="p-3 bg-teal-100/50 rounded-lg">
+                      <Icon className="w-6 h-6 text-teal-600" />
+                    </div>
+                    <div className="text-4xl font-bold text-teal-600">
+                      <NumberTicker
+                        className=" tracking-normal"
+                        value={data}
+                      />
+                      {suffix}
+                    </div>
                   </div>
-                  <div className="text-4xl font-bold text-teal-600">
-                    <NumberTicker
-                      className=" tracking-normal"
-                      value={feature.value}
-                    />
-                    {feature.suffix}
-                  </div>
+
+                  <Heading
+                    as="h3"
+                    className="mb-3 text-xl font-semibold text-gray-900">
+                    {title}
+                  </Heading>
+                  <Text className="text-gray-600 leading-relaxed">
+                    {tagline}
+                  </Text>
                 </div>
-
-                <Heading
-                  as="h3"
-                  className="mb-3 text-xl font-semibold text-gray-900">
-                  {feature.title}
-                </Heading>
-                <Text className="text-gray-600 leading-relaxed">
-                  {feature.description}
-                </Text>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
         <div
@@ -118,7 +92,8 @@ export default function WhyChooseUs() {
           data-aos="fade-up"
           data-aos-delay="600">
           <Text className="text-sm text-gray-500 italic">
-            Trusted by 50+ financial institutions across 12 countries
+            {/* Trusted by 50+ financial institutions across 12 countries */}
+            {data.footer}
           </Text>
         </div>
       </MaxWidthWrapper>
