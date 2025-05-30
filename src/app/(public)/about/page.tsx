@@ -42,7 +42,8 @@ interface AboutUsData {
 }
 
 export default async function AboutUs() {
-  const api = "/about-us?populate[experienceCard][populate]=*&populate[missionAndVisionSection][populate]=ourMission&populate[missionAndVisionSection][populate]=ourVision&populate[ourStorySection][populate][ourStoryTimeline][populate]=timelineItem";
+  const api =
+    "/about-us?populate[experienceCard][populate]=*&populate[missionAndVisionSection][populate]=ourMission&populate[missionAndVisionSection][populate]=ourVision&populate[ourStorySection][populate][ourStoryTimeline][populate]=timelineItem";
   const data = await fetchAPI<AboutUsData>(api);
 
   // Transform timeline data for the Timeline component
@@ -120,9 +121,7 @@ export default async function AboutUs() {
               data-aos="fade-up"
               data-aos-delay="600">
               <p>{data.missionAndVisionSection.para1}</p>
-              <p className="font-light">
-                {data.missionAndVisionSection.para2}
-              </p>
+              <p className="font-light">{data.missionAndVisionSection.para2}</p>
             </div>
             <div className="flex-1 px-2 md:px-6 py-4 md:py-8">
               <div className="space-y-6 md:space-y-10">
