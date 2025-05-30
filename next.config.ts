@@ -14,7 +14,6 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "strapi.loancrm.xyz",
-        pathname: "/uploads/*",
       },
     ],
   },
