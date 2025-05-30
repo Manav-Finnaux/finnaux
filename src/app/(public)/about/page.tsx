@@ -1,8 +1,6 @@
-import { Timeline } from "@/components/ui/timeline";
+import { Clock, Target, Eye, BookOpen } from "lucide-react";
 import fetchAPI, { ABOUT_US_API } from "@/lib/api";
-import VisionImage from "@/lib/assets/features/leadership.png";
-import MissionImage from "@/lib/assets/features/mission.png";
-import Image from "next/image";
+import { Timeline } from "@/components/ui/timeline";
 
 interface TimelineItem {
   id: number;
@@ -41,10 +39,9 @@ interface AboutUsData {
   };
 }
 
-export default async function AboutUs() {
+export default async function AboutPage() {
   const data = await fetchAPI<AboutUsData>(ABOUT_US_API);
 
-  // Transform timeline data for the Timeline component
   const timelineData = data.ourStorySection.ourStoryTimeline.timelineItem.map(
     (item) => ({
       title: item.title,
@@ -58,126 +55,97 @@ export default async function AboutUs() {
   );
 
   return (
-    <div className="overflow-x-hidden">
-      {/* Company Overview Section */}
-      <div className="bg-gradient-to-r from-teal-100/70 via-green-100/70 to-cyan-100/70 min-h-screen w-full py-20 md:py-32 lg:py-40 flex items-center">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-start justify-center flex-col space-y-6 py-12">
-            <h1
-              className="font-medium text-4xl sm:text-5xl lg:text-6xl text-center sm:text-left"
-              data-aos="fade-up"
-              data-aos-delay="100">
+    <div className="bg-gradient-to-b from-[#f5f8fb] to-[#ebf1f7] min-h-screen font-sans">
+      {/* Hero Section */}
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-500/15 to-emerald-500/15 -skew-y-6"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div data-aos="fade-up" className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-5 leading-tight">
               {data.heading}
             </h1>
-            <h3
-              className="font-medium text-lg sm:text-xl w-full md:w-3/4 lg:w-1/2 text-center sm:text-left mx-auto sm:mx-0"
+            <p
               data-aos="fade-up"
-              data-aos-delay="200">
+              data-aos-delay="100"
+              className="text-lg md:text-xl text-gray-700 mb-10 max-w-3xl mx-auto">
               {data.tagline}
-            </h3>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content Card & Experience Card Container */}
-      <div className="relative my-12 md:my-24 lg:my-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        {/* Experience Card */}
-        <div
-          className="hidden md:flex bg-gradient-to-b from-teal-100/80 to-teal-50 border-teal-300/60 border rounded-xl h-64 lg:h-80 w-full max-w-[20rem] lg:max-w-[28rem] absolute shadow-xl shadow-teal-100/60 right-4 lg:right-20 -top-40 lg:-top-60 flex-col justify-evenly p-4 lg:p-6 z-10"
-          data-aos="fade-left"
-          data-aos-delay="300">
-          <h1 className="bg-gradient-to-b from-cyan-400 to-teal-300 px-4 text-8xl lg:text-9xl text-transparent bg-clip-text text-left">
-            {data.experienceCard.yearsOfExperience}
-          </h1>
-          <div className="flex flex-row justify-between items-start gap-2">
-            <div className="rounded-full h-12 w-20 lg:h-14 lg:w-24 bg-white border-2 border-black mx-4 lg:mx-8"></div>
-            <div className="text-left pr-2 text-sm lg:text-base flex-1">
-              {data.experienceCard.followUpText}
-            </div>
-          </div>
-        </div>
-
-        {/* Main Card Content */}
-        <div
-          className="bg-gradient-to-r from-white/60 to-white/50 border-cyan-300 border rounded-2xl p-6 pt-40 md:pt-10 lg:pt-4"
-          data-aos="fade-up"
-          data-aos-delay="400">
-          {/* Mission Statement */}
-          <div
-            className="ml-0 md:ml-16 lg:ml-24 mt-0 md:mt-20 mb-8 md:mb-16"
-            data-aos="fade-right"
-            data-aos-delay="500">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-medium leading-snug">
-              {data.missionAndVisionSection.heading}
-            </h1>
-          </div>
-
-          {/* Mission and Vision Sections */}
-          <div className="flex flex-col lg:flex-row gap-8 xl:gap-24 px-2 md:px-6 pb-6">
-            <div
-              className="flex-1 text-base sm:text-lg font-medium space-y-4 md:space-y-6 px-2 md:px-8 py-4 md:py-8"
-              data-aos="fade-up"
-              data-aos-delay="600">
-              <p>{data.missionAndVisionSection.para1}</p>
-              <p className="font-light">{data.missionAndVisionSection.para2}</p>
-            </div>
-            <div className="flex-1 px-2 md:px-6 py-4 md:py-8">
-              <div className="space-y-6 md:space-y-10">
-                <div data-aos="fade-up" data-aos-delay="700">
-                  <div className="flex items-center gap-3 mb-2">
-                    <Image
-                      src={MissionImage}
-                      alt="Mission Icon"
-                      className="size-10 sm:size-11"
-                    />
-                    <h3 className="font-medium text-xl sm:text-2xl">
-                      {data.missionAndVisionSection.ourMission.heading}
-                    </h3>
-                  </div>
-                  <p className="text-base sm:text-lg pl-12 sm:pl-14">
-                    {data.missionAndVisionSection.ourMission.para1}
-                  </p>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="800">
-                  <div className="flex items-center gap-3 mb-2">
-                    <Image
-                      src={VisionImage}
-                      alt="Vision Icon"
-                      className="size-10 sm:size-11"
-                    />
-                    <h3 className="font-medium text-xl sm:text-2xl">
-                      {data.missionAndVisionSection.ourVision.heading}
-                    </h3>
-                  </div>
-                  <p className="text-base sm:text-lg pl-12 sm:pl-14">
-                    {data.missionAndVisionSection.ourVision.para1}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Our Story Section */}
-      <section className="w-full bg-[#f8f8f7] py-16 md:py-24 my-0">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col gap-8 mb-10">
-          {/* Heading & Tagline */}
-          <div
-            className="lg:w-1/2 w-full p-4 md:p-8 lg:pr-12 pb-0 flex flex-col justify-center"
-            data-aos="fade-right"
-            data-aos-delay="100">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">
-              {data.ourStorySection.heading}
-            </h2>
-            <p className="text-base sm:text-lg text-gray-700">
-              {data.ourStorySection.tagline}
             </p>
           </div>
-          {/* Timeline */}
-          <Timeline data={timelineData} />
         </div>
       </section>
+
+      {/* Experience Card */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div
+            data-aos="fade-up"
+            className="max-w-2xl mx-auto text-center bg-gradient-to-r from-teal-50 to-emerald-50 p-8 rounded-2xl shadow-sm">
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <Clock className="w-10 h-10 text-teal-600" />
+              <h2 className="text-5xl font-bold text-gray-900">
+                {data.experienceCard.yearsOfExperience}+
+              </h2>
+            </div>
+            <p className="text-lg text-gray-700">
+              {data.experienceCard.followUpText}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission & Vision */}
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div className="container mx-auto px-4">
+          <div
+            data-aos="fade-up"
+            className="max-w-3xl mx-auto text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              {data.missionAndVisionSection.heading}
+            </h2>
+            <p className="text-lg text-gray-700 mb-6">
+              {data.missionAndVisionSection.para1}
+            </p>
+            <p className="text-lg text-gray-700">
+              {data.missionAndVisionSection.para2}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Mission Card */}
+            <div
+              data-aos="fade-right"
+              className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all">
+              <div className="flex items-center gap-4 mb-6">
+                <Target className="w-8 h-8 text-teal-600" />
+                <h3 className="text-2xl font-bold text-gray-900">
+                  {data.missionAndVisionSection.ourMission.heading}
+                </h3>
+              </div>
+              <p className="text-gray-700">
+                {data.missionAndVisionSection.ourMission.para1}
+              </p>
+            </div>
+
+            {/* Vision Card */}
+            <div
+              data-aos="fade-left"
+              className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all">
+              <div className="flex items-center gap-4 mb-6">
+                <Eye className="w-8 h-8 text-emerald-600" />
+                <h3 className="text-2xl font-bold text-gray-900">
+                  {data.missionAndVisionSection.ourVision.heading}
+                </h3>
+              </div>
+              <p className="text-gray-700">
+                {data.missionAndVisionSection.ourVision.para1}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Story Timeline */}
+      <Timeline data={timelineData} />
     </div>
   );
 }
