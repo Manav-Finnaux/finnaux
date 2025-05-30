@@ -113,8 +113,8 @@ export default function Testimonials() {
           </Marquee>
         </div>
 
-        <div className="absolute left-0 top-0 w-40 h-full bg-gradient-to-r from-white to-transparent z-10" />
-        <div className="absolute right-0 top-0 w-40 h-full bg-gradient-to-l from-white to-transparent z-10" />
+        <div className="hidden min-[480px]:block absolute left-0 top-0 w-40 h-full bg-gradient-to-r from-white to-transparent z-10" />
+        <div className="hidden min-[480px]:block absolute right-0 top-0 w-40 h-full bg-gradient-to-l from-white to-transparent z-10" />
       </div>
     </Section>
   );
