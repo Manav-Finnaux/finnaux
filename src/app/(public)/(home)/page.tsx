@@ -16,13 +16,13 @@ export default async function Home() {
     // AboutUs, FunctionalBlocks & Features overflow
     <div className="">
       <HeroSection data={data.heroSection} />
+      <WhyChooseUs data={data.whyChooseUsSection} />
       <MarqueeSection data={data.clientLogosMarquee} />
 
       <AboutUs data={data.aboutUsSection} />
       <FunctionalBlocks data={data.modulesSection} />
       <Features data={data.featuresSection} />
 
-      <WhyChooseUs data={data.whyChooseUsSection} />
       <Testimonials data={data.testimonialsSection} />
       <FAQs data={data.faqsSection} />
     </div>
