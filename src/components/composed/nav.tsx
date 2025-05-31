@@ -1,236 +1,223 @@
 "use client";
-
-import { AnimatePresence, motion } from "framer-motion";
-import {
-  ArrowRightIcon,
-  ChevronDown,
-  MenuIcon,
-  XIcon,
-  Home,
-  Boxes,
-  Link2,
-  Building2,
-  Info,
-  Users,
-} from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { Button } from "../ui/button";
-import MaxWidthWrapper from "./max_width_wrapper";
+import { useState, useEffect } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { Bebas_Neue } from "next/font/google";
 
-const links = [
-  {
-    label: "Home",
-    href: "/",
-    icon: Home,
-  },
-  {
-    label: "Products",
-    href: "/products",
-    icon: Boxes,
-  },
-  {
-    label: "Integrations",
-    href: "/integrations",
-    icon: Link2,
-  },
-  {
-    label: "Company",
-    icon: Building2,
-    subLinks: [
-      {
-        label: "About Us",
-        href: "/about",
-        icon: Info,
-      },
-      {
-        label: "Our Team",
-        href: "/team",
-        icon: Users,
-      },
-    ],
-  },
-];
-
+const bebas = Bebas_Neue({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
-  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
-  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+  const [companyDropdownOpen, setCompanyDropdownOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "auto";
-    return () => {
-      document.body.style.overflow = "auto";
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
     };
-  }, [open]);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
+  // Close mobile menu and dropdown when clicking outside
   useEffect(() => {
-    setOpen(false);
-    setActiveSubmenu(null);
-  }, [pathname]);
+    const handleOutsideClick = (event: MouseEvent) => {
+      // Check if the click is outside the mobile menu toggle button and the mobile menu itself
+      if (
+        isOpen &&
+        !(event.target as HTMLElement).closest(".mobile-menu-container") &&
+        !(event.target as HTMLElement).closest(".mobile-menu-button")
+      ) {
+        setIsOpen(false);
+      }
+      // Check if the click is outside the company dropdown button and the dropdown content
+      if (
+        companyDropdownOpen &&
+        !(event.target as HTMLElement).closest(".company-dropdown-container")
+      ) {
+        setCompanyDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+    return () => document.removeEventListener("click", handleOutsideClick);
+  }, [isOpen, companyDropdownOpen]);
+
+  const navItems = [
+    { name: "Home", href: "/" },
+    { name: "Products", href: "/products" },
+    { name: "Integrations", href: "/integrations" },
+    {
+      name: "Company",
+      href: "#",
+      subItems: [
+        { name: "About Us", href: "/about" },
+        { name: "Our Team", href: "/team" },
+      ],
+    },
+  ];
 
   return (
-    <MaxWidthWrapper className="fixed z-50 left-1/2 -translate-x-1/2 mt-4 px-4">
-      <motion.nav
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.3 }}
-        className="bg-white/90 backdrop-blur-lg flex justify-between items-center px-6 py-2 rounded-2xl shadow-lg border border-teal-100/50 relative"
-      >
+    <header
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        scrolled ? "bg-teal-900/95 backdrop-blur-sm" : "bg-teal-900" // Always have a background for better visibility
+      }`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo - Left */}
+          <Link href="/" className="flex items-center">
+            <span className={`${bebas.className} text-3xl text-[#c4ec5a]`}>
+              FINNAUX
+            </span>
+          </Link>
 
-        {/* Right - Logo */}
-        <Link href="/" className="relative w-32 h-11">
-          <Image
-            src="/logo-finnaux.png"
-            alt="Finnaux Logo"
-            fill
-            className="object-contain hover:scale-105 transition-transform duration-300"
-            priority
-          />
-        </Link>
-
-        {/* Center - Navigation Links */}
-        <div className="hidden lg:flex items-center gap-8">
-          <ul className="flex gap-6">
-            {links.map(({ label, href, subLinks }) => (
-              <li key={label} className="relative">
-                {subLinks ? (
+          {/* Desktop Navigation - Center */}
+          <nav className="hidden md:flex items-center space-x-8 flex-1 justify-center">
+            {navItems.map((item) => {
+              if (item.subItems) {
+                return (
                   <div
-                    className="flex items-center gap-1 cursor-pointer"
-                    onMouseEnter={() => setActiveSubmenu(label)}
-                    onMouseLeave={() => setActiveSubmenu(null)}
+                    key={item.name}
+                    className="relative group company-dropdown-container" // Added class for click outside detection
+                    onMouseEnter={() => setCompanyDropdownOpen(true)} // Open on hover
+                    onMouseLeave={() => setCompanyDropdownOpen(false)} // Close on mouse leave
                   >
-                    <p className="text-gray-800 hover:text-teal-600 transition-colors font-medium">
-                      {label}
-                    </p>
-                    <ChevronDown className={`w-4 h-4 text-teal-600 transition-transform ${activeSubmenu === label ? 'rotate-180' : ''}`} />
-
-                    <AnimatePresence>
-                      {activeSubmenu === label && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-teal-50 overflow-hidden"
-                        >
-                          {subLinks.map((subLink) => (
-                            <Link
-                              key={subLink.label}
-                              href={subLink.href}
-                              className="block px-4 py-3 text-gray-700 hover:bg-teal-50 hover:text-teal-600 transition-colors"
-                            >
-                              {subLink.label}
-                            </Link>
-                          ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                    <button
+                      onClick={() =>
+                        setCompanyDropdownOpen(!companyDropdownOpen)
+                      } // Still allow click toggle
+                      className={`${bebas.className} flex items-center text-lg text-white hover:text-[#c4ec5a] transition-colors duration-200 tracking-wider`}>
+                      {item.name}
+                      <ChevronDown
+                        className={`ml-1 h-5 w-5 transition-transform ${
+                          companyDropdownOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                    <div
+                      className={`absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-teal-800/95 backdrop-blur-sm ${
+                        companyDropdownOpen ? "block" : "hidden"
+                      }`}>
+                      <div className="py-1">
+                        {item.subItems.map((subItem) => (
+                          <Link
+                            key={subItem.name}
+                            href={subItem.href}
+                            className="block px-4 py-2 text-white hover:bg-teal-700 transition-colors duration-200"
+                            onClick={() => setCompanyDropdownOpen(false)} // Close on item click
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                ) : (
-                  <Link
-                    href={href}
-                    className="text-gray-800 hover:text-teal-600 transition-colors font-medium"
-                  >
-                    {label}
-                  </Link>
-                )}
-              </li>
-            ))}
-          </ul>
+                );
+              }
+
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`${bebas.className} text-lg text-white hover:text-[#c4ec5a] transition-colors duration-200 tracking-wider`}>
+                  {item.name}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Contact - Right */}
+          <div className="hidden md:block">
+            <Link
+              href="/contact"
+              className={`${bebas.className} bg-[#c4ec5a] text-black px-6 py-2 rounded-full text-lg hover:bg-white transition-colors duration-200 tracking-wider`}>
+              Contact Us
+            </Link>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden flex items-center mobile-menu-button">
+            {" "}
+            {/* Added class for click outside detection */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-white hover:text-[#c4ec5a] focus:outline-none"
+              aria-label="Toggle menu">
+              {isOpen ? (
+                <X className="h-8 w-8" />
+              ) : (
+                <Menu className="h-8 w-8" />
+              )}
+            </button>
+          </div>
         </div>
+      </div>
 
-        {/* Left - Contact Button */}
-        <div className="hidden lg:flex items-center">
-          <Button
-            asChild
-            variant="default"
-            className="bg-teal-600 hover:bg-teal-700 transition-all hover:shadow-md active:scale-95"
-          >
-            <Link href="/contact">Contact Us</Link>
-          </Button>
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden mobile-menu-container ${
+          // Added class for click outside detection
+          isOpen ? "block" : "hidden"
+        } bg-teal-900/95 backdrop-blur-sm transition-all duration-300`}>
+        <div className="px-2 pt-2 pb-4 space-y-1 sm:px-4">
+          {navItems.map((item) => {
+            if (item.subItems) {
+              return (
+                <div key={item.name} className="border-b border-teal-800">
+                  <button
+                    onClick={() => setCompanyDropdownOpen(!companyDropdownOpen)}
+                    className={`${bebas.className} flex items-center justify-between w-full px-3 py-4 text-2xl text-white hover:text-[#c4ec5a] tracking-wider`}>
+                    {item.name}
+                    <ChevronDown
+                      className={`h-6 w-6 transition-transform ${
+                        companyDropdownOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  <div
+                    className={`${
+                      companyDropdownOpen ? "block" : "hidden"
+                    } pl-4`}>
+                    {item.subItems.map((subItem) => (
+                      <Link
+                        key={subItem.name}
+                        href={subItem.href}
+                        className={`${bebas.className} block px-3 py-3 text-xl text-white hover:text-[#c4ec5a] tracking-wider`}
+                        onClick={() => {
+                          setIsOpen(false);
+                          setCompanyDropdownOpen(false); // Close both
+                        }}>
+                        {subItem.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`${bebas.className} block px-3 py-4 text-2xl text-white hover:text-[#c4ec5a] border-b border-teal-800 tracking-wider`}
+                onClick={() => setIsOpen(false)}>
+                {item.name}
+              </Link>
+            );
+          })}
+          {/* Mobile Contact Us Link - Now part of navItems map, but can be explicitly added if preferred */}
+          <Link
+            href="/contact"
+            className={`${bebas.className} block px-3 py-4 text-2xl text-white hover:text-[#c4ec5a] border-b border-teal-800 tracking-wider`}
+            onClick={() => setIsOpen(false)}>
+            Contact Us
+          </Link>
         </div>
-
-        {/* Menu for mobile view */}
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "500%" }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="absolute top-full mt-4 left-0 w-full z-40 bg-white backdrop-blur-lg shadow-lg px-8 py-10 rounded-2xl overflow-y-auto border"
-            >
-              <ul className="flex flex-col gap-6 text-lg">
-                {links.map(({ label, href, subLinks, icon }) => {
-                  const Icon = icon;
-                  if (href) {
-                    return (
-                      <li key={label}>
-                        <Link
-                          href={href}
-                          className="flex items-center justify-between gap-4 hover:text-blue-600 transition"
-                        >
-                          <div className="flex gap-4 items-center">
-                            <Icon className="w-5 h-5" />
-                            {label}
-                          </div>
-                          <ArrowRightIcon className="w-4 h-4" />
-                        </Link>
-                      </li>
-                    );
-                  } else if (subLinks) {
-                    return (
-                      <li key={label}>
-                        <p className="mb-2 flex gap-4 items-center text-gray-700">
-                          <Icon className="w-5 h-5" />
-                          {label}
-                        </p>
-                        <ul className="min-[375px]:ml-6 space-y-3">
-                          {subLinks.map(({ href, label, icon }) => {
-                            const Icon = icon;
-                            return (
-                              <li key={label}>
-                                <Link
-                                  href={href}
-                                  className="flex items-center justify-between gap-4 hover:text-blue-600 transition"
-                                >
-                                  <div className="flex gap-4 items-center">
-                                    <Icon className="w-5 h-5" />
-                                    {label}
-                                  </div>
-                                  <ArrowRightIcon className="w-4 h-4" />
-                                </Link>
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      </li>
-                    );
-                  }
-                })}
-              </ul>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="lg:hidden p-3 hover:bg-gray-100 rounded-lg transition-colors text-teal-600 -mr-2"
-          aria-label="Toggle menu"
-        >
-          {open ? (
-            <XIcon size={28} className="text-teal-700" />
-          ) : (
-            <MenuIcon size={28} className="text-teal-700" />
-          )}
-        </button>
-      </motion.nav>
-
-    </MaxWidthWrapper>
+      </div>
+    </header>
   );
 }

@@ -14,7 +14,7 @@ export default function RootLayout({
   useEffect(() => {
     AOS.init({
       duration: 500,
-      once: true,
+      once: false,
       offset: 100,
       easing: "ease-in-out-cubic",
     });

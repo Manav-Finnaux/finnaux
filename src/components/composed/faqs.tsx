@@ -13,7 +13,6 @@ import Text from "./text";
 import { FaqsSectionType } from "@/lib/api.types";
 
 export default function FAQs({ data }: { data: FaqsSectionType }) {
-
   return (
     <Section id="faq" className="space-y-8 bg-gray-50  rounded-lg shadow-md">
       <Badge
