@@ -1,4 +1,4 @@
-import { Clock, Target, Eye } from "lucide-react";
+import { Target, Eye } from "lucide-react";
 import fetchAPI, { ABOUT_US_API } from "@/lib/api";
 import { Timeline } from "@/components/ui/timeline";
 
@@ -75,7 +75,7 @@ export default async function AboutPage() {
       </section>
 
       {/* Experience Card */}
-      <section className="py-16 bg-white">
+      {/* <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div
             data-aos="fade-up"
@@ -91,7 +91,7 @@ export default async function AboutPage() {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Mission & Vision */}
       <section className="py-16 bg-gradient-to-br from-gray-50 to-gray-100">
@@ -113,7 +113,7 @@ export default async function AboutPage() {
           <div className="grid md:grid-cols-2 gap-8">
             {/* Mission Card */}
             <div
-              data-aos="fade-right"
+              data-aos="fade-up"
               className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all">
               <div className="flex items-center gap-4 mb-6">
                 <Target className="w-8 h-8 text-teal-600" />
@@ -128,7 +128,7 @@ export default async function AboutPage() {
 
             {/* Vision Card */}
             <div
-              data-aos="fade-left"
+              data-aos="fade-up"
               className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all">
               <div className="flex items-center gap-4 mb-6">
                 <Eye className="w-8 h-8 text-emerald-600" />
@@ -145,7 +145,9 @@ export default async function AboutPage() {
       </section>
 
       {/* Our Story Timeline */}
-      <Timeline data={timelineData} />
+      <div className="py-16">
+        <Timeline data={timelineData} />
+      </div>
     </div>
   );
 }
