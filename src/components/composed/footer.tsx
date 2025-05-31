@@ -1,9 +1,3 @@
-"use client";
-
-import { useEffect } from "react"; // Import useEffect
-import AOS from "aos"; // Import AOS
-import "aos/dist/aos.css"; // Import AOS CSS
-
 import Link from "next/link";
 import { Button } from "../ui/button";
 import {
@@ -16,6 +10,7 @@ import {
   Github,
 } from "lucide-react";
 import MaxWidthWrapper from "./max_width_wrapper";
+import Image from "next/image";
 
 // Define footer links
 const footerLinks = {
@@ -56,31 +51,15 @@ const SOCIAL_ICONS = {
 };
 
 export default function Footer() {
-  useEffect(() => {
-    AOS.init({
-      once: true, // Only animate once
-      duration: 800, // Animation duration
-      easing: "ease-out-cubic", // Easing type
-      offset: 50, // Offset (in px) from the top of the screen to trigger the animation
-    });
-    AOS.refresh(); // Recalculate positions if content changes
-  }, []);
-
   return (
     <footer className="bg-gray-950 border-t border-gray-800/50 relative overflow-hidden pt-20">
-      {/* Decorative elements */}
-      {/* <div className=" inset-0 opacity-5">
-        <div className=" top-0 left-1/4 w-32 h-32 bg-teal-500 rounded-full filter blur-3xl animate-blob-slow"></div>
-        <div className="absolute bottom-10 right-1/3 w-40 h-40 bg-emerald-500 rounded-full filter blur-3xl animate-blob-medium"></div>
-      </div> */}
-
       <MaxWidthWrapper>
         {/* CTA Section */}
         <div
           data-aos="fade-up" // AOS animation
           data-aos-delay="100" // Delay for AOS
           className="flex flex-col items-center justify-center bg-gradient-to-r from-gray-900 to-gray-800 border border-gray-700/50 rounded-2xl p-8 md:p-10 mb-16 shadow-2xl">
-          <div className="w-fit -mt-12 text-center bg-[#c4ec5a] text-gray-900 px-4 py-1.5 rounded-full font-medium text-sm">
+          <div className="w-fit -mt-12 md:-mt-14 text-center bg-[#c4ec5a] text-gray-900 px-4 py-1.5 rounded-full font-medium text-sm">
             Get Started Today
           </div>
           <div className="text-center max-w-2xl mx-auto pt-6">
@@ -101,18 +80,22 @@ export default function Footer() {
               data-aos="fade-up" // AOS animation
               data-aos-delay="400" // Delay for AOS
               className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-[#c4ec5a] hover:bg-[#d0f06a] text-gray-900 group font-semibold text-base">
-                Request Demo
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-gray-600 text-gray-300 hover:bg-gray-800/50 hover:border-gray-500 font-semibold text-base">
-                Contact Sales
-              </Button>
+              <Link href={'/contact'}>
+                <Button
+                  size="lg"
+                  className="bg-[#c4ec5a] hover:bg-[#d0f06a] text-gray-900 group font-semibold text-base">
+                  Request Demo
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+              <Link href={'/products'}>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="border-gray-600 text-slate-800 hover:bg-gray-300 hover:border-gray-500 font-semibold text-base">
+                  Our Products
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -125,7 +108,9 @@ export default function Footer() {
             data-aos-delay="500" // Delay for AOS
             className="col-span-2 md:col-span-2 lg:col-span-1 space-y-6">
             <Link href="/" className="inline-block">
-              <img src="/logo-finnaux.png" alt="Finnaux" className="h-10" />
+              <div className="h-10 w-24 relative">
+                <Image src="/logo-finnaux.png" alt="Finnaux" fill />
+              </div>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
               Modern financial infrastructure for next-generation lending

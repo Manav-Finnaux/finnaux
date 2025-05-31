@@ -54,7 +54,7 @@ export default function ContactPage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
             className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Have questions? Get in touch with our team - we're happy to help!
+            Have questions? Get in touch with our team - we&apos;re happy to help!
           </motion.p>
         </div>
 

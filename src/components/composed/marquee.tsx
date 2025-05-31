@@ -9,7 +9,7 @@ export default function MarqueeSection({ data }: { data: ClientLogosMarqueeType[
 
   return (
     <div className="relative flex w-full flex-col items-center justify-center overflow-hidden gap-10 my-14">
-      <Marquee className="[--duration:30s]">
+      <Marquee className="[--duration:60s]">
         {firstRow.map(({ clientLogo, companyName }, idx) => (
           <div key={idx} className="w-44 h-16 mx-8 relative">
             <Image
@@ -23,7 +23,7 @@ export default function MarqueeSection({ data }: { data: ClientLogosMarqueeType[
           </div>
         ))}
       </Marquee>
-      <Marquee reverse className="[--duration:30s]">
+      <Marquee reverse className="[--duration:60s]">
         {secondRow.map(({ clientLogo, companyName }, idx) => (
           <div key={idx} className="w-44 h-16 mx-8 relative">
             <Image

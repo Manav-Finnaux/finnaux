@@ -30,7 +30,7 @@ export default function Testimonials({ data }: { data: TestimonialsSectionType }
 
       <div className="relative">
         <div className="overflow-hidden w-full py-10">
-          <Marquee className="flex items-center">
+          <Marquee className="flex items-center [--duration:10s]" pauseOnHover>
             <div className="flex py-5">
               {data.testimonial.map(({ name, testimonial, testimonialDate, designation, avatar }, index) => (
                 <div
