@@ -26,7 +26,7 @@ export default async function Page({ params }: { params: Promise<{ product: stri
         <div className="flex flex-col items-center space-y-6 mb-8">
           {/* Back link */}
           <Link
-            href={'/modules'}
+            href={'/products'}
             className="flex items-center gap-2 px-5 py-1 text-sm sm:text-base select-none"
             data-aos="fade-right"
             data-aos-delay="100">

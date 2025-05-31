@@ -96,7 +96,7 @@ export default function FunctionalBlocks({ data }: { data: ModulesSectionType })
                   data-aos-delay={150 + (idx * 50)} // Shorter staggered delay
                 >
                   <Link
-                    href={'/modules/' + module.documentId}
+                    href={'/products/' + module.documentId}
                     className="block group transition-all duration-200 hover:bg-teal-50/30"
                   >
                     <div className="p-6 md:p-8">
