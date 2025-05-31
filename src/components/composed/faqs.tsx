@@ -14,7 +14,9 @@ import { FaqsSectionType } from "@/lib/api.types";
 
 export default function FAQs({ data }: { data: FaqsSectionType }) {
   return (
-    <Section id="faq" className="space-y-8 bg-gray-50  rounded-lg shadow-md">
+    <Section
+      id="faq"
+      className="space-y-8 bg-gray-50 !pt-0 rounded-lg shadow-md ">
       <Badge
         className="bg-teal-100 text-teal-600 p-2 rounded-lg flex items-center"
         data-aos="fade-up"
@@ -22,10 +24,10 @@ export default function FAQs({ data }: { data: FaqsSectionType }) {
         <CircleHelpIcon className="mr-2" />
         <Text>FAQ</Text>
       </Badge>
-      <MaxWidthWrapper className="flex flex-col items-center gap-8">
+      <MaxWidthWrapper className="flex flex-col items-center gap-8 ">
         <Heading
           as="h2"
-          className="mb-10 text-3xl font-bold text-gray-800"
+          className="mb-10 text-3xl font-bold text-gray-800 "
           data-aos="fade-up"
           data-aos-delay="150">
           {data.heading}
@@ -36,7 +38,7 @@ export default function FAQs({ data }: { data: FaqsSectionType }) {
             <AccordionItem
               key={idx}
               value={idx.toString()}
-              className="data-[state=open]:bg-primary/5 border-b last-of-type:border-none transition-all duration-300 bg-gradient-to-r from-transparent via-white to-transparent hover:from-teal-50/50 hover:via-teal-50/30 hover:to-transparent rounded-xl mb-2"
+              className="data-[state=open]:bg-primary/5 border-2 border-black/10 last-of-type:border transition-all duration-300 bg-gradient-to-r from-transparent via-white to-transparent hover:from-teal-50/50 hover:via-teal-50/30 hover:to-transparent rounded-xl mb-2"
               data-aos="fade-up"
               data-aos-delay={200 + idx * 50}>
               <AccordionTrigger className="text-lg sm:text-2xl font-medium py-6 px-4 transition-all duration-300 rounded-lg group">

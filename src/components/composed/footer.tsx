@@ -1,177 +1,231 @@
 "use client";
 
-import "aos/dist/aos.css";
-import Image from "next/image";
+import { useEffect } from "react"; // Import useEffect
+import AOS from "aos"; // Import AOS
+import "aos/dist/aos.css"; // Import AOS CSS
+
 import Link from "next/link";
 import { Button } from "../ui/button";
-import Heading from "./heading";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  ArrowRight,
+  Twitter,
+  Linkedin,
+  Github,
+} from "lucide-react";
 import MaxWidthWrapper from "./max_width_wrapper";
-import Text from "./text";
 
-const LINKS = [
-  {
-    colHeading: "Company",
+// Define footer links
+const footerLinks = {
+  products: {
+    heading: "Products",
     links: [
-      { label: "About Finnuax", href: "/about" },
-      { label: "Blog", href: "#blog" },
-      { label: "Contact", href: "/contact" },
+      { name: "Loan Origination", href: "/loan-origination" },
+      { name: "Collections", href: "/collections" },
+      { name: "Risk Analytics", href: "/analytics" },
+      { name: "API Integrations", href: "/integrations" },
     ],
   },
-  {
-    colHeading: "Products",
+  company: {
+    heading: "Company",
     links: [
-      { label: "Features", href: "/#features" },
-      { label: "Solutions", href: "#solutions" },
-      { label: "Modules", href: "/#modules" },
-      { label: "Integrations", href: "/integrations" },
+      { name: "About Us", href: "/about" },
+      { name: "Leadership", href: "/team" },
+      { name: "Careers", href: "/careers" },
+      { name: "Press", href: "/press" },
     ],
   },
-
-  {
-    colHeading: "Resources",
+  resources: {
+    heading: "Resources",
     links: [
-      { label: "FAQs ", href: "/#faq" },
-      { label: "Contact Us ", href: "/contact" },
+      { name: "Blog", href: "/blog" },
+      { name: "Case Studies", href: "/case-studies" },
+      { name: "Help Center", href: "/support" },
+      { name: "Webinars", href: "/webinars" },
     ],
   },
-];
+};
 
-const LETTERS = ["F", "I", "N", "N", "A", "U", "X"];
+// Social media icons mapping
+const SOCIAL_ICONS = {
+  Twitter: Twitter,
+  LinkedIn: Linkedin,
+  GitHub: Github,
+};
 
 export default function Footer() {
+  useEffect(() => {
+    AOS.init({
+      once: true, // Only animate once
+      duration: 800, // Animation duration
+      easing: "ease-out-cubic", // Easing type
+      offset: 50, // Offset (in px) from the top of the screen to trigger the animation
+    });
+    AOS.refresh(); // Recalculate positions if content changes
+  }, []);
+
   return (
-    <div className="bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 text-white rounded-3xl p-[1px] mx-4 sm:mx-8 shadow-2xl relative overflow-hidden group">
-      {/* Animated gradient background - THIS IS THE NEW PART */}
-      {/* <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="animate-subtle-gradient absolute inset-0 opacity-20 bg-blue-300" />
+    <footer className="bg-gray-950 border-t border-gray-800/50 relative overflow-hidden pt-20">
+      {/* Decorative elements */}
+      {/* <div className=" inset-0 opacity-5">
+        <div className=" top-0 left-1/4 w-32 h-32 bg-teal-500 rounded-full filter blur-3xl animate-blob-slow"></div>
+        <div className="absolute bottom-10 right-1/3 w-40 h-40 bg-emerald-500 rounded-full filter blur-3xl animate-blob-medium"></div>
       </div> */}
 
-      <MaxWidthWrapper className="relative p-2 sm:p-10 pt-8 md:p-14 md:pt-10 lg:p-24 lg:pt-20 backdrop-blur-sm">
-        {/* Enhanced CTA Section */}
+      <MaxWidthWrapper>
+        {/* CTA Section */}
         <div
-          className="text-center pb-12 space-y-6 border-b border-b-stone-400/30"
-          data-aos="fade-up"
-          data-aos-delay="100">
-          <Heading
-            as="h2"
-            className="bg-gradient-to-r from-white via-teal-300 to-cyan-200 bg-clip-text text-transparent">
-            <span
-              className="block min-[445px]:inline hover:scale-105 transition-transform duration-300"
-              data-aos="zoom-in"
-              data-aos-delay="150">
-              Transform Your Lending.
-            </span>{" "}
-            <span
-              className="block min-[445px]:inline hover:scale-105 transition-transform duration-300"
-              data-aos="zoom-in"
-              data-aos-delay="200">
-              Elevate Your Growth.
-            </span>
-          </Heading>
-
-          <div data-aos="fade-up" data-aos-delay="250" className="relative">
-            <Text as="p" className="text-stone-300 max-w-2xl mx-auto relative">
-              Join forward-thinking NBFCs revolutionizing loan management with
-              our intuitive, powerful platform.
-            </Text>
+          data-aos="fade-up" // AOS animation
+          data-aos-delay="100" // Delay for AOS
+          className="flex flex-col items-center justify-center bg-gradient-to-r from-gray-900 to-gray-800 border border-gray-700/50 rounded-2xl p-8 md:p-10 mb-16 shadow-2xl">
+          <div className="w-fit -mt-12 text-center bg-[#c4ec5a] text-gray-900 px-4 py-1.5 rounded-full font-medium text-sm">
+            Get Started Today
           </div>
-
-          <div
-            className="inline-block hover:scale-105 transition-transform duration-300"
-            data-aos="fade-up"
-            data-aos-delay="300">
-            <Button className="max-w-44 bg-gradient-to-r from-cyan-400 to-teal-500 hover:from-cyan-500 hover:to-teal-600 hover:shadow-xl hover:shadow-cyan-500/30 transition-all duration-300">
-              <span className="drop-shadow-md">Get Started</span>
-            </Button>
+          <div className="text-center max-w-2xl mx-auto pt-6">
+            <h2
+              data-aos="zoom-in" // AOS animation
+              data-aos-delay="200" // Delay for AOS
+              className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-white via-teal-200 to-emerald-300 bg-clip-text text-transparent">
+              Power Your Lending Operations
+            </h2>
+            <p
+              data-aos="fade-up" // AOS animation
+              data-aos-delay="300" // Delay for AOS
+              className="text-gray-400 mb-6 text-base">
+              Join 200+ financial institutions transforming their lending with
+              our cutting-edge platform.
+            </p>
+            <div
+              data-aos="fade-up" // AOS animation
+              data-aos-delay="400" // Delay for AOS
+              className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                size="lg"
+                className="bg-[#c4ec5a] hover:bg-[#d0f06a] text-gray-900 group font-semibold text-base">
+                Request Demo
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-gray-600 text-gray-300 hover:bg-gray-800/50 hover:border-gray-500 font-semibold text-base">
+                Contact Sales
+              </Button>
+            </div>
           </div>
         </div>
 
-        {/* Rest of the footer remains exactly the same */}
-        <footer
-          className="pt-16 flex flex-col gap-6 sm:flex-row sm:justify-between"
-          data-aos="fade-up"
-          data-aos-delay="400">
-          <div className="space-y-4" data-aos="fade-right" data-aos-delay="500">
-            <div className="w-32 h-14 relative group hover:scale-105 transition-transform duration-300">
-              <Image
-                src={"/logo-finnaux.png"}
-                alt="Finnaux Logo"
-                fill
-                className="drop-shadow-lg object-contain object-left"
-              />
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-12 mb-16">
+          {/* Logo and description */}
+          <div
+            data-aos="fade-right" // AOS animation
+            data-aos-delay="500" // Delay for AOS
+            className="col-span-2 md:col-span-2 lg:col-span-1 space-y-6">
+            <Link href="/" className="inline-block">
+              <img src="/logo-finnaux.png" alt="Finnaux" className="h-10" />
+            </Link>
+            <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
+              Modern financial infrastructure for next-generation lending
+              institutions.
+            </p>
+            <div className="flex space-x-5 mt-4">
+              {["Twitter", "LinkedIn", "GitHub"].map((socialName, index) => {
+                const Icon =
+                  SOCIAL_ICONS[socialName as keyof typeof SOCIAL_ICONS];
+                return (
+                  <Link
+                    key={socialName}
+                    href="#" // Replace with actual social links
+                    data-aos="fade-up" // AOS animation for individual icons
+                    data-aos-delay={600 + index * 100} // Staggered delay
+                    className="text-gray-500 hover:text-[#c4ec5a] transition-colors"
+                    aria-label={socialName}>
+                    <Icon className="w-6 h-6" />
+                  </Link>
+                );
+              })}
             </div>
+          </div>
 
-            <Text
-              as="p"
-              className="text-sm w-3/4 text-stone-300 leading-relaxed">
-              Empowering NBFCs with modern technology for seamless loan
-              management, enhanced customer experience, and regulatory
-              compliance.
-            </Text>
-
-            <div className="flex gap-4 pt-2">
-              {["twitter", "linkedin", "github"].map((social, index) => (
+          {/* Contact Information - New Section */}
+          <div
+            data-aos="fade-up" // AOS animation
+            data-aos-delay="600" // Delay for AOS
+            className="col-span-2 md:col-span-2 lg:col-span-1 space-y-4">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300">
+              Contact Us
+            </h3>
+            <ul className="space-y-3">
+              <li className="flex items-start">
+                <Mail className="w-5 h-5 text-gray-500 mr-3 mt-0.5" />
                 <a
-                  key={social}
-                  href={`#${social}`}
-                  className="text-stone-400 hover:text-teal-400 transition-colors duration-300"
-                  data-aos="fade-up"
-                  data-aos-delay={600 + index * 100}>
-                  <span className="block">{social}</span>
-                  <div className="w-5 h-5 bg-current rounded-full hover:scale-110 transition-transform" />
+                  href="mailto:info@finnaux.com"
+                  className="text-sm text-gray-500 hover:text-white transition-colors break-all">
+                  info@finnaux.com
                 </a>
-              ))}
-            </div>
+              </li>
+              <li className="flex items-start">
+                <Phone className="w-5 h-5 text-gray-500 mr-3 mt-0.5" />
+                <a
+                  href="tel:+1234567890"
+                  className="text-sm text-gray-500 hover:text-white transition-colors">
+                  +1 (234) 567-890
+                </a>
+              </li>
+              <li className="flex items-start">
+                <MapPin className="w-5 h-5 text-gray-500 mr-3 mt-0.5 flex-shrink-0" />
+                <p className="text-sm text-gray-500">
+                  123 Financial St, Suite 400
+                  <br />
+                  Fintech City, FC 98765
+                  <br />
+                  Country
+                </p>
+              </li>
+            </ul>
           </div>
 
-          <div className="sm:flex sm:gap-6 md:gap-10 lg:gap-20">
-            {LINKS.map(({ colHeading, links }, idx) => (
-              <ul
-                key={colHeading}
-                data-aos="fade-up"
-                data-aos-delay={500 + idx * 150}>
-                <Text as="p" className="font-medium mb-2 text-teal-300">
-                  {colHeading}
-                </Text>
-                <div className="sm:flex sm:flex-col sm:gap-2">
-                  {links.map(({ label, href }, linkIdx) => (
+          {/* Footer links */}
+          {Object.values(footerLinks).map((category, idx) => (
+            <div
+              key={category.heading}
+              data-aos="fade-up" // AOS animation
+              data-aos-delay={700 + idx * 100} // Staggered delay
+              className="space-y-4">
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300">
+                {category.heading}
+              </h3>
+              <ul className="space-y-3">
+                {category.links.map((link, linkIdx) => (
+                  <li
+                    key={link.name}
+                    data-aos="fade-up" // AOS animation for individual links
+                    data-aos-delay={800 + idx * 100 + linkIdx * 50} // More staggered delay
+                  >
                     <Link
-                      href={href}
-                      key={label}
-                      className="text-stone-400 hover:text-white transition-colors duration-300 hover:translate-x-1 transform inline-block"
-                      data-aos="fade-up"
-                      data-aos-delay={600 + idx * 150 + linkIdx * 50}>
-                      <li>{label}</li>
+                      href={link.href}
+                      className="text-sm text-gray-500 hover:text-white transition-colors flex items-start group">
+                      <span className="w-1 h-1 bg-gray-600 rounded-full mt-2 mr-2 group-hover:bg-[#c4ec5a] transition-colors"></span>
+                      {link.name}
                     </Link>
-                  ))}
-                </div>
+                  </li>
+                ))}
               </ul>
-            ))}
-          </div>
-        </footer>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-gray-800/50 pt-3 pb-4 flex flex-col md:flex-row justify-center items-center">
+          <p className="text-xs text-gray-600">
+            © {new Date().getFullYear()} Finnaux Technologies. All rights
+            reserved.
+          </p>
+        </div>
       </MaxWidthWrapper>
-
-      {/* FINNAUX letters - kept exactly the same as requested */}
-      <div className="flex justify-between text-white/5 text-5xl min-[400px]:text-[16vw] font-bold leading-none select-none -m-2 -mb-4 mt-0 sm:-m-6 sm:-mb-8 md:-mb-10 lg:-mb-14">
-        {LETTERS.map((letter, index) => (
-          <Text
-            as="p"
-            key={index}
-            className="hover:text-white/10 transition-colors duration-300 cursor-default hover:scale-105 transform"
-            data-aos="fade-up"
-            data-aos-delay={700 + index * 100}
-            data-aos-anchor-placement="top-bottom">
-            {letter}
-          </Text>
-        ))}
-      </div>
-
-      <div
-        className="text-center text-stone-500 text-xs pb-4 pt-2"
-        data-aos="fade"
-        data-aos-delay="1400">
-        © {new Date().getFullYear()} Finnaux. All rights reserved.
-      </div>
-    </div>
+    </footer>
   );
 }
