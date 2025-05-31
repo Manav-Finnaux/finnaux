@@ -17,8 +17,7 @@ export default function HeroSection({ data }: { data: HeroSectionType }) {
     { text: "Solutions", color: "text-white" },
     { text: "for", color: "text-white" },
     { text: "Modern", color: "text-[#c4ec5a]" },
-    { text: "Lending", color: "text-white" },
-    { text: "Institutions", color: "text-white" }
+    { text: "Lending", color: "text-[#c4ec5a]" },
   ];
 
   const backgroundRef = useRef<HTMLDivElement>(null);

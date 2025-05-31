@@ -5,9 +5,9 @@ import Image from "next/image";
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import Link from "next/link";
 
-export default async function Page({ params }: { params: Promise<{ module: string }> }) {
-  const { module } = await params;
-  const MODULE_DETAIL_API = `/modules/${module}?populate[0]=faqs.qna&populate[heroImage][fields][0]=url`;
+export default async function Page({ params }: { params: Promise<{ product: string }> }) {
+  const { product } = await params;
+  const MODULE_DETAIL_API = `/modules/${product}?populate[0]=faqs.qna&populate[heroImage][fields][0]=url`;
   const baseUrl = process.env.SERVER_API_BASE_URL; // for appending ahead of images
   const moduleData = await fetchAPI<ModuleDetailsResponseType>(MODULE_DETAIL_API);
   const contactDetailsData = await fetchAPI<ContactInfoType>(CONTACT_DETAIL_API);

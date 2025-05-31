@@ -62,7 +62,7 @@ export default function WhyChooseUs({ data }: { data: WhyChooseUsType }) {
                 <div className="relative z-10">
                   <div className="mb-6 flex items-center gap-4">
                     <div className="p-3 bg-teal-100/50 rounded-lg">
-                      <Icon className="w-6 h-6 text-teal-600" />
+                      {/* <Icon className="w-6 h-6 text-teal-600" /> */}
                     </div>
                     <div className="text-4xl font-bold text-teal-600">
                       <NumberTicker
@@ -92,7 +92,6 @@ export default function WhyChooseUs({ data }: { data: WhyChooseUsType }) {
           data-aos="fade-up"
           data-aos-delay="600">
           <Text className="text-sm text-gray-500 italic">
-            {/* Trusted by 50+ financial institutions across 12 countries */}
             {data.footer}
           </Text>
         </div>

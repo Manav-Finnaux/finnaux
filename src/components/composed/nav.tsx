@@ -20,28 +20,6 @@ import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import MaxWidthWrapper from "./max_width_wrapper";
 
-// const links = [
-//   {
-//     label: "Home",
-//     href: "/"
-//   },
-//   {
-//     label: "Modules",
-//     href: "/modules"
-//   },
-//   {
-//     label: "Integrations",
-//     href: "/integrations",
-//   },
-//   {
-//     label: "Company",
-//     subLinks: [
-//       { label: "About Us", href: "/about" },
-//       { label: "Our Team", href: "/team" },
-//     ]
-//   },
-// ];
-
 const links = [
   {
     label: "Home",
@@ -49,8 +27,8 @@ const links = [
     icon: Home,
   },
   {
-    label: "Modules",
-    href: "/modules",
+    label: "Products",
+    href: "/products",
     icon: Boxes,
   },
   {
