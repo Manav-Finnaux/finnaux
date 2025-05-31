@@ -7,24 +7,30 @@ import { motion } from "framer-motion";
 import { Linkedin, LucideIcon, Twitter } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 
 type iconByLabel = Record<string, LucideIcon>;
 
 type submitStatusType = {
   status: string;
   message: string;
-}
+};
 
 const ICON_BY_LABEL: iconByLabel = {
   Twitter: Twitter,
-  LinkedIn: Linkedin
+  LinkedIn: Linkedin,
 };
 
 export default function ContactPage() {
   const { register, handleSubmit } = useForm();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<submitStatusType | null>(null);
+  const [submitStatus, setSubmitStatus] = useState<submitStatusType | null>(
+    null
+  );
+
+  // Define your coordinates
+  const latitude = 26.959736;
+  const longitude = 75.779254;
 
   return (
     <Section
@@ -48,7 +54,7 @@ export default function ContactPage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
             className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Have questions? Get in touch with our team - we&apos;re happy to help!
+            Have questions? Get in touch with our team - we're happy to help!
           </motion.p>
         </div>
 
@@ -63,24 +69,25 @@ export default function ContactPage() {
               Send us a message
             </h2>
 
-            {submitStatus !== null && (submitStatus?.status == 'success' ? (
-              <div className="bg-teal-50 border border-teal-200 text-teal-700 px-4 py-3 rounded mb-6">
-                {submitStatus.message}
-              </div>
-            ) :
-              (
+            {submitStatus !== null &&
+              (submitStatus?.status == "success" ? (
                 <div className="bg-teal-50 border border-teal-200 text-teal-700 px-4 py-3 rounded mb-6">
                   {submitStatus.message}
                 </div>
-              ))
-            }
+              ) : (
+                <div className="bg-teal-50 border border-teal-200 text-teal-700 px-4 py-3 rounded mb-6">
+                  {submitStatus.message}
+                </div>
+              ))}
 
-            <form onSubmit={handleSubmit(async (data) => {
-              setIsSubmitting(true);
-              const response = await handleContactData(data);
-              setSubmitStatus(response);
-              setIsSubmitting(false);
-            })} className="space-y-6">
+            <form
+              onSubmit={handleSubmit(async (data) => {
+                setIsSubmitting(true);
+                const response = await handleContactData(data);
+                setSubmitStatus(response);
+                setIsSubmitting(false);
+              })}
+              className="space-y-6">
               <div>
                 <label
                   htmlFor="name"
@@ -90,11 +97,9 @@ export default function ContactPage() {
                 <input
                   type="text"
                   id="name"
-                  {
-                  ...register('name', {
-                    required: 'This field is required'
-                  })
-                  }
+                  {...register("name", {
+                    required: "This field is required",
+                  })}
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
                   placeholder="Your name"
                 />
@@ -109,11 +114,9 @@ export default function ContactPage() {
                 <input
                   type="email"
                   id="email"
-                  {
-                  ...register('email', {
-                    required: 'This field is required'
-                  })
-                  }
+                  {...register("email", {
+                    required: "This field is required",
+                  })}
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
                   placeholder="your.email@example.com"
                 />
@@ -128,11 +131,9 @@ export default function ContactPage() {
                 <input
                   type="tel"
                   id="phone"
-                  {
-                  ...register('phone', {
-                    required: 'This field is required'
-                  })
-                  }
+                  {...register("phone", {
+                    required: "This field is required",
+                  })}
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
                   placeholder="+91 9876543210"
                 />
@@ -147,11 +148,9 @@ export default function ContactPage() {
                 <input
                   type="text"
                   id="city"
-                  {
-                  ...register('city', {
-                    required: 'This field is required'
-                  })
-                  }
+                  {...register("city", {
+                    required: "This field is required",
+                  })}
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
                   placeholder="Your city"
                 />
@@ -165,11 +164,9 @@ export default function ContactPage() {
                 </label>
                 <textarea
                   id="message"
-                  {
-                  ...register('message', {
-                    required: 'This field is required'
-                  })
-                  }
+                  {...register("message", {
+                    required: "This field is required",
+                  })}
                   rows={4}
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
                   placeholder="How can we help you?"></textarea>
@@ -197,6 +194,46 @@ export default function ContactPage() {
           </motion.div>
         </div>
       </div>
+      <div className="mt-20 max-w-7xl mx-auto px-4">
+        <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+          Our Location
+        </h2>
+
+        {/* Simple Google Maps iframe */}
+        <div className="overflow-hidden rounded-xl border border-gray-200 shadow-sm">
+          <iframe
+            // CHANGE 1: Update the src attribute for the iframe
+            src={`https://maps.google.com/maps?q=${latitude},${longitude}&z=15&output=embed`}
+            width="100%"
+            height="400"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div className="mt-6 text-center">
+          <a
+            // CHANGE 2: Update the href attribute for "Get Directions"
+            href={`https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-teal-600 hover:text-teal-700 font-medium">
+            Get Directions
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor">
+              <path
+                fillRule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
     </Section>
   );
 }
@@ -209,14 +246,19 @@ function ContactDetails() {
   useEffect(() => {
     const fetchContactData = async () => {
       try {
-        const response = await fetchAPI<ContactInfoType>(CONTACT_DETAIL_API, true);
+        const response = await fetchAPI<ContactInfoType>(
+          CONTACT_DETAIL_API,
+          true
+        );
         setContactData(response);
       } catch (err) {
-        setError(err instanceof Error ? err.message : "An unknown error occurred");
+        setError(
+          err instanceof Error ? err.message : "An unknown error occurred"
+        );
       } finally {
         setIsLoading(false);
       }
-    }
+    };
 
     fetchContactData();
   }, []);
@@ -229,9 +271,7 @@ function ContactDetails() {
   );
 
   if (error) {
-    return (
-      <div className="text-red-500">Error: {error}</div>
-    )
+    return <div className="text-red-500">Error: {error}</div>;
   }
 
   if (isLoading) {
@@ -239,45 +279,43 @@ function ContactDetails() {
       <div className="animate-pulse text-teal-600">
         Loading contact information...
       </div>
-    )
+    );
   }
 
   return (
     <div className="space-y-8">
       {/* Email */}
-      {
-        contactData?.email && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="flex items-start gap-2">
-            <div className="bg-white p-3 rounded-full text-teal-600 shadow-sm">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-800">Email</h3>
-              <a
-                href={`mailto:${contactData?.email}`}
-                className="hover:text-teal-600 transition-colors break-all">
-                {contactData?.email}
-              </a>
-            </div>
-          </motion.div>
-        )
-      }
+      {contactData?.email && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="flex items-start gap-2">
+          <div className="bg-white p-3 rounded-full text-teal-600 shadow-sm">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
+            </svg>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold text-gray-800">Email</h3>
+            <a
+              href={`mailto:${contactData?.email}`}
+              className="hover:text-teal-600 transition-colors break-all">
+              {contactData?.email}
+            </a>
+          </div>
+        </motion.div>
+      )}
 
       {/* WhatsApp */}
       {whatsappNumber && (
@@ -296,9 +334,7 @@ function ContactDetails() {
             </svg>
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-gray-800">
-              WhatsApp
-            </h3>
+            <h3 className="text-lg font-semibold text-gray-800">WhatsApp</h3>
             <a
               href={`https://wa.me/91${whatsappNumber.phoneNumber}`}
               className="hover:text-teal-600 transition-colors">
@@ -331,9 +367,7 @@ function ContactDetails() {
             </svg>
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-gray-800">
-              Phone
-            </h3>
+            <h3 className="text-lg font-semibold text-gray-800">Phone</h3>
             <a
               href={`tel:+91-${callNumber.phoneNumber}`}
               className="hover:text-teal-600 transition-colors">
@@ -372,9 +406,7 @@ function ContactDetails() {
             </svg>
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-gray-800">
-              Office
-            </h3>
+            <h3 className="text-lg font-semibold text-gray-800">Office</h3>
             <p className="text-gray-600 mt-1">
               {contactData.address.map((item) => (
                 <React.Fragment key={item.id}>
@@ -388,8 +420,8 @@ function ContactDetails() {
       )}
 
       {/* Social Media */}
-      {
-        contactData?.socials.socialLink.length && contactData?.socials.socialLink.length > 0 && (
+      {contactData?.socials.socialLink.length &&
+        contactData?.socials.socialLink.length > 0 && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -399,20 +431,23 @@ function ContactDetails() {
               Follow us
             </h3>
             <div className="flex gap-4">
-              {
-                contactData?.socials.socialLink.map(({ href, label }, idx) => {
-                  const Icon = ICON_BY_LABEL[label];
-                  return (
-                    <Link key={idx} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="bg-white p-3 rounded-full shadow-sm hover:shadow-md transition hover:text-teal-500">
-                      <Icon className="w-5 h-5" />
-                    </Link>
-                  )
-                })
-              }
+              {contactData?.socials.socialLink.map(({ href, label }, idx) => {
+                const Icon = ICON_BY_LABEL[label];
+                return (
+                  <Link
+                    key={idx}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="bg-white p-3 rounded-full shadow-sm hover:shadow-md transition hover:text-teal-500">
+                    <Icon className="w-5 h-5" />
+                  </Link>
+                );
+              })}
             </div>
           </motion.div>
-        )
-      }
+        )}
     </div>
   );
 }
