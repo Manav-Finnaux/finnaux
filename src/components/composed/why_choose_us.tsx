@@ -103,7 +103,7 @@ export default function WhyChooseUs({ data }: { data: WhyChooseUsType }) {
           className="mt-12 text-center"
           data-aos="fade-up"
           data-aos-delay="600">
-          <Text className="text-sm text-gray-500 italic">{data.footer}</Text>
+          <Text className="text-lg font-medium text-gray-500 italic">{data.footer}</Text>
         </div>
       </MaxWidthWrapper>
     </Section>
