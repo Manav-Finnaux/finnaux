@@ -44,8 +44,7 @@ export default function WhyChooseUs({ data }: { data: WhyChooseUsType }) {
           </Heading>
 
           <Text className="max-w-2xl text-gray-600">
-            Transform your lending operations with our meticulously crafted
-            financial infrastructure solutions
+            {data.tagline}
           </Text>
         </div>
 
@@ -103,7 +102,8 @@ export default function WhyChooseUs({ data }: { data: WhyChooseUsType }) {
           className="mt-12 text-center"
           data-aos="fade-up"
           data-aos-delay="600">
-          <Text className="text-lg font-medium text-gray-500 italic">{data.footer}</Text>
+          <Text className="text-lg font-semibold text-gray-900 leading-snug">{data.footer}</Text>
+          {/* <Text className="text-lg font-medium text-gray-500 italic">{data.footer}</Text> */}
         </div>
       </MaxWidthWrapper>
     </Section>
