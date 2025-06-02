@@ -7,9 +7,9 @@ import MaxWidthWrapper from "./max_width_wrapper";
 import Section from "./section";
 import Text from "./text";
 import Link from "next/link";
+import { SparklesIcon } from "lucide-react";
 
 export default function Features({ data }: { data: FeaturesSectionType }) {
-
   return (
     <Section
       id="features"
@@ -24,7 +24,8 @@ export default function Features({ data }: { data: FeaturesSectionType }) {
             className="mx-0 border font-semibold bg-teal-50 text-teal-600 p-2 rounded-full mb-4 px-4 py-2 w-fit"
             data-aos="fade-up"
             data-aos-delay="100">
-            Features
+            <SparklesIcon className="mr-2 w-4 h-4" />
+            <Text>Features</Text>
           </Badge>
 
           {/* Heading + Para */}
@@ -48,7 +49,7 @@ export default function Features({ data }: { data: FeaturesSectionType }) {
             </Text>
           </div>
 
-          <Link href={'/contact'}>
+          <Link href={"/contact"}>
             <Button className="w-fit">Get Started</Button>
           </Link>
         </div>

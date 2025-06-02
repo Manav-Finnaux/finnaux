@@ -18,12 +18,18 @@ export default function FAQs({ data }: { data: FaqsSectionType }) {
       id="faq"
       className="space-y-8 bg-gray-50 !pt-0 rounded-lg shadow-md ">
       <Badge
-        className="bg-teal-100 text-teal-600 p-2 rounded-lg flex items-center"
+        className="bg-teal-50 border w-fit px-4 py-2 rounded-full mb-4 text-teal-600 font-semiboldflex items-center mx-auto font-semibold"
         data-aos="fade-up"
         data-aos-delay="100">
-        <CircleHelpIcon className="mr-2" />
+        <CircleHelpIcon className="mr-2 w-4 h-4" />
         <Text>FAQ</Text>
       </Badge>
+
+      {/* <Badge className="bg-teal-50 border w-fit px-4 py-2 rounded-full mb-4 text-teal-600 font-semiboldflex items-center mx-auto font-semibold">
+        <CheckCircleIcon className="w-4 h-4 mr-2" />
+        Why Choose Us?
+      </Badge> */}
+
       <MaxWidthWrapper className="flex flex-col items-center gap-8 ">
         <Heading
           as="h2"
