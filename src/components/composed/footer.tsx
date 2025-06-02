@@ -49,7 +49,7 @@ const SOCIAL_ICONS = {
   LinkedIn: Linkedin,
   GitHub: Github,
 };
-
+const LETTERS = ["F", "I", "N", "N", "A", "U", "X"];
 export default function Footer() {
   return (
     <footer className="bg-gray-950 border-t border-gray-800/50 relative overflow-hidden pt-20">
@@ -80,7 +80,7 @@ export default function Footer() {
               data-aos="fade-up" // AOS animation
               data-aos-delay="400" // Delay for AOS
               className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href={'/contact'}>
+              <Link href={"/contact"}>
                 <Button
                   size="lg"
                   className="bg-[#c4ec5a] hover:bg-[#d0f06a] text-gray-900 group font-semibold text-base">
@@ -88,7 +88,7 @@ export default function Footer() {
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
-              <Link href={'/products'}>
+              <Link href={"/products"}>
                 <Button
                   variant="outline"
                   size="lg"
@@ -203,8 +203,22 @@ export default function Footer() {
           ))}
         </div>
 
+        {/* Large Letters Background */}
+        <div className="flex justify-between text-white/5 text-5xl min-[400px]:text-[16vw] font-bold leading-none select-none -m-2 -mb-4 mt-0 sm:-m-6 sm:-mb-8 md:-mb-10 lg:-mb-14">
+          {LETTERS.map((letter, index) => (
+            <p
+              key={index}
+              className="hover:text-white/10 transition-colors duration-300 cursor-default hover:scale-105 transform"
+              data-aos="fade-up"
+              data-aos-delay={700 + index * 100}
+              data-aos-anchor-placement="top-bottom">
+              {letter}
+            </p>
+          ))}
+        </div>
+
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800/50 pt-3 pb-4 flex flex-col md:flex-row justify-center items-center">
+        <div className="border-t border-gray-800/50 p-4 mt-10 flex flex-col md:flex-row justify-center items-center">
           <p className="text-xs text-gray-600">
             © {new Date().getFullYear()} Finnaux Technologies. All rights
             reserved.
