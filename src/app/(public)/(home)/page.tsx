@@ -3,7 +3,7 @@ import AboutUs from "@/components/composed/about_us";
 import FAQs from "@/components/composed/faqs";
 import HeroSection from "@/components/composed/header";
 import MarqueeSection from "@/components/composed/marquee";
-import FunctionalBlocks from "@/components/composed/modules";
+import FunctionalBlocks from "@/components/composed/products_section";
 import Testimonials from "@/components/composed/testimonials";
 import WhyChooseUs from "@/components/composed/why_choose_us";
 import fetchAPI, { HOMEPAGE_API } from "@/lib/api";

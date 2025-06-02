@@ -272,3 +272,17 @@ export type ModuleDetailsResponseType = {
   heroImage: ImageType;
 };
 
+export type FooterType = {
+  id: number;
+  documentId: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  linkGroup: LinkGroupType[];
+};
+
+export type LinkGroupType = {
+  id: number;
+  groupName: string;
+  footerLink: CTAType[];
+};

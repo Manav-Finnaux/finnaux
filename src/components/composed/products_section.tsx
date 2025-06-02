@@ -59,7 +59,7 @@ export default function FunctionalBlocks({ data }: { data: ModulesSectionType })
               data-aos-delay="50"
             >
               <LayoutGridIcon className="w-4 h-4 text-teal-600" />
-              <Text className="text-teal-700">Modules</Text>
+              <Text className="text-teal-700">Products</Text>
             </Badge>
 
             <Heading
@@ -68,7 +68,7 @@ export default function FunctionalBlocks({ data }: { data: ModulesSectionType })
               data-aos="fade-up"
               data-aos-delay="100"
             >
-              Modules That Drive <span className="text-teal-600">Efficiency</span>
+              Products That Drive <span className="text-teal-600">Efficiency</span>
             </Heading>
 
             <Text
