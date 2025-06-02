@@ -35,7 +35,7 @@ export default function ContactPage() {
   return (
     <Section
       variant="top"
-      className="min-h-screen bg-gradient-to-b from-white to-teal-50 px-4 sm:px-6 lg:px-8">
+      className="min-h-screen bg-gradient-to-b from-white to-teal-50 pt-32 sm:pt-32 md:pt-44 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-left sm:text-center mb-16">

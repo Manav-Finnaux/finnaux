@@ -5,6 +5,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { Bebas_Neue } from "next/font/google";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "../ui/navigation-menu";
 import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 const bebas = Bebas_Neue({
   weight: "400",
@@ -15,6 +16,7 @@ const bebas = Bebas_Neue({
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [companyDropdownOpen, setCompanyDropdownOpen] = useState(false);
+  const pathname = usePathname();
 
   const navItems = [
     { name: "Home", href: "/" },
@@ -29,6 +31,10 @@ export default function Navbar() {
     },
     { name: "Contact", href: "/contact", align: "right" },
   ];
+
+  React.useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
   React.useEffect(() => {
     if (isOpen) {
@@ -142,7 +148,7 @@ export default function Navbar() {
                         href={subItem.href}
                         className={`${bebas.className} block px-3 py-3 text-xl text-white hover:text-[#c4ec5a] tracking-wider`}
                         onClick={() => {
-                          setIsOpen(false);
+                          // setIsOpen(false);
                           setCompanyDropdownOpen(false);
                         }}>
                         {subItem.name}
@@ -158,7 +164,8 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 className={`${bebas.className} block px-3 py-4 text-2xl text-white hover:text-[#c4ec5a] border-b border-teal-600 last-of-type:border-none tracking-wider`}
-                onClick={() => setIsOpen(false)}>
+              // onClick={() => setIsOpen(false)}
+              >
                 {item.name}
               </Link>
             );

@@ -1,4 +1,4 @@
-import { NumberTicker } from "@/components/composed/number_ticker";
+// import { NumberTicker } from "@/components/composed/number_ticker";
 import fetchAPI, { MODULE_COLLECTION_API } from "@/lib/api";
 import { OurServicesResponseType } from "@/lib/api.types";
 import { cn } from "@/lib/utils";
@@ -108,33 +108,6 @@ export default async function Page() {
               );
             }
           )}
-        </div>
-
-        {/* Why Choose Us Section */}
-        <div className="mt-24 text-center space-y-8" data-aos="fade-up">
-          {/* <h2 className="text-3xl font-bold text-gray-800" data-aos="fade-up" data-aos-delay="100">
-            {data.whyChooseUs?.heading}
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">{data.whyChooseUs?.tagline}</p> */}
-
-          <div className="max-w-md mx-auto grid grid-cols-1 sm:max-w-none sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {data.whyChooseUs?.whyChooseUsCard?.map(
-              ({ data, title, suffix, tagline }, index: number) => (
-                <div
-                  key={index}
-                  className="space-y-2 bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300"
-                  data-aos="fade-up"
-                  data-aos-delay={150 + index * 50}>
-                  <div className="text-4xl font-bold text-blue-600">
-                    <NumberTicker className="text-blue-600" value={data} />
-                    {suffix || ""}
-                  </div>
-                  <div className="font-semibold text-gray-800">{title}</div>
-                  {tagline && <p className="text-gray-600">{tagline}</p>}
-                </div>
-              )
-            )}
-          </div>
         </div>
       </div>
     </div>

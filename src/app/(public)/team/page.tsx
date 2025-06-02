@@ -47,7 +47,7 @@ export default async function TeamPage() {
               {department.member.map((member, memberIndex) => (
                 <CardContainer
                   key={member.id}
-                  className="w-72 md:w-80"
+                  className="w-full md:w-80"
                   data-aos="fade-up"
                   data-aos-delay={memberIndex * 50}>
                   <CardBody className="bg-white rounded-xl shadow-md overflow-hidden aspect-[4/5] group/card">
