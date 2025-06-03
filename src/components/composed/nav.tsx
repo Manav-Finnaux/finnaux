@@ -13,7 +13,9 @@ import {
   navigationMenuTriggerStyle,
 } from "../ui/navigation-menu";
 import { cn } from "@/lib/utils";
+import fin from "../../../public/bg.png";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const bebas = Bebas_Neue({
   weight: "400",
@@ -55,12 +57,20 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo - Left */}
-          <Link href="/" className="flex items-center">
+          {/* <Link href="/" className="flex items-center">
             <span
               className={`${bebas.className} text-3xl tracking-wider text-[#c4ec5a]`}>
               FINNAUX
             </span>
-          </Link>
+          </Link> */}
+          <div className="h-36 w-24 relative">
+            <Image
+              src={fin}
+              alt="Finnaux"
+              fill
+              className="object-contain saturate-100 "
+            />
+          </div>
 
           {/* Desktop Navigation - Center */}
           <nav

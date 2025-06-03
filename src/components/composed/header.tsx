@@ -16,7 +16,7 @@ export default function HeroSection({ data }: { data: HeroSectionType }) {
     { text: "Financial", color: "text-white" },
     { text: "Solutions", color: "text-white" },
     { text: "for", color: "text-white" },
-    { text: "Modern", color: "text-[#c4ec5a]" },
+    { text: "Seamless", color: "text-[#c4ec5a]" },
     { text: "Lending", color: "text-[#c4ec5a]" },
   ];
 
@@ -108,7 +108,7 @@ export default function HeroSection({ data }: { data: HeroSectionType }) {
           <p
             className="text-base sm:text-lg md:text-xl mb-4 pb-3 sm:mb-6 text-gray-200 max-w-2xl mx-auto font-sans"
             data-aos="fade-up">
-            End-to-end financial technology solutions for lenders of all sizes
+            Streamlining Lending, Empowering Business.
           </p>
 
           <div

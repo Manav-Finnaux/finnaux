@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Link from "next/link";
 import { Button } from "../ui/button";
@@ -31,7 +31,10 @@ export default function Footer() {
   React.useEffect(() => {
     async function fetchFooterData() {
       const footerData = await fetchAPI<FooterType>(FOOTER_API, true);
-      const contactData = await fetchAPI<ContactInfoType>(CONTACT_DETAIL_API, true);
+      const contactData = await fetchAPI<ContactInfoType>(
+        CONTACT_DETAIL_API,
+        true
+      );
       setFooterData(footerData);
       setContactData(contactData);
     }
@@ -87,7 +90,6 @@ export default function Footer() {
             </div>
           </div>
         </div>
-
         {/* Main Footer Content */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-12 mb-16">
           {/* Logo and description */}
@@ -96,8 +98,8 @@ export default function Footer() {
             data-aos-delay="500" // Delay for AOS
             className="col-span-2 md:col-span-2 lg:col-span-1 space-y-6">
             <Link href="/" className="inline-block">
-              <div className="h-10 w-24 relative">
-                <Image src="/logo-finnaux.png" alt="Finnaux" fill />
+              <div className="h-10 w-full relative text-gray-400 ">
+                FINNAUX TECH SOLUTION PVT. LTD
               </div>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
@@ -124,53 +126,48 @@ export default function Footer() {
           </div>
 
           {/* Contact Information - New Section */}
-          {
-            contactData && (
-              <div
-                data-aos="fade-up" // AOS animation
-                data-aos-delay="600" // Delay for AOS
-                className="col-span-2 md:col-span-2 lg:col-span-1 space-y-4">
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300">
-                  Contact Us
-                </h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <Mail className="w-5 h-5 text-gray-500 mr-3 mt-0.5" />
-                    <Link
-                      href={`mailto:${contactData.email}`}
-                      className="text-sm text-gray-500 hover:text-white transition-colors break-all">
-                      {contactData.email}
-                    </Link>
-                  </li>
-                  <li className="flex items-start">
-                    <Phone className="w-5 h-5 text-gray-500 mr-3 mt-0.5" />
-                    <Link
-                      href={`tel:${contactData.phoneNumber[0].phoneNumber}`}
-                      className="text-sm text-gray-500 hover:text-white transition-colors">
-                      +91-{contactData.phoneNumber[0].phoneNumber}
-                    </Link>
-                  </li>
-                  <li className="flex items-start">
-                    <MapPin className="w-5 h-5 text-gray-500 mr-3 mt-0.5 flex-shrink-0" />
-                    <div className="flex flex-col">
-                      {
-                        contactData.address.map(({ listItem }, idx) => (
-                          <p className="text-sm text-gray-500" key={idx}>
-                            {listItem}
-                          </p>
-                        ))
-                      }
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            )
-          }
-
+          {contactData && (
+            <div
+              data-aos="fade-up" // AOS animation
+              data-aos-delay="600" // Delay for AOS
+              className="col-span-2 md:col-span-2 lg:col-span-1 space-y-4">
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300">
+                Contact Us
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <Mail className="w-5 h-5 text-gray-500 mr-3 mt-0.5" />
+                  <Link
+                    href={`mailto:${contactData.email}`}
+                    className="text-sm text-gray-500 hover:text-white transition-colors break-all">
+                    {contactData.email}
+                  </Link>
+                </li>
+                <li className="flex items-start">
+                  <Phone className="w-5 h-5 text-gray-500 mr-3 mt-0.5" />
+                  <Link
+                    href={`tel:${contactData.phoneNumber[0].phoneNumber}`}
+                    className="text-sm text-gray-500 hover:text-white transition-colors">
+                    +91-{contactData.phoneNumber[0].phoneNumber}
+                  </Link>
+                </li>
+                <li className="flex items-start">
+                  <MapPin className="w-5 h-5 text-gray-500 mr-3 mt-0.5 flex-shrink-0" />
+                  <div className="flex flex-col">
+                    {contactData.address.map(({ listItem }, idx) => (
+                      <p className="text-sm text-gray-500" key={idx}>
+                        {listItem}
+                      </p>
+                    ))}
+                  </div>
+                </li>
+              </ul>
+            </div>
+          )}
 
           {/* Footer links */}
-          {
-            footerData && footerData.linkGroup.map(({ footerLink, groupName }, idx) => (
+          {footerData &&
+            footerData.linkGroup.map(({ footerLink, groupName }, idx) => (
               <div
                 key={idx}
                 data-aos="fade-up" // AOS animation
@@ -196,10 +193,8 @@ export default function Footer() {
                   ))}
                 </ul>
               </div>
-            ))
-          }
+            ))}
         </div>
-
         {/* Large Letters Background */}Add commentMore actions
         <div className="flex justify-between text-white/5 text-5xl min-[400px]:text-[16vw] font-bold leading-none select-none -m-2 -mb-4 mt-0 sm:-m-6 sm:-mb-8 md:-mb-10 lg:-mb-14">
           {LETTERS.map((letter, index) => (
@@ -213,7 +208,6 @@ export default function Footer() {
             </p>
           ))}
         </div>
-
         {/* Bottom Bar */}
         <div className="border-t border-gray-800/50 p-4 mt-10 flex flex-col md:flex-row justify-center items-center">
           <p className="text-xs text-gray-600">
