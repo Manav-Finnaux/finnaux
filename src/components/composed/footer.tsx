@@ -12,7 +12,6 @@ import {
   Github,
 } from "lucide-react";
 import MaxWidthWrapper from "./max_width_wrapper";
-import Image from "next/image";
 import fetchAPI, { CONTACT_DETAIL_API, FOOTER_API } from "@/lib/api";
 import { ContactInfoType, FooterType } from "@/lib/api.types";
 import React from "react";
