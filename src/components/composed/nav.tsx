@@ -63,12 +63,12 @@ export default function Navbar() {
               FINNAUX
             </span>
           </Link> */}
-          <div className="h-36 w-24 relative">
+          <div className="h-24 w-32 relative">
             <Image
               src={fin}
               alt="Finnaux"
               fill
-              className="object-contain saturate-100 "
+              className="object-contain saturate-100"
             />
           </div>
 
