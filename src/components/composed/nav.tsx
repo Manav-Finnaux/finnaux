@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { Bebas_Neue } from "next/font/google";
+import { Geist } from "next/font/google";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -17,7 +17,7 @@ import fin from "../../../public/bg.png";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 
-const bebas = Bebas_Neue({
+const bebas = Geist({
   weight: "400",
   subsets: ["latin"],
   display: "swap",
@@ -76,7 +76,7 @@ export default function Navbar() {
           <nav
             className={cn(
               bebas.className,
-              "text-lg tracking-widest hidden md:flex items-center space-x-8 flex-1 justify-center"
+              "text-lg tracking-tight hidden md:flex items-center space-x-8 flex-1 justify-center"
             )}>
             <NavigationMenu>
               <NavigationMenuList>
@@ -124,7 +124,7 @@ export default function Navbar() {
           <div className="hidden md:block">
             <Link
               href="/contact"
-              className={`${bebas.className} bg-[#c4ec5a] text-black px-6 py-2 rounded-full text-lg hover:bg-white transition-colors duration-200 tracking-wider`}>
+              className={`${bebas.className} bg-[#c4ec5a] text-black px-6 py-2 rounded-full text-lg hover:bg-white transition-colors duration-200 tracking-tight`}>
               Contact Us
             </Link>
           </div>
@@ -157,7 +157,7 @@ export default function Navbar() {
                 <div key={item.name} className="border-b border-teal-600">
                   <button
                     onClick={() => setCompanyDropdownOpen(!companyDropdownOpen)}
-                    className={`${bebas.className} flex items-center justify-between w-full px-3 py-4 text-2xl text-white hover:text-[#c4ec5a] tracking-wider`}>
+                    className={`${bebas.className} flex items-center justify-between w-full px-3 py-4 text-2xl text-white hover:text-[#c4ec5a] tracking-tight`}>
                     {item.name}
                     <ChevronDown
                       className={`h-6 w-6 transition-transform ${
@@ -173,7 +173,7 @@ export default function Navbar() {
                       <Link
                         key={subItem.name}
                         href={subItem.href}
-                        className={`${bebas.className} block px-3 py-3 text-xl text-white hover:text-[#c4ec5a] tracking-wider`}
+                        className={`${bebas.className} block px-3 py-3 text-xl text-white hover:text-[#c4ec5a] tracking-tight`}
                         onClick={() => {
                           // setIsOpen(false);
                           setCompanyDropdownOpen(false);
@@ -190,7 +190,7 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`${bebas.className} block px-3 py-4 text-2xl text-white hover:text-[#c4ec5a] border-b border-teal-600 last-of-type:border-none tracking-wider`}
+                className={`${bebas.className} block px-3 py-4 text-2xl text-white hover:text-[#c4ec5a] border-b border-teal-600 last-of-type:border-none tracking-tight`}
                 // onClick={() => setIsOpen(false)}
               >
                 {item.name}

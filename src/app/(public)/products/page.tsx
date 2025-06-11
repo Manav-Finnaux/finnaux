@@ -1,4 +1,3 @@
-// import { NumberTicker } from "@/components/composed/number_ticker";
 import fetchAPI, { MODULE_COLLECTION_API } from "@/lib/api";
 import { OurServicesResponseType } from "@/lib/api.types";
 import { cn } from "@/lib/utils";
@@ -9,6 +8,8 @@ import {
   FileTextIcon,
   SettingsIcon,
   WrenchIcon,
+  SmartphoneIcon,
+  MonitorIcon,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -83,12 +84,12 @@ export default async function Page() {
               return (
                 <div
                   key={id}
-                  className="bg-white max-w-md mx-auto sm:max-w-none rounded-xl shadow-md p-4 py-6 sm:p-8 space-y-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                  className="bg-white flex justify-between flex-col max-w-md mx-auto sm:max-w-none rounded-xl shadow-md p-4 py-6 sm:p-8 space-y-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                   data-aos="fade-up"
                   data-aos-delay={200 + index * 50}>
                   <div
                     className={cn(
-                      `w-12 h-12 sm:w-16 sm:h-16 rounded-lg flex items-center justify-center`,
+                      `w-12 h-12  sm:w-16 sm:h-16 rounded-lg flex items-center justify-center`,
                       BG_COLORS_BY_INDEX[index]
                     )}>
                     <Icon className={cn(`text-2xl`, COLORS_BY_INDEX[index])} />
@@ -97,13 +98,25 @@ export default async function Page() {
                     {heading}
                   </h3>
                   <p className="text-gray-600">{excerpt}</p>
-                  <Link
-                    href={`/products/${module.documentId}`}
-                    className="block">
-                    <button className="bg-teal-600 hover:bg-teal-700 text-white shadow-md rounded-lg py-2 px-4 transition-all duration-300">
-                      Read more
-                    </button>
-                  </Link>
+                  <div className="flex items-center justify-between">
+                    <Link
+                      href={`/products/${module.documentId}`}
+                      className="block">
+                      <button className="bg-teal-600 hover:bg-teal-700 text-white shadow-md rounded-lg py-2 px-4 transition-all duration-300">
+                        Read more
+                      </button>
+                    </Link>
+                    <div className="flex items-center space-x-2">
+                      <span className="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800">
+                        <SmartphoneIcon className="mr-1 h-3 w-3" />
+                        Mobile
+                      </span>
+                      <span className="inline-flex items-center rounded-full bg-purple-100 px-2.5 py-0.5 text-xs font-medium text-purple-800">
+                        <MonitorIcon className="mr-1 h-3 w-3" />
+                        Web
+                      </span>
+                    </div>
+                  </div>
                 </div>
               );
             }

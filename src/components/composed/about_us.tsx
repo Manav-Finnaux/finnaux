@@ -44,7 +44,7 @@ export default function AboutUs({ data }: { data: AboutUsSectionType }) {
           </Heading>
 
           <Text
-            className="text-gray-700 text-left text-base sm:text-lg"
+            className="text-gray-700 text-justify text-base sm:text-lg"
             data-aos="fade-up"
             data-aos-delay="300">
             {data.content}

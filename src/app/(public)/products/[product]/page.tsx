@@ -72,7 +72,7 @@ export default async function Page({
 
         {/* Image */}
         <div
-          className="w-full h-36 sm:h-56 md:w-4/5 md:h-72 md:mx-auto lg:max-w-[1024px] relative rounded-lg shadow-lg overflow-hidden"
+          className="w-full h-36 sm:h-56 md:w-4/5 md:h-96 md:mx-auto lg:max-w-[1024px] relative rounded-lg shadow-lg overflow-hidden"
           data-aos="zoom-in"
           data-aos-delay="300">
           <Image
@@ -83,12 +83,11 @@ export default async function Page({
             fill
           />
         </div>
-
         {/* Content and Contact Card */}
-        <div className="mt-14 sm:mt-20 lg:mt-28 flex flex-col lg:flex-row lg:gap-10 lg:space-x-2 rounded-xl max-w-md mx-auto sm:max-w-fit sm:p-6">
+        <div className="mt-14 sm:mt-20 lg:mt-28 flex flex-col lg:flex-row lg:gap-14 lg:space-x-2 rounded-xl max-w-md mx-auto sm:max-w-fit sm:p-6">
           {/* Main content */}
           <div
-            className="w-full space-y-6 max-w-3xl text-gray-800"
+            className="w-full space-y-6 max-w-3xl text-gray-800 text-justify"
             data-aos="fade-up"
             data-aos-delay="350">
             <MDXRemote
@@ -104,13 +103,13 @@ export default async function Page({
             data-aos-delay="500">
             <div className="relative z-10">
               <h3 className="text-lg sm:text-xl font-semibold text-center text-teal-800 mb-3">
-                Have Additional Questions?
+                Connect With Us ?
               </h3>
 
               <div className="space-y-3 flex-1">
                 <div className="flex items-center gap-3 text-teal-700 hover:text-teal-800 transition-colors text-sm sm:text-base group cursor-pointer">
                   <MapPin className="w-5 h-5 flex-shrink-0 group-hover:scale-110 transition-transform self-start" />
-                  <div className="flex flex-col text-sm">
+                  <div className="flex flex-col text-md">
                     {contactDetailsData.address.map(({ listItem, id }) => {
                       return <span key={id}>{listItem}</span>;
                     })}
@@ -128,9 +127,11 @@ export default async function Page({
                 </div>
               </div>
 
-              <button className="mt-4 w-full bg-teal-500 hover:bg-teal-600 text-white rounded-lg py-2 px-4 flex items-center justify-center gap-2 font-medium transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]">
+              <Link
+                href="/contact"
+                className="mt-4 w-full bg-teal-500 hover:bg-teal-600 text-white rounded-lg py-2 px-4 flex items-center justify-center gap-2 font-medium transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]">
                 Contact Us <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
             </div>
 
             {/* Decorative gradient overlay */}
