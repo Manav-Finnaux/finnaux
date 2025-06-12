@@ -57,20 +57,16 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo - Left */}
-          {/* <Link href="/" className="flex items-center">
-            <span
-              className={`${bebas.className} text-3xl tracking-wider text-[#c4ec5a]`}>
-              FINNAUX
-            </span>
-          </Link> */}
-          <div className="h-24 w-32 relative">
-            <Image
-              src={fin}
-              alt="Finnaux"
-              fill
-              className="object-contain saturate-100"
-            />
-          </div>
+          <Link href="/" className="flex items-center">
+            <div className="h-24 w-32 relative">
+              <Image
+                src={fin}
+                alt="Finnaux"
+                fill
+                className="object-contain saturate-100"
+              />
+            </div>
+          </Link>
 
           {/* Desktop Navigation - Center */}
           <nav
@@ -147,9 +143,8 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden ${
-          isOpen ? "block" : "hidden"
-        } bg-teal-800 backdrop-blur-sm transition-all duration-300 h-screen`}>
+        className={`md:hidden ${isOpen ? "block" : "hidden"
+          } bg-teal-800 backdrop-blur-sm transition-all duration-300 h-screen`}>
         <div className="px-2 pt-2 pb-4 space-y-1 sm:px-4">
           {navItems.map((item) => {
             if (item.subItems) {
@@ -160,15 +155,13 @@ export default function Navbar() {
                     className={`${bebas.className} flex items-center justify-between w-full px-3 py-4 text-2xl text-white hover:text-[#c4ec5a] tracking-tight`}>
                     {item.name}
                     <ChevronDown
-                      className={`h-6 w-6 transition-transform ${
-                        companyDropdownOpen ? "rotate-180" : ""
-                      }`}
+                      className={`h-6 w-6 transition-transform ${companyDropdownOpen ? "rotate-180" : ""
+                        }`}
                     />
                   </button>
                   <div
-                    className={`${
-                      companyDropdownOpen ? "block" : "hidden"
-                    } pl-4`}>
+                    className={`${companyDropdownOpen ? "block" : "hidden"
+                      } pl-4`}>
                     {item.subItems.map((subItem) => (
                       <Link
                         key={subItem.name}
@@ -191,7 +184,7 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 className={`${bebas.className} block px-3 py-4 text-2xl text-white hover:text-[#c4ec5a] border-b border-teal-600 last-of-type:border-none tracking-tight`}
-                // onClick={() => setIsOpen(false)}
+              // onClick={() => setIsOpen(false)}
               >
                 {item.name}
               </Link>
