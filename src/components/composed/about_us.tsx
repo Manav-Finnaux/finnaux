@@ -10,6 +10,8 @@ import { cn } from "@/lib/utils";
 import Heading from "./heading";
 
 export default function AboutUs({ data }: { data: AboutUsSectionType }) {
+  const baseUrl = process.env.SERVER_API_BASE_URL!;
+
   return (
     <Section className="md:py-2">
       <MaxWidthWrapper className="rounded-3xl bg-gradient-to-br from-teal-50/40 to-teal-100/20 border border-teal-200/50 px-6 py-10 sm:px-10 sm:py-14 md:px-14 md:py-16 lg:px-16 lg:py-20 flex flex-col lg:flex-row gap-10 lg:gap-14 items-center">
@@ -80,8 +82,8 @@ export default function AboutUs({ data }: { data: AboutUsSectionType }) {
           data-aos="fade-up"
           data-aos-delay="200">
           <Image
-            src="/about-us.png"
-            alt="Finnaux team working on loan management software"
+            src={baseUrl + data.image.url}
+            alt="Finnaux team working"
             fill
             className="object-cover"
             sizes="(max-width: 1024px) 100vw, 50vw"

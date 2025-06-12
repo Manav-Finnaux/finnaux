@@ -59,7 +59,7 @@ export type WhyChooseUsType = {
 };
 
 export type TestimonialType = {
-  testimonialDate: string;
+  companyName: string;
   testimonial: string;
   name: string;
   designation: string;
@@ -221,6 +221,7 @@ type ServiceModuleType = {
   heading: string;
   excerpt: string;
   module: ModuleReferenceType;
+  isMobileFeature: boolean;
 };
 
 export type OurServicesResponseType = {
@@ -232,7 +233,6 @@ export type OurServicesResponseType = {
   publishedAt: string;
   tagline: string;
   module: ServiceModuleType[];
-  whyChooseUs: WhyChooseUsType;
 };
 
 type TeamMemberType = {

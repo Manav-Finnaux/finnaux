@@ -78,7 +78,7 @@ export default async function Page() {
       <div className="max-w-7xl mx-auto px-6 space-y-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {data.module.map(
-            ({ id, heading, excerpt, module }, index: number) => {
+            ({ id, heading, excerpt, module, isMobileFeature }, index: number) => {
               const Icon = ICON_BY_INDEX[index];
 
               return (
@@ -98,6 +98,7 @@ export default async function Page() {
                     {heading}
                   </h3>
                   <p className="text-gray-600">{excerpt}</p>
+
                   <div className="flex items-center justify-between">
                     <Link
                       href={`/products/${module.documentId}`}
@@ -107,10 +108,14 @@ export default async function Page() {
                       </button>
                     </Link>
                     <div className="flex items-center space-x-2">
-                      <span className="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800">
-                        <SmartphoneIcon className="mr-1 h-3 w-3" />
-                        Mobile
-                      </span>
+                      {
+                        isMobileFeature && (
+                          <span className="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800">
+                            <SmartphoneIcon className="mr-1 h-3 w-3" />
+                            Mobile
+                          </span>
+                        )
+                      }
                       <span className="inline-flex items-center rounded-full bg-purple-100 px-2.5 py-0.5 text-xs font-medium text-purple-800">
                         <MonitorIcon className="mr-1 h-3 w-3" />
                         Web

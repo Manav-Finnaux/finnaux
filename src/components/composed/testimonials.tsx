@@ -31,20 +31,23 @@ export default function Testimonials({ data }: { data: TestimonialsSectionType }
       <div className="relative">
         <div className="overflow-hidden w-full py-10">
           <Marquee className="flex items-center [--duration:10s]" pauseOnHover>
-            <div className="flex py-5">
-              {data.testimonial.map(({ name, testimonial, testimonialDate, designation, avatar }, index) => (
+            {/* gap is 1rem cuz in Marquee, gap is 1rem -- consistency :) */}
+            <div className="flex py-5 gap-x-4">
+              {data.testimonial.map(({ name, testimonial, designation, avatar, companyName }, index) => (
                 <div
                   key={index}
-                  className="bg-white border border-gray-200 rounded-2xl shadow-lg w-80 mx-2 flex flex-col px-4 justify-between py-8 hover:shadow-xl transition-shadow duration-300"
+                  className="bg-white border border-gray-200 rounded-2xl shadow-lg w-80 flex flex-col px-4 justify-between py-8 hover:shadow-xl transition-shadow duration-300"
                   data-aos="fade-up"
                   data-aos-delay={200 + index * 100}>
-                  <div className="bg-teal-50 border w-fit mx-2 px-2 py-1 text-sm rounded-full mb-4 text-teal-600 font-semibold">
-                    {testimonialDate}
-                  </div>
+                  <div>
+                    <div className="bg-teal-50 border w-fit mx-2 px-2 py-1 text-sm rounded-full mb-4 text-teal-600 font-medium">
+                      {companyName}
+                    </div>
 
-                  <p className="text-gray-700 font-medium px-3 leading-relaxed">
-                    {testimonial}
-                  </p>
+                    <p className="text-gray-700 font-medium px-3 leading-relaxed line-clamp-5">
+                      {testimonial}
+                    </p>
+                  </div>
 
                   <div className="flex items-center mt-6 pt-4 border-t border-gray-200 px-5">
                     <div className="relative w-12 h-12 rounded-full overflow-hidden mr-4">

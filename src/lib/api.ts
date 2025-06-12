@@ -24,7 +24,7 @@ export const OUR_TEAM_API = `/our-team?populate[membersByDept][populate][member]
 
 export const CONTACT_DETAIL_API = `/contact-detail?populate[address][populate]=*&populate[socials][populate]=socialLink&populate[phoneNumber][populate]=*`;
 
-export const MODULE_COLLECTION_API = `/service-page?populate[module][populate][module][fields][0]=documentId&populate[whyChooseUs][populate]=whyChooseUsCard`;
+export const MODULE_COLLECTION_API = `/service-page?populate[module][populate][module][fields][0]=documentId`;
 
 export const INTEGRATIONS_API = `/integration?populate[thirdPartyAPIs][populate][thirdPartyAPICards][populate][companyLogo][populate][clientLogo][fields]=url&populate[verificationSuite][populate][suiteCards][populate]=features&populate[paymentCollectionChannels][populate][cards][populate]=list&populate[thirdPartyAPIs][populate][collectionTypesGroup][populate][collectionTypeCard][populate][companyLogo][populate][clientLogo][fields]=url`;
 
