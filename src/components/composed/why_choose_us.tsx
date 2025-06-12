@@ -17,12 +17,12 @@ const ICONS_BY_INDEX = [LaughIcon, ShieldIcon, CalendarDaysIcon, PhoneIcon];
 
 export default function WhyChooseUs({ data }: { data: WhyChooseUsType }) {
   return (
-    <Section className="relative py-16 overflow-hidden">
+    <Section className="relative -my-36 bg-white mb-16 py-16  overflow-hidden">
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div
           className="absolute -right-20 -top-20 w-96 h-96 bg-teal-100 rounded-full blur-3xl"
           data-aos="zoom-in"
-          data-aos-delay="400"
+          data-aos-delay="300"
         />
       </div>
 
@@ -43,9 +43,7 @@ export default function WhyChooseUs({ data }: { data: WhyChooseUsType }) {
             </span>
           </Heading>
 
-          <Text className="max-w-2xl text-gray-600">
-            {data.tagline}
-          </Text>
+          <Text className="max-w-2xl text-gray-600">{data.tagline}</Text>
         </div>
 
         <div className="grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
@@ -102,7 +100,9 @@ export default function WhyChooseUs({ data }: { data: WhyChooseUsType }) {
           className="mt-12 text-center"
           data-aos="fade-up"
           data-aos-delay="600">
-          <Text className="text-lg font-semibold text-gray-900 leading-snug">{data.footer}</Text>
+          <Text className="text-lg font-semibold text-gray-900 leading-snug">
+            {data.footer}
+          </Text>
           {/* <Text className="text-lg font-medium text-gray-500 italic">{data.footer}</Text> */}
         </div>
       </MaxWidthWrapper>
