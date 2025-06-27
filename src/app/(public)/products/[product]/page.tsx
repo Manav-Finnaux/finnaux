@@ -87,7 +87,7 @@ export default async function Page({
         <div className="mt-14 sm:mt-20 lg:mt-28 flex flex-col lg:flex-row lg:gap-14 lg:space-x-2 rounded-xl max-w-md mx-auto sm:max-w-fit sm:p-6">
           {/* Main content */}
           <div
-            className="w-full space-y-6 max-w-3xl text-gray-800 text-justify"
+            className="w-full space-y-6 max-w-3xl text-gray-800 break-words hyphens-auto text-justify"
             data-aos="fade-up"
             data-aos-delay="350">
             <MDXRemote

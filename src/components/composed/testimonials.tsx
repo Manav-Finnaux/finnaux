@@ -18,23 +18,7 @@ import {
 } from "../ui/dialog";
 
 // import Testimonials from "./testing";
-export const Modal = ({
-  setShowModal,
-}: {
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
-  alert("hii");
-  return (
-    <>
-      <div className="fixed inset-0 backdrop-blur-sm bg-black/50 flex items-center justify-center">
-        <div className="bg-white p-8 rounded-md w-96">
-          <button onClick={() => setShowModal(false)}>close</button>
-          <h1>hii u are inside modal</h1>
-        </div>
-      </div>
-    </>
-  );
-};
+
 export default function Testimonials({
   data,
 }: {
@@ -72,7 +56,7 @@ export default function Testimonials({
           {companyName}
         </div>
 
-        <p className="text-gray-700 font-medium px-3 leading-relaxed line-clamp-5">
+        <p className="text-gray-700 font-medium px-3 leading-relaxed line-clamp-5 break-words hyphens-auto text-justify">
           {testimonial}
         </p>
         <Dialog>
@@ -193,9 +177,9 @@ export default function Testimonials({
 
       <div className="relative">
         <div className="overflow-hidden w-full py-10">
-          {data.testimonial.length > 6 ? (
+          {data.testimonial.length > 4 ? (
             <Marquee
-              className="flex items-center [--duration:10s]"
+              className="flex items-center [--duration:30s]"
               pauseOnHover>
               <div className="flex py-5 gap-x-4">
                 {data.testimonial.map((testimonial, index) => (
@@ -204,7 +188,7 @@ export default function Testimonials({
               </div>
             </Marquee>
           ) : (
-            <div className="flex flex-wrap justify-center gap-4 py-5">
+            <div className="flex flex-wrap justify-center gap-4 py-5 ">
               {data.testimonial.map((testimonial, index) => (
                 <TestimonialCard key={index} {...testimonial} index={index} />
               ))}
@@ -212,9 +196,9 @@ export default function Testimonials({
           )}
         </div>
 
-        {data.testimonial.length > 6 && (
+        {data.testimonial.length > 4 && (
           <>
-            <div className="hidden min-[480px]:block absolute left-0 top-0 w-40 h-full bg-gradient-to-r from-white to-transparent z-10" />
+            <div className="hidden min-[480px]:block absolute left-0 top-0 w-40 h-full bg-gradient-to-r from-white to-transparent  z-10" />
             <div className="hidden min-[480px]:block absolute right-0 top-0 w-40 h-full bg-gradient-to-l from-white to-transparent z-10" />
           </>
         )}
