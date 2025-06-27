@@ -5,6 +5,7 @@ import HeroSection from "@/components/composed/header";
 import MarqueeSection from "@/components/composed/marquee";
 import FunctionalBlocks from "@/components/composed/products_section";
 import Testimonials from "@/components/composed/testimonials";
+// import Testimonials from "@/components/composed/testing";
 import WhyChooseUs from "@/components/composed/why_choose_us";
 import fetchAPI, { HOMEPAGE_API } from "@/lib/api";
 import { HomePageDataType } from "@/lib/api.types";
@@ -22,7 +23,7 @@ export default async function Home() {
       <AboutUs data={data.aboutUsSection} />
       <FunctionalBlocks data={data.modulesSection} />
       <Features data={data.featuresSection} />
-
+      {/* <Testimonials data={data.testimonialsSection} /> */}
       <Testimonials data={data.testimonialsSection} />
       <FAQs data={data.faqsSection} />
     </div>
