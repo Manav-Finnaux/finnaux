@@ -50,7 +50,15 @@ export default function Testimonials({
     companyName,
     index,
     rating = 5,
-  }:{name:string,testimonial:string,designation:string,avatar:{url:string},companyName:string,index:number,rating:number}) => (
+  }: {
+    name: string;
+    testimonial: string;
+    designation: string;
+    avatar: { url: string };
+    companyName: string;
+    index: number;
+    rating?: number;
+  }) => (
     <div
       key={index}
       className="bg-white border border-gray-200 rounded-2xl shadow-lg w-80 flex flex-col px-4 justify-between py-8 hover:shadow-xl transition-shadow duration-300"
