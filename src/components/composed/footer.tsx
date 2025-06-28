@@ -10,6 +10,7 @@ import {
   Twitter,
   Linkedin,
   Github,
+  Instagram,
 } from "lucide-react";
 import MaxWidthWrapper from "./max_width_wrapper";
 import fetchAPI, { CONTACT_DETAIL_API, FOOTER_API } from "@/lib/api";
@@ -21,7 +22,14 @@ const SOCIAL_ICONS = {
   Twitter: Twitter,
   LinkedIn: Linkedin,
   GitHub: Github,
+  Instagram: Instagram,
 };
+
+const SOCIAL_LINKS = {
+  LinkedIn: "https://www.linkedin.com/company/finnaux/",
+  Instagram: "https://www.instagram.com/finnaux_india/",
+} as const;
+
 const LETTERS = ["F", "I", "N", "N", "A", "U", "X"];
 export default function Footer() {
   const [footerData, setFooterData] = React.useState<FooterType>();
@@ -98,7 +106,7 @@ export default function Footer() {
             className="col-span-2 md:col-span-2 lg:col-span-1 space-y-6">
             <Link href="/" className="inline-block">
               <div className="h-10 w-full relative text-gray-400 ">
-                FINNAUX TECH SOLUTION PVT. LTD
+                FINNAUX TECH SOLUTION PRIVATE LIMITED
               </div>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
@@ -106,15 +114,18 @@ export default function Footer() {
               institutions.
             </p>
             <div className="flex space-x-5 mt-4">
-              {["Twitter", "LinkedIn", "GitHub"].map((socialName, index) => {
-                const Icon =
-                  SOCIAL_ICONS[socialName as keyof typeof SOCIAL_ICONS];
+              {(["LinkedIn", "Instagram"] as const).map((socialName, index) => {
+                const Icon = SOCIAL_ICONS[socialName];
+                const href = SOCIAL_LINKS[socialName];
+
                 return (
                   <Link
                     key={socialName}
-                    href="#" // Replace with actual social links
-                    data-aos="fade-up" // AOS animation for individual icons
-                    data-aos-delay={600 + index * 100} // Staggered delay
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-aos="fade-up"
+                    data-aos-delay={600 + index * 100}
                     className="text-gray-500 hover:text-[#c4ec5a] transition-colors"
                     aria-label={socialName}>
                     <Icon className="w-6 h-6" />
@@ -194,7 +205,7 @@ export default function Footer() {
               </div>
             ))}
         </div>
-        {/* Large Letters Background */}Add commentMore actions
+        {/* Large Letters Background */}
         <div className="flex justify-between text-white/5 text-5xl min-[400px]:text-[16vw] font-bold leading-none select-none -m-2 -mb-4 mt-0 sm:-m-6 sm:-mb-8 md:-mb-10 lg:-mb-14">
           {LETTERS.map((letter, index) => (
             <p
